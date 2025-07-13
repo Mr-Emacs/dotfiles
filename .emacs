@@ -18,6 +18,12 @@
 (ido-everywhere 1)
 (column-number-mode 1)
 (global-display-line-numbers-mode)
+(electric-pair-mode 1)
+
+;; Save temporary files out of my current working directory please
+(setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
+(setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
+(setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
 
 (require 'simpc-mode)
@@ -59,3 +65,5 @@
 
 (require 'my-man)
 (global-set-key (kbd "C-c m") #'my/fullscreen-man)
+
+(rc/require 'rust-mode)
