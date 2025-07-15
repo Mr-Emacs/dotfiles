@@ -31,6 +31,7 @@ Plug('nvim-treesitter/nvim-treesitter')
 Plug('numToStr/Comment.nvim') 
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
+Plug('MunifTanjim/nui.nvim')
 -- End plugin installation
 vim.call('plug#end')
 
@@ -62,4 +63,5 @@ require("config.set")
 
 
 require("plugins.telescope")
+require("plugins.sudo")
 load_theme()

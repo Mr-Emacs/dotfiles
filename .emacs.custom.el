@@ -8,7 +8,7 @@
  '(display-line-numbers-type 'relative)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(move-text markdown-mode :upgrade magit multiple-cursors smex gruber-darker-theme dash-functional dash))
+   '(lua-mode move-text markdown-mode :upgrade magit multiple-cursors smex gruber-darker-theme dash-functional dash))
  '(warning-minimum-level :error))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

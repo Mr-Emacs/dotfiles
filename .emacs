@@ -67,3 +67,4 @@
 (global-set-key (kbd "C-c m") #'my/fullscreen-man)
 
 (rc/require 'rust-mode)
+(rc/require 'lua-mode)
