@@ -108,7 +108,7 @@ bar {
 }
 
 ## APPLICATION KEYBIND
-bindsym $mod+b ; exec chromium
+bindsym $mod+b ; exec qutebrowser
 bindsym $mod+Shift+f; exec pcfman
 bindsym $mod+Return ;exec st
 bindsym $mod+Tab focus next

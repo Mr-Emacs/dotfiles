@@ -1,6 +1,8 @@
 .tmux.conf|symlink|
 .vimrc|symlink|
+.Xresources|symlink|
 i3|symlink|.config
+qutebrowser|symlink|.config
 alacritty|symlink|.config
 nvim|symlink|.config
 wallpaper|symlink|
