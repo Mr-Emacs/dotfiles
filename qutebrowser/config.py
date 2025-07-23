@@ -17,8 +17,8 @@ def read_xresources(prefix):
 xresources = read_xresources("*")
 
 # Configuration settings
-c.colors.statusbar.normal.bg = xresources["*.background"]
-c.colors.statusbar.command.bg = xresources["*.background"]
+#c.colors.statusbar.normal.bg = xresources["*.background"]
+#c.colors.statusbar.command.bg = xresources["*.background"]
 c.colors.statusbar.command.fg = xresources["*color13"]
 c.colors.statusbar.normal.fg = xresources["*.background"]
 c.colors.statusbar.insert.bg = xresources["*.background"]  
@@ -129,6 +129,8 @@ c.hints.padding = {'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
 c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 2, 'right': 2}  # Adjust tab padding
 c.tabs.indicator.width = 0 # no tab indicators
 # c.window.transparent = True # apparently not needed
+#c.window.startup_mode = 'default'
+c.window.hide_decoration = False  
 c.tabs.width = '3%'
 c.window.hide_decoration = True 
 

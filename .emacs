@@ -1,6 +1,7 @@
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
 (setq package-install-upgrade-built-in t)
+(setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
 
 
 (load-file "~/.emacs.rc/rc.el")
@@ -68,3 +69,17 @@
 
 (rc/require 'rust-mode)
 (rc/require 'lua-mode)
+(rc/require 'go-mode)
+
+(rc/require 'markdown-preview-mode)
+; This is for hex colors
+(rc/require 'rainbow-mode)
+(add-hook 'prog-mode-hook 'rainbow-mode)
+(add-hook 'text-mode-hook 'rainbow-mode)
+(add-hook 'markdown-mode-hook 'rainbow-mode)
+(add-hook 'org-mode-hook 'rainbow-mode)
+
+(add-hook 'focus-in-hook
+          (lambda ()
+            (set-frame-parameter nil 'undecorated nil)))
+

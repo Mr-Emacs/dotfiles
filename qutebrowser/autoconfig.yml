@@ -8,8 +8,18 @@ config_version: 2
 settings:
   content.desktop_capture:
     https://discord.com: true
+    https://www.instagram.com: true
   content.javascript.clipboard:
+    https://chatgpt.com: access-paste
+    https://discord.com: access-paste
     https://duckduckgo.com: access-paste
     https://github.com: access-paste
   content.media.audio_capture:
     https://discord.com: true
+    https://www.instagram.com: true
+  content.media.audio_video_capture:
+    https://studio.youtube.com: true
+  content.media.video_capture:
+    https://www.instagram.com: true
+  content.notifications.enabled:
+    https://www.chess.com: true

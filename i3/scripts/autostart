@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-nm-applet &
-dunst &
-blueman-applet &
-dex --autostart --environment i3 &
-xss-lock --transfer-sleep-lock -- i3lock --nofork &
-xclip -selection clipboard -loops 0 &
-feh --bg-scale ~/wallpaper/wallpaper.jpeg &
