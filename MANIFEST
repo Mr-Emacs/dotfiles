@@ -1,8 +1,9 @@
-.tmux.conf|symlink|
+#.tmux.conf|symlink|
 .dwm|symlink|
 .vimrc|symlink|
-.Xresources|symlink|
-qutebrowser|symlink|.config
+.bashrc|symlink|
+#.Xresources|symlink|
+#qutebrowser|symlink|.config
 wallpaper|symlink|
 dunst|symlink|.config
 .emacs|symlink|
