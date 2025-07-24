@@ -1,6 +1,7 @@
 #.tmux.conf|symlink|
 .dwm|symlink|
 .vimrc|symlink|
+.xinitrc|symlink|
 .bashrc|symlink|
 #.Xresources|symlink|
 #qutebrowser|symlink|.config
