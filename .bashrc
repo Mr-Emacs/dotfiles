@@ -12,6 +12,10 @@ alias raylib="source ./.env/raylib.sh"
 alias timer="bash ~/scripts/timer.sh"
 alias harpoon="bash ~/scripts/tmux_harpoon.sh"
 
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa_github
+
 # Auto start X server on VT1
 if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
     exec startx
