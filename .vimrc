@@ -20,6 +20,8 @@ Plug 'preservim/vim-markdown'
 
 Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
+
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " ---------------------------------------------
