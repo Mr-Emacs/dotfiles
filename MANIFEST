@@ -3,7 +3,7 @@
 .vimrc|symlink|
 .xinitrc|symlink|
 .bashrc|symlink|
-#.Xresources|symlink|
+.xprofile|symlink|
 #qutebrowser|symlink|.config
 wallpaper|symlink|
 dunst|symlink|.config
