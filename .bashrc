@@ -3,6 +3,7 @@
 # ------------------------------
 # Core settings
 export EDITOR=vim
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # PATH setup
 
