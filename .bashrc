@@ -35,5 +35,3 @@ update_prompt() {
 }
 
 PROMPT_COMMAND=update_prompt
-
-fastfetch
