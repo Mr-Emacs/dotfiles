@@ -26,6 +26,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd("set completeopt+=noselect")
 vim.cmd('colorscheme retrobox')
+vim.keymap.set('n', '<leader>o', ':Ex<CR>')
+vim.keymap.set('n', '<leader>g', ':Git<CR>')
 
 -- Plugins
 require('mini.pick').setup {}
@@ -33,9 +35,8 @@ vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
 vim.keymap.set('n', '<leader>bb', ':Pick buffers<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 
-vim.keymap.set('n', '<leader>o', ':Ex<CR>')
 
-vim.lsp.enable({ "clangd", "lua_ls" })
+vim.lsp.enable({ "clangd", "lua_ls", "ts_ls"  })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 require('typst-preview').setup {}
