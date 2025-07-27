@@ -4,7 +4,7 @@
 .xinitrc|symlink|
 .bashrc|symlink|
 .xprofile|symlink|
-#qutebrowser|symlink|.config
+nvim|symlink|.config
 wallpaper|symlink|
 dunst|symlink|.config
 .emacs|symlink|

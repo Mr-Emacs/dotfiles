@@ -9,7 +9,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 # Aliases
 alias gitter="~/scripts/gitter.sh"
-alias raylib="source ./.env/raylib.sh"
 alias timer="bash ~/scripts/timer.sh"
 alias harpoon="bash ~/scripts/tmux_harpoon.sh"
 
@@ -36,3 +35,5 @@ update_prompt() {
 }
 
 PROMPT_COMMAND=update_prompt
+
+alias luamake="/home/xsoder/packages/lua-language-server/3rd/luamake/luamake"
