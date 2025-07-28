@@ -31,13 +31,17 @@ vim.keymap.set('n', '<leader>g', ':Git<CR>')
 
 -- Plugins
 require('mini.pick').setup {}
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
+vim.keymap.set('n', '<leader>pf', ':Pick files<CR>')
 vim.keymap.set('n', '<leader>bb', ':Pick buffers<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 
 
-vim.lsp.enable({ "clangd", "lua_ls", "ts_ls"  })
+-- LSP
+vim.lsp.enable({ "clangd", "lua_ls", "ts_ls", "gopls" })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fq', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 
 require('typst-preview').setup {}
 vim.keymap.set('n', '<leader>mp', ':TypstPreview<CR>')

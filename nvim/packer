@@ -8,7 +8,7 @@ packer() {
     git clone "https://github.com/$plugin.git" "$NVIM_PLUGIN_DIR/$(basename "$plugin")"
     echo "Installed plugin: $plugin"
 }
-update_plugins() {
+update() {
     for dir in "$NVIM_PLUGIN_DIR"/*; do
         if [ -d "$dir/.git" ]; then
             (cd "$dir" && git pull)
@@ -16,7 +16,7 @@ update_plugins() {
         fi
     done
 }
-remove_plugin() {
+remove() {
     local plugin_name="$1"
     rm -rf "$NVIM_PLUGIN_DIR/$plugin_name"
     echo "Removed plugin: $plugin_name"
