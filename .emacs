@@ -26,10 +26,12 @@
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
-
+(require 'dired-win)
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
+
+(require 'vlog-mode)
 
 ; PACKAGES
 (rc/require 'dash)
@@ -72,14 +74,11 @@
 (rc/require 'go-mode)
 
 (rc/require 'markdown-preview-mode)
-; This is for hex colors
-(rc/require 'rainbow-mode)
-(add-hook 'prog-mode-hook 'rainbow-mode)
-(add-hook 'text-mode-hook 'rainbow-mode)
-(add-hook 'markdown-mode-hook 'rainbow-mode)
-(add-hook 'org-mode-hook 'rainbow-mode)
+(rc/require 'company)
+(require 'company)
+(global-company-mode)
 
-(add-hook 'focus-in-hook
+(add-hook 'tuareg-mode-hook
           (lambda ()
-            (set-frame-parameter nil 'undecorated nil)))
-
+            (interactive)
+            (company-mode 0)))

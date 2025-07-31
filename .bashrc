@@ -1,6 +1,5 @@
 # ------------------------------
-# Minimal Custom .bashrc
-# ------------------------------
+# Minimal Custom .bashrc ------------------------------
 # Core settings
 export EDITOR=vim
 export PATH=$PATH:$(go env GOPATH)/bin
