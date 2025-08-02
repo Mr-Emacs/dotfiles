@@ -1,19 +1,25 @@
-! Gruber Darker Color Palette
-*.background: #282a36
-*.foreground: #f8f8f2
-*color0:      #282a36  
-*color1:      #ff5555  
-*color2:      #50fa7b  
-*color3:      #f1fa8c  
-*color4:      #bd93f9  
-*color5:      #ff79c6  
-*color6:      #8be9fd  
-*color7:      #f8f8f2  
-*color8:      #6272a4  
-*color9:      #ff6e6e  
-*color10:     #69ff94  
-*color11:     #ffffa5  
-*color12:     #a4ffff  
-*color13:     #ff92d0 
-*color14:     #a4ffff  
-*color15:     #ffffff  
+! Font Configuration
+XTerm*faceName: Iosevka
+XTerm*faceSize: 12
+
+! Gruber Darker Color Scheme
+XTerm*background: #282a36
+XTerm*foreground: #f8f8f2
+XTerm*color0:   #21222c
+XTerm*color1:   #ff5555
+XTerm*color2:   #50fa7b
+XTerm*color3:   #f1fa8c
+XTerm*color4:   #bd93f9
+XTerm*color5:   #ff79c6
+XTerm*color6:   #8be9fd
+XTerm*color7:   #f8f8f2
+XTerm*color8:   #6272a4
+XTerm*color9:   #ff6e6e
+XTerm*color10:  #69ff94
+XTerm*color11:  #ffffa5
+XTerm*color12:  #d6acff
+XTerm*color13:  #ff92d0
+XTerm*color14:  #a4ffff
+XTerm*color15:  #ffffff
+Xcursor.theme: DMZ-White
+Xcursor.size: 28

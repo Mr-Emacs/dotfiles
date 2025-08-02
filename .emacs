@@ -82,3 +82,5 @@
           (lambda ()
             (interactive)
             (company-mode 0)))
+(put 'upcase-region 'disabled nil)
+(global-set-key (kbd "C-c C-;") 'comment-line)
