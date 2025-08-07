@@ -32,8 +32,6 @@ if [ "$1" == "update" ]; then
     exit
 fi
 
-
 packer "echasnovski/mini.pick"
-packer "neovim/nvim-lspconfig"
 packer "chomosuke/typst-preview.nvim"
-packer "tpope/vim-fugitive"
+packer "neovim/nvim-lspconfig"

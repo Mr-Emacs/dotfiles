@@ -1,7 +1,7 @@
 local function start_vlogcc_lsp()
     local client_id = vim.lsp.start({
         name = "vlogcc",
-        cmd = { "/home/xsoder/programming/vlogc-lsp/main" },
+        cmd = { "/home/xsoder/programming/vlog-lsp/main" },
         root_dir = vim.fn.getcwd(), -- required for Neovim to initialize LSP
         on_init = function(client)
             vim.schedule(function()

@@ -67,7 +67,7 @@
             (local-set-key (kbd "M-n") 'move-text-down)))
 
 (require 'my-man)
-(global-set-key (kbd "C-c m") #'my/fullscreen-man)
+(global-set-key (kbd "C-c m") #'my/vertical-split-man)
 
 (rc/require 'rust-mode)
 (rc/require 'lua-mode)

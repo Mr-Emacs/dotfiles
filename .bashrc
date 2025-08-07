@@ -21,5 +21,5 @@ update_prompt() {
         PS1="${WHITE}[\u${RED}@\h ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
     fi
 }
-
+export TERM=xterm-256color
 PROMPT_COMMAND=update_prompt
