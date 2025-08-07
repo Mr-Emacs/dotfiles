@@ -3,7 +3,6 @@
 (setq package-install-upgrade-built-in t)
 (setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
 
-
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
@@ -67,7 +66,7 @@
             (local-set-key (kbd "M-n") 'move-text-down)))
 
 (require 'my-man)
-(global-set-key (kbd "C-c m") #'my/vertical-split-man)
+(global-set-key (kbd "C-c m") #'my/fullscreen-man)
 
 (rc/require 'rust-mode)
 (rc/require 'lua-mode)
@@ -77,10 +76,3 @@
 (rc/require 'company)
 (require 'company)
 (global-company-mode)
-
-(add-hook 'tuareg-mode-hook
-          (lambda ()
-            (interactive)
-            (company-mode 0)))
-(put 'upcase-region 'disabled nil)
-(global-set-key (kbd "C-c C-;") 'comment-line)
