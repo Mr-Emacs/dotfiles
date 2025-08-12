@@ -1,6 +1,5 @@
 # Core settings
 export EDITOR=vim
-export PATH=$PATH:$(go env GOPATH)/bin
 
 # Auto start X server on VT1
 if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then

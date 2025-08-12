@@ -1,7 +1,5 @@
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
-export XCURSOR_THEME=DMZ-White
-export XCURSOR_SIZE=28
-xsetroot -cursor_name left_ptr &
-
+eval $(dbus-launch --sh-syntax)
+bash /home/xsoder/scripts/wallpaper &
 pulseaudio --start
 exec dwm

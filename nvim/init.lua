@@ -1,6 +1,5 @@
 -- CONFIG
-local config_path = vim.fn.stdpath("config")
-dofile(config_path .. "/vague2k256.lua")
+vim.cmd("colorscheme vague2k256")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false

@@ -76,3 +76,5 @@
 (rc/require 'company)
 (require 'company)
 (global-company-mode)
+(put 'set-goal-column 'disabled nil)
+(put 'upcase-region 'disabled nil)
