@@ -11,3 +11,4 @@ dunst|symlink|.config
 .emacs.custom.el|symlink|
 .emacs.rc|symlink|
 .emacs.local|symlink|
+.env|symlink|

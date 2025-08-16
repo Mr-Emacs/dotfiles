@@ -1,6 +1,8 @@
 # Core settings
 export EDITOR=vim
 
+PROMPT_COMMAND='history -a'
+export HISTTIMEFORMAT='%F %T '
 # Auto start X server on VT1
 if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
     exec startx
@@ -22,3 +24,4 @@ update_prompt() {
 }
 export TERM=xterm-256color
 PROMPT_COMMAND=update_prompt
+. "$HOME/.cargo/env"
