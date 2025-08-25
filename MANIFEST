@@ -7,6 +7,7 @@
 nvim|symlink|.config
 wallpaper|symlink|
 dunst|symlink|.config
+i3|symlink|.config
 .emacs|symlink|
 .emacs.custom.el|symlink|
 .emacs.rc|symlink|
