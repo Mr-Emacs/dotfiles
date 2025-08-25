@@ -20,7 +20,6 @@
 (global-display-line-numbers-mode)
 (electric-pair-mode 1)
 (setq shell-command-switch "-ic")
-;; Save temporary files out of my current working directory please
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -69,8 +68,6 @@
 (global-set-key (kbd "C-c m") #'my/fullscreen-man)
 
 (rc/require 'rust-mode)
-(rc/require 'lua-mode)
-(rc/require 'go-mode)
 
 (rc/require 'markdown-preview-mode)
 (rc/require 'company)
