@@ -8,6 +8,7 @@ nvim|symlink|.config
 wallpaper|symlink|
 dunst|symlink|.config
 i3|symlink|.config
+i3blocks|symlink|.config
 .emacs|symlink|
 .emacs.custom.el|symlink|
 .emacs.rc|symlink|

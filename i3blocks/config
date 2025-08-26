@@ -1,0 +1,29 @@
+# i3blocks config
+
+[localip]
+command=~/.config/i3blocks/scripts/localip
+interval=10
+
+[ethernet]
+command=~/.config/i3blocks/scripts/ethernet
+interval=10
+
+[wifi]
+command=~/.config/i3blocks/scripts/wifi
+interval=10
+
+[server]
+command=~/.config/i3blocks/scripts/server
+interval=5
+
+[battery]
+command=~/.config/i3blocks/scripts/battery
+interval=30
+
+[penger]
+command=~/.config/i3blocks/scripts/penger
+interval=60
+
+[datetime]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1

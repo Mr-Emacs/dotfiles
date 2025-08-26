@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+IFACE=$(ip link | awk -F: '$0 !~ "lo|vir|wl|docker|^[^0-9]"{print $2; exit}' | xargs)
+
+if [ -n "$IFACE" ] && ip link show "$IFACE" | grep -q "state UP"; then
+    echo "Eth: Connected"
+    echo "Eth"
+    echo "#00FF00"   # green
+else
+    echo "Eth: Disconnected"
+    echo "Eth"
+    echo "#FF0000"   # red
+fi
+

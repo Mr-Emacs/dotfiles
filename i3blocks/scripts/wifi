@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SSID=$(/usr/sbin/iwgetid -r)
+
+if [ -n "$SSID" ]; then
+    # Connected
+    echo "WiFi: $SSID"
+    echo "WiFi"
+    echo "#00FF00"
+else
+    # Disconnected
+    echo "WiFi: Disconnected"
+    echo "WiFi"
+    echo "#FF0000"
+fi
+

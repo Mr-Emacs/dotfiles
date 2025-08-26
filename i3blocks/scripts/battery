@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+LEVEL=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null)
+STATUS=$(cat /sys/class/power_supply/BAT*/status 2>/dev/null)
+
+echo "Battery: ${LEVEL}% ${STATUS}"
+echo "Battery: ${LEVEL}%"
+if [ "$STATUS" = "Charging" ]; then
+    echo "#00FF00"
+elif [ "$LEVEL" -le 20 ]; then
+    echo "#FF0000"
+else
+    echo "#FFFFFF"
+fi
+
