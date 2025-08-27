@@ -17,3 +17,4 @@ export NVM_DIR="$HOME/.nvm"
 
 . "$HOME/.cargo/env"
 export LD_LIBRARY_PATH="build:deps/raylib/lib"
+alias token='/home/xsoder/scripts/token'
