@@ -35,8 +35,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'xsoder/gruber-darker'
-Plug 'vim-airline/vim-airline'
-
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
-colorscheme gruber-darker
+set termguicolors
+colorscheme dark

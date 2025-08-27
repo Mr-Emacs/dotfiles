@@ -8,21 +8,6 @@ if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
     exec startx
 fi
 
-RED='\[\e[31m\]'
-WHITE='\[\e[97m\]'
-RESET='\[\e[0m\]'
-
-update_prompt() {
-    local exit_code=$?
-    local cwd="\W"
-    local venv=""
-    if [ -n "$VIRTUAL_ENV" ]; then
-        venv="($(basename "$VIRTUAL_ENV")) "
-    fi
-    PS1="${WHITE}${venv}\u${RED}@\h${WHITE} ${cwd} ${WHITE}\\$ ${RESET}"
-}
-PROMPT_COMMAND=update_prompt
-
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT='-c'
 

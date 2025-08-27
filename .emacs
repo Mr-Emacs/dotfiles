@@ -7,9 +7,10 @@
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (load custom-file)
-(add-to-list 'default-frame-alist `(font . "Iosevka-20"))
+(add-to-list 'default-frame-alist `(font . "Iosevka-18"))
 
-(rc/require-theme 'gruber-darker)
+(add-to-list 'custom-theme-load-path "~/.emacs.local/")
+(load-theme 'dark t)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
