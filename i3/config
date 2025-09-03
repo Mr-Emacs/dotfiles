@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Iosevka 12
+font pango:Iosevka 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -188,13 +188,15 @@ bar {
 bindsym $mod+c exec emacs
 
 bindsym $mod+b exec chromium
-bindsym $mod+o exec   "/home/xsoder/scripts/record" 
 bindsym $mod+Shift+s exec   "/home/xsoder/scripts/fullscreen" 
 bindsym $mod+z exec   "/home/xsoder/packages/bin/boomer" 
 bindsym $mod+t exec   "/home/xsoder/scripts/timer" 
 bindsym $mod+Shift+o exec "/home/xsoder/scripts/master" 
 bindsym $mod+p exec   "/home/xsoder/scripts/history-term" 
 bindsym $mod+Shift+p exec  simplescreenrecorder
-bindsym $mod+Shift+d exec   "/home/xsoder/scripts/audio" 
-bindsym $mod+Shift+b exec   "/home/xsoder/scripts/screenshot" 
-bindsym $mod+Shift+u exec  "/home/xsoder/scripts/win-screen-shot" 
+bindsym $mod+g exec gimp
+bindsym $mod+Shift+d exec "/home/xsoder/scripts/audio" 
+
+focus_follows_mouse no
+
+hide_edge_borders both

@@ -108,4 +108,15 @@
   (setq-local indent-line-function 'simpc-indent-line)
   (setq-local comment-start "// "))
 
+;; Highlight only special-case whitespace in simpc-mode
+(defun simpc--show-whitespace ()
+  "Highlight tabs and trailing spaces in `simpc-mode`."
+  (font-lock-add-keywords
+   nil
+   '(("\t"     0 '(:background "gray20" :foreground "orange") t) ; tabs
+     ("[ ]+$"  0 '(:background ".") t))))                       ; trailing spaces
+
+(add-hook 'simpc-mode-hook #'simpc--show-whitespace)
+
+
 (provide 'simpc-mode)

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+LOCATION="${1:-}"
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/i3blocks-wttr"
+CACHE_FILE="$CACHE_DIR/weather.txt"
+CACHE_TTL=600
+WTTR_URL="https://wttr.in"
+
+mkdir -p "$CACHE_DIR"
+
+FORMAT="?format=%C+%t+%h"
+if [ -n "$LOCATION" ]; then
+  QUERY="$WTTR_URL/$LOCATION$FORMAT"
+else
+  QUERY="$WTTR_URL/$FORMAT"
+fi
+
+now=$(date +%s)
+if [ -f "$CACHE_FILE" ]; then
+  mod=$(date -r "$CACHE_FILE" +%s)
+else
+  mod=0
+fi
+
+if [ $((now - mod)) -lt "$CACHE_TTL" ]; then
+  output=$(cat "$CACHE_FILE")
+else
+  output=$(curl -fsS --max-time 10 "$QUERY" 2>/dev/null) || output="$(cat "$CACHE_FILE" 2>/dev/null || echo "N/A")"
+  if [ -n "$output" ] && [ "$output" != "N/A" ]; then
+    echo "$output" > "$CACHE_FILE"
+  fi
+fi
+
+output="$(echo "$output" | tr -s ' ' ' ' | sed 's/^ *//; s/ *$//')"
+
+if [ -n "$output" ] && [ "$output" != "N/A" ]; then
+  full="$(echo "$output" | awk '{$1="Tea:"; sub(/^ /,""); print }')"
+else
+  full="Tea N/A"
+fi
+
+echo "$full" | awk '{print $1, $2}'
+

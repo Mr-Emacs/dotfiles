@@ -6,9 +6,10 @@
  '(company-format-margin-function nil)
  '(display-line-numbers-type 't)
  '(package-selected-packages
-   '(company dash-functional empv go-mode gruber-darker-theme lua-mode
-             magit markdown-preview-mode move-text multiple-cursors
-             rainbow-mode rust-mode smex)))
+   '(auctex-label-numbers company dash-functional empv go-mode
+                          gruber-darker-theme lua-mode magit
+                          markdown-preview-mode move-text
+                          multiple-cursors rainbow-mode rust-mode smex)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

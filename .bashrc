@@ -1,9 +1,5 @@
-# Core settings
-export EDITOR=vim
-
 PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT='%F %T '
-# Auto start X server on VT1
 if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
     exec startx
 fi
@@ -17,4 +13,5 @@ export NVM_DIR="$HOME/.nvm"
 
 . "$HOME/.cargo/env"
 export LD_LIBRARY_PATH="build:deps/raylib/lib"
-alias token='/home/xsoder/scripts/token'
+alias vid2gif='/home/xsoder/scripts/vid2gif'
+alias compress='/home/xsoder/scripts/packager'

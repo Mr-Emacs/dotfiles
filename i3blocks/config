@@ -4,14 +4,6 @@
 command=~/.config/i3blocks/scripts/localip
 interval=10
 
-[ethernet]
-command=~/.config/i3blocks/scripts/ethernet
-interval=10
-
-[wifi]
-command=~/.config/i3blocks/scripts/wifi
-interval=10
-
 [server]
 command=~/.config/i3blocks/scripts/server
 interval=5
@@ -19,6 +11,11 @@ interval=5
 [battery]
 command=~/.config/i3blocks/scripts/battery
 interval=30
+
+
+[weather]
+command=~/.config/i3blocks/scripts/weather
+interval=10
 
 [penger]
 command=~/.config/i3blocks/scripts/penger

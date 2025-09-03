@@ -56,6 +56,7 @@
 
 (rc/require 'transient)
 (rc/require 'markdown-mode)
+(rc/require 'lua-mode)
 
 (rc/require 'move-text)
 (global-set-key (kbd "M-n") 'move-text-down)
@@ -65,11 +66,16 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(require 'my-man)
-(global-set-key (kbd "C-c m") #'my/fullscreen-man)
+(require 'colored-man)
+(global-set-key (kbd "C-c m") #'colored-man)
 
 (rc/require 'rust-mode)
-
+(rc/require 'auctex-label-numbers)
+(dolist (buf (buffer-list))
+  (with-current-buffer buf
+    (when (and buffer-file-name
+               (string-match-p "\\.tex\\'" buffer-file-name))
+      (auctex-label-numbers-mode 1))))
 (rc/require 'markdown-preview-mode)
 (rc/require 'company)
 (require 'company)
