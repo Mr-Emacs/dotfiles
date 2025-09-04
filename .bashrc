@@ -1,4 +1,4 @@
-w PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT='%F %T '
 if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
     exec startx
