@@ -1,4 +1,4 @@
-;;; vlog-mode.el --- Major mode for the vlog language
+;;; vlog-mode.el --- Major mode for the vlog language -*- lexical-binding: nil -*-
 
 (defvar vlog-mode-hook nil)
 

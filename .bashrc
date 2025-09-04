@@ -1,4 +1,4 @@
-PROMPT_COMMAND='history -a'
+w PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT='%F %T '
 if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
     exec startx
@@ -7,11 +7,6 @@ fi
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT='-c'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+PS1='\[\033[97m\]\u@\h:\w\$ \[\033[0m\]'
 
-. "$HOME/.cargo/env"
 export LD_LIBRARY_PATH="build:deps/raylib/lib"
-alias vid2gif='/home/xsoder/scripts/vid2gif'
-alias compress='/home/xsoder/scripts/packager'

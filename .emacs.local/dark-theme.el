@@ -1,4 +1,5 @@
 ;;; dark-theme.el --- Casey Muratori's Emacs Theme with custom minibuffer -*- lexical-binding: t; -*-]
+
 (deftheme dark
   "A dark theme based on Casey Muratori's editor colors.")
 (let ((class '((class color) (min-colors 89)))

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
 (setq package-install-upgrade-built-in t)
