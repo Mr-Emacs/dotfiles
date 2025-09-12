@@ -36,6 +36,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'xsoder/gruber-darker'
 Plug 'tpope/vim-fugitive'
+
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 set termguicolors

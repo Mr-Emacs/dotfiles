@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+FG="255;255;255"          
+CURSOR="64;255;64"       
+KEYWORD="205;149;12"    
+CONSTANT="107;142;35"  
+COMMAND="97;175;239"  
+BRACKET="205;170;125"
+INVALID="244;71;71" 
+
+if [[ "$INSIDE_EMACS" == *vterm* ]]; then
+    PS1="\[\e[38;2;${CURSOR}m\]\u@\h\[\e[0m\]:"
+    PS1+="\[\e[38;2;${KEYWORD}m\]\w\[\e[0m\]"
+    PS1+="\[\e[38;2;${CONSTANT}m\]\\[\e[0m\]\$ "
+else
+    PS1='\[\033[97m\]\u@\h:\w\$ \[\033[0m\]'
+fi
+

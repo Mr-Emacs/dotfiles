@@ -4,6 +4,7 @@
 (setq package-install-upgrade-built-in t)
 (setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
 
+
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
@@ -19,12 +20,19 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (column-number-mode 1)
-(global-display-line-numbers-mode)
+
+(global-display-line-numbers-mode 1)
+
+(dolist (mode '(eshell-mode-hook
+                vterm-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
 (electric-pair-mode 1)
 (setq shell-command-switch "-ic")
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
+(setq vterm-term-environment-variable "xterm-256color")
 
 (require 'dired-win)
 (require 'simpc-mode)
@@ -67,8 +75,11 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(require 'colored-man)
-(global-set-key (kbd "C-c m") #'colored-man)
+(require 'man)
+(set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
+(set-face-attribute 'Man-underline nil :inherit font-lock-keyword-face :underline t)
+(global-set-key (kbd "C-c m") #'man)
+
 
 (rc/require 'rust-mode)
 (rc/require 'auctex-label-numbers)
@@ -79,8 +90,12 @@
       (auctex-label-numbers-mode 1))))
 (rc/require 'markdown-preview-mode)
 (rc/require 'company)
-(require 'company)
 (global-company-mode)
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+(rc/require 'vterm)
+
+(require 'vterm-toggle)
+(global-set-key (kbd "C-x t") #'vterm-toggle)

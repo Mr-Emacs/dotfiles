@@ -1,12 +1,13 @@
+source "$HOME"/.bash_theme
 PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT='%F %T '
-if [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
+
+if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
     exec startx
 fi
 
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT='-c'
 
-PS1='\[\033[97m\]\u@\h:\w\$ \[\033[0m\]'
-
-export LD_LIBRARY_PATH="build:deps/raylib/lib"
+export PATH="$HOME/scripts $PATH"
+alias ls='ls --color=auto'
