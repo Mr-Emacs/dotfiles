@@ -3,7 +3,7 @@
 .vimrc|symlink|
 .xinitrc|symlink|
 .bashrc|symlink|
-.bash_theme|symlink|
+.bash_profile|symlink|
 .xprofile|symlink|
 nvim|symlink|.config
 wallpaper|symlink|

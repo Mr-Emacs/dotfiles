@@ -1,4 +1,4 @@
-source "$HOME"/.bash_theme
+source "$HOME"/.bash_profile
 PROMPT_COMMAND='history -a'
 export HISTTIMEFORMAT='%F %T '
 
@@ -10,4 +10,4 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT='-c'
 
 export PATH="$HOME/scripts $PATH"
-alias ls='ls --color=auto'
+export LD_LIBRARY_PATH="build:deps/raylib/lib"

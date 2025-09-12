@@ -98,4 +98,7 @@
 (rc/require 'vterm)
 
 (require 'vterm-toggle)
+(require 'vterm-buffer)
+(require 'url-grabber)
 (global-set-key (kbd "C-x t") #'vterm-toggle)
+(global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)

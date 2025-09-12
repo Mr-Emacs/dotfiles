@@ -8,6 +8,7 @@ BRACKET="205;170;125"
 INVALID="244;71;71" 
 
 if [[ "$INSIDE_EMACS" == *vterm* ]]; then
+    alias ls='ls --color=auto'
     PS1="\[\e[38;2;${CURSOR}m\]\u@\h\[\e[0m\]:"
     PS1+="\[\e[38;2;${KEYWORD}m\]\w\[\e[0m\]"
     PS1+="\[\e[38;2;${CONSTANT}m\]\\[\e[0m\]\$ "
