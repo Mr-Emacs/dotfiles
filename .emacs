@@ -102,3 +102,6 @@
 (require 'url-grabber)
 (global-set-key (kbd "C-x t") #'vterm-toggle)
 (global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
+
+(global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
+(global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
