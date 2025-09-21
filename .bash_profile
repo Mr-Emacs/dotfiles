@@ -16,3 +16,6 @@ else
     PS1='\[\033[97m\]\u@\h:\w\$ \[\033[0m\]'
 fi
 
+if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
+    exec startx
+fi

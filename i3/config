@@ -188,11 +188,12 @@ bar {
 bindsym $mod+c exec emacs
 
 bindsym $mod+b exec chromium
-bindsym $mod+Shift+s exec   "/home/xsoder/scripts/screeshot" 
+bindsym $mod+Shift+s exec "/home/xsoder/scripts/screeshot" 
 bindsym $mod+z exec boomer
 bindsym $mod+Shift+o exec "/home/xsoder/scripts/master" 
+bindsym $mod+o exec /home/xsoder/scripts/clipboard-daemon show 
 bindsym $mod+p exec   "/home/xsoder/scripts/history-term" 
-bindsym $mod+Shift+p exec  simplescreenrecorder
+bindsym $mod+Shift+p exec obs
 bindsym $mod+g exec gimp
 bindsym $mod+Shift+d exec "/home/xsoder/scripts/audio"
 

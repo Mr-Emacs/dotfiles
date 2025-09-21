@@ -5,7 +5,7 @@
 .bashrc|symlink|
 .bash_profile|symlink|
 .xprofile|symlink|
-nvim|symlink|.config
+#nvim|symlink|.config
 wallpaper|symlink|
 dunst|symlink|.config
 i3|symlink|.config

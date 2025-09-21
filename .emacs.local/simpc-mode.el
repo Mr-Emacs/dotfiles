@@ -75,6 +75,11 @@
          (indent-len 4)
          (prev-indent (simpc--indentation-of-previous-non-empty-line)))
     (cond
+     ;; case: if (...) <statement>;   → do not indent next line
+     ((string-match-p "^\\s-*if\\s-*([^)]*)\\s-*[^;]+;\\s-*$" prev-line)
+      prev-indent)
+
+     ;; existing rules …
      ((string-match-p "^\\s-*switch\\s-*(.+)" prev-line)
       prev-indent)
      ((and (string-suffix-p "{" prev-line)
@@ -90,6 +95,10 @@
         (+ prev-indent indent-len)))
      ((string-suffix-p ":" cur-line)
       (max (- prev-indent indent-len) 0))
+     ((string-match-p "^\\s-*if\\s-*(" prev-line)
+      (+ prev-indent indent-len))
+     ((string-match-p "^\\s-*else" prev-line)
+      prev-indent)
      (t prev-indent))))
 
 ;;; TODO: customizable indentation (amount of spaces, tabs, etc)
