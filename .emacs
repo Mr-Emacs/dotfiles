@@ -102,7 +102,8 @@
 (require 'url-grabber)
 
 (require 'chc-mode)
-(global-set-key (kbd "C-x t") #'vterm-toggle-new-window)
+(global-set-key (kbd "C-x C-t") #'vterm-toggle-new-window)
+(global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
 (global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
 
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
