@@ -103,6 +103,7 @@
 (require 'ssh-connect)
 
 (require 'chc-mode)
+(require 'indent-mode)
 (global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
 (global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
 (global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
