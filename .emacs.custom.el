@@ -6,11 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(company-format-margin-function nil)
  '(display-line-numbers-type 't)
- '(package-selected-packages
-   '(auctex-label-numbers company dash-functional magit
-                          markdown-preview-mode mmm-mode move-text
-                          multiple-cursors pdf-tools pdf2text
-                          rust-mode smex vterm web-mode yasnippet)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
