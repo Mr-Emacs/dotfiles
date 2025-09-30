@@ -1,5 +1,4 @@
 ;;; indent-mode.el  -*- lexical-binding: t; -*-
-;; Minor mode to display leading indentation using font-lock
 ;; Spaces → '.', Tabs → '>'
 ;; Automatically enabled in programming/text modes
 

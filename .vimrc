@@ -7,3 +7,4 @@ set nowritebackup
 set noswapfile
 set termguicolors
 colorscheme desert
+

@@ -1,7 +1,7 @@
 eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
 
-bash /home/xsoder/scripts/wallpaper &
+feh --bg-fill /home/xsoder/wallpaper/penger/3dmaze.jpg &
 bash /home/xsoder/scripts/autostart &
-pulseaudio --start &
+pulseaudio &
 exec i3
