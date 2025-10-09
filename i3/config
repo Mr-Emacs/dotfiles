@@ -191,10 +191,6 @@ bindsym $mod+b exec firefox
 bindsym $mod+Shift+s exec "/home/xsoder/scripts/screeshot" 
 bindsym $mod+z exec boomer
 bindsym $mod+Shift+o exec "/home/xsoder/scripts/master" 
-bindsym $mod+o exec /home/xsoder/scripts/clipboard-daemon show 
-bindsym $mod+p exec   "/home/xsoder/scripts/history-term" 
-bindsym $mod+Shift+p exec obs
-bindsym $mod+g exec gimp
 bindsym $mod+Shift+d exec "/home/xsoder/scripts/audio"
 
 focus_follows_mouse no

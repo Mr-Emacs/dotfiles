@@ -1,4 +1,4 @@
-;;; dark-theme.el --- Casey Muratori's Emacs Theme with custom minibuffer -*- lexical-binding: t; -*-
+;;; dark-theme.el --- Casey Muratori's Emacs Theme with custom minibuffer -*- lexical-binding: t; -*-]
 
 (deftheme dark
   "A dark theme based on Casey Muratori's editor colors.")
@@ -43,51 +43,29 @@
    `(font-lock-string-face        ((,class (:foreground ,string :slant normal))))
    `(font-lock-comment-face       ((,class (:foreground ,comment :slant normal))))
    `(font-lock-warning-face       ((,class (:foreground ,invalid :weight bold :slant normal))))
-   
    ;; Minibuffer / completion tweaks
-   `(minibuffer-prompt ((,class (:foreground ,keyword :weight bold :slant normal))))
-   
-   ;; Mode line (status bar) - customized layout with filled background
-   `(mode-line ((,class (:background ,bracket :foreground "#000000" 
-                         :box (:line-width 3 :color "#000000" :style nil)))))
-   `(mode-line-inactive ((,class (:background ,bg :foreground ,comment 
-                                  :box (:line-width 3 :color "#000000" :style nil)))))
-   `(mode-line-buffer-id ((,class (:foreground ,bg :weight bold 
-                                   :box (:line-width 2 :color "#000000")))))
-   `(mode-line-emphasis ((,class (:foreground "#000000" :weight bold))))
-   `(completions-common-part ((,class (:foreground ,command :weight normal :slant normal))))
+   `(minibuffer-prompt ((,class (:foreground ,fg :weight bold :slant normal))))
+   `(completions-common-part ((,class (:foreground ,command :weight normal :slant normal)))) ;; commands in blue
    `(completions-first-difference ((,class (:foreground ,cursor :weight bold :slant normal))))
    `(completions-highlight ((,class (:background ,cursor :foreground ,bg :slant normal))))
-   
    ;; Vertico/Selectrum/Ivy/icomplete
    `(vertico-current ((,class (:background ,cursor :foreground ,bg :slant normal))))
    `(ivy-current-match ((,class (:background ,cursor :foreground ,bg :slant normal))))
    `(icomplete-first-match ((,class (:foreground ,command :weight bold :slant normal))))
-   
-   ;; IDO mode - enhanced
-   `(ido-first-match ((,class (:foreground ,cursor :weight bold :slant normal))))
-   `(ido-only-match  ((,class (:foreground ,cursor :weight bold :slant normal))))
-   `(ido-subdir      ((,class (:foreground ,command :weight bold :slant normal))))
-   `(ido-indicator   ((,class (:foreground ,keyword :weight normal :slant normal))))
-   `(ido-incomplete-regexp ((,class (:foreground ,invalid :weight bold :slant normal))))
-   `(ido-virtual ((,class (:foreground ,comment :slant normal))))
-   
-   ;; Smex
+   ;; IDO & Smex
+   `(ido-first-match ((,class (:foreground ,command :weight bold :slant normal))))
+   `(ido-only-match  ((,class (:foreground ,command :weight bold :slant normal))))
+   `(ido-subdir      ((,class (:foreground ,fg :weight normal :slant normal))))
+   `(ido-indicator   ((,class (:foreground ,fg :weight normal :slant normal))))
    `(smex-item-selected ((,class (:background ,cursor :foreground ,bg :weight bold :slant normal))))
    `(smex-keyword ((,class (:foreground ,command :weight normal :slant normal))))
-   
    ;; Explicitly style command names (works for M-x etc.)
    `(compilation-info ((,class (:foreground ,command :weight normal :slant normal))))
    `(help-key-binding ((,class (:foreground ,command :weight normal :slant normal))))
-   
-   ;; Dired - enhanced with executable distinction
+   ;; Dired (dirs in blue, rest white)
    `(dired-directory ((,class (:foreground ,command :weight bold :slant normal))))
-   `(dired-symlink   ((,class (:foreground ,keyword :weight normal :slant normal))))
-   `(dired-marked    ((,class (:foreground ,cursor :weight bold :slant normal))))
-   `(dired-flagged   ((,class (:foreground ,invalid :weight bold :slant normal))))
-   `(dired-header    ((,class (:foreground ,cursor :weight bold))))
-   `(dired-warning   ((,class (:foreground ,invalid :weight bold))))
-   `(dired-set-id    ((,class (:foreground ,cursor :weight bold))))
-   `(dired-special   ((,class (:foreground ,purple :weight bold))))))
+   `(dired-symlink   ((,class (:foreground ,fg :weight normal :slant normal))))
+   `(dired-marked    ((,class (:foreground ,fg :weight normal :slant normal))))
+   `(dired-flagged   ((,class (:foreground ,invalid :weight bold :slant normal))))))
 (provide-theme 'dark)
 ;;; dark-theme.el ends here

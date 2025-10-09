@@ -9,7 +9,7 @@
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (load custom-file)
-(add-to-list 'default-frame-alist `(font . "Iosevka-18"))
+(add-to-list 'default-frame-alist `(font . "IosevkaNerdFont-18"))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.local/")
 (load-theme 'dark t)
@@ -28,6 +28,7 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (electric-pair-mode 1)
+
 (setq shell-command-switch "-ic")
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -103,7 +104,6 @@
 (require 'ssh-connect)
 
 (require 'chc-mode)
-;;(require 'indent-mode)
 (global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
 (global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
 (global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
@@ -115,3 +115,4 @@
 
 (rc/require 'yasnippet)
 (yas-global-mode)
+(rc/require 'rainbow-mode)

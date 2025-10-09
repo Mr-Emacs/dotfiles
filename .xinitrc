@@ -3,7 +3,10 @@ eval $(dbus-launch --sh-syntax)
 
 feh --bg-fill /home/xsoder/wallpaper/master.png &
 bash /home/xsoder/scripts/autostart &
+#bash /home/xsoder/.dwm/autostart.sh &
 pipewire &
 pipewire-pulse &
-wireplumber& 
-exec i3
+wireplumber&
+picom --config ~/Programming/xsoder/nwm/picom.conf &
+#exec i3
+exec /home/xsoder/Programming/xsoder/nwm/nwm 

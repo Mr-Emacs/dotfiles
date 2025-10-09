@@ -1,10 +1,7 @@
-set nocompatible
-filetype off
-syntax on
-set nu
-set nobackup
-set nowritebackup
-set noswapfile
-set termguicolors
-colorscheme desert
-
+source ~/.vim/local/options.vim
+source ~/.vim/local/keybinds.vim
+source ~/.vim/local/plugins.vim
+source ~/.vim/local/colors.vim
+source ~/.vim/local/comp.vim
+source ~/.vim/local/fzf.vim
+source ~/.vim/local/lsp.vim
