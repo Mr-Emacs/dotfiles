@@ -9,10 +9,11 @@
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (load custom-file)
-(add-to-list 'default-frame-alist `(font . "IosevkaNerdFont-18"))
+(set-face-attribute 'default nil :height 180)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.local/")
 (load-theme 'dark t)
+;;(rc/require-theme 'naysayer)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -43,8 +44,6 @@
 (require 'vlog-mode)
 
 ; PACKAGES
-(rc/require 'dash)
-(rc/require 'dash-functional)
 
 (rc/require 'smex)
 (global-set-key (kbd "M-x") 'smex)
@@ -67,7 +66,7 @@
 (rc/require 'transient)
 (rc/require 'markdown-mode)
 (rc/require 'lua-mode)
-
+(rc/require 'zig-mode)
 (rc/require 'move-text)
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "M-p") 'move-text-up)
@@ -102,7 +101,10 @@
 (require 'vterm-buffer)
 (require 'url-grabber)
 (require 'ssh-connect)
+(require 'generate-tags)
 
+
+(rc/require 'mmm-mode)
 (require 'chc-mode)
 (global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
 (global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
@@ -111,7 +113,6 @@
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
 
-(rc/require 'mmm-mode)
 
 (rc/require 'yasnippet)
 (yas-global-mode)

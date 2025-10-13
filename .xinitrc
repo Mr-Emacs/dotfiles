@@ -7,6 +7,7 @@ bash /home/xsoder/scripts/autostart &
 pipewire &
 pipewire-pulse &
 wireplumber&
-picom --config ~/Programming/xsoder/nwm/picom.conf &
-#exec i3
-exec /home/xsoder/Programming/xsoder/nwm/nwm 
+#picom --config ~/Programming/xsoder/nwm/picom.conf &
+#exec ~/thirdparty/oxwm/target/release/oxwm
+#exec /home/xsoder/Programming/xsoder/nwm/nwm
+exec i3

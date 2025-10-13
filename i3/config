@@ -187,11 +187,13 @@ bar {
 
 bindsym $mod+c exec emacs
 
-bindsym $mod+b exec firefox
-bindsym $mod+Shift+s exec "/home/xsoder/scripts/screeshot" 
+bindsym $mod+b exec chromium
+bindsym $mod+Shift+s exec "/home/xsoder/scripts/screenshot" 
+bindsym $mod+Shift+p exec "/home/xsoder/scripts/screenshot-select" 
 bindsym $mod+z exec boomer
 bindsym $mod+Shift+o exec "/home/xsoder/scripts/master" 
 bindsym $mod+Shift+d exec "/home/xsoder/scripts/audio"
+bindsym $mod+t layout tabbed
 
 focus_follows_mouse no
 

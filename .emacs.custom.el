@@ -20,10 +20,13 @@
      default))
  '(display-line-numbers-type 't)
  '(package-selected-packages
-   '(auctex-label-numbers company dash-functional lua-mode magit
-                          markdown-preview-mode mmm-mode move-text
-                          multiple-cursors nix-mode rainbow-mode
-                          rust-mode smex vterm yasnippet)))
+   '(auctex-label-numbers company dash-functional gruber-darker-theme
+                          lua-mode magit markdown-preview-mode
+                          mmm-mode move-text multiple-cursors
+                          naysayer-theme naysayer-theme-theme nix-mode
+                          rainbow-mode rust-mode smex vterm yasnippet
+                          zig-mode))
+ '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
