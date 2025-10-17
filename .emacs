@@ -5,17 +5,18 @@
 (setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
 (setq org-html-validation-link nil)
 
-;;(set-frame-font "Iosevka-20")
+(set-frame-font "Iosevka-18")
 
+(setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (load custom-file)
 (set-face-attribute 'default nil :height 180)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.local/")
-(load-theme 'dark t)
-;;(rc/require-theme 'gruber-darker)
+;; (add-to-list 'custom-theme-load-path "~/.emacs.local/")
+;; (load-theme 'dark t)
+(rc/require-theme 'gruber-darker)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)

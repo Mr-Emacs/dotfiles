@@ -15,7 +15,7 @@ PROJECT-ROOT is the root directory of your project."
     (message "Generating TAGS in %s ..." project-root)
     (shell-command ctags-cmd)
     (visit-tags-table (expand-file-name "TAGS" project-root))
-    (message "✅ TAGS generated successfully at %s/TAGS" project-root)))
+    (message "TAGS generated successfully at %s/TAGS" project-root)))
 
 ;;; Usage:
 ;; M-x generate-project-tags
