@@ -4,7 +4,7 @@
   "A dark theme based on Casey Muratori's editor colors.")
 (let ((class '((class color) (min-colors 89)))
       ;; Base colors from Casey's theme
-      (bg        "#062329")
+      (bg        "#161616")
       (fg        "#ffffff")
       (cursor    "#40FF40")
       (hl-line   "#191970")

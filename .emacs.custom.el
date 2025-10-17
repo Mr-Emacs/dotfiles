@@ -21,10 +21,12 @@
  '(display-line-numbers-type 't)
  '(package-selected-packages
    '(auctex-label-numbers company dash-functional gruber-darker-theme
-                          lua-mode magit markdown-preview-mode
-                          mmm-mode move-text multiple-cursors
-                          naysayer-theme naysayer-theme-theme nix-mode
-                          rainbow-mode rust-mode smex vterm yasnippet
+                          just-mode lua-mode magit
+                          markdown-preview-mode mmm-mode move-text
+                          multiple-cursors naysayer-theme
+                          naysayer-theme-theme nix-mode rainbow-mode
+                          rose-pine-theme roseline-theme rust-mode
+                          smex solarized-dark-theme vterm yasnippet
                           zig-mode))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces

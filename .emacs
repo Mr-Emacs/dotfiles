@@ -3,7 +3,9 @@
 (setq custom-file"~/.emacs.custom.el")
 (setq package-install-upgrade-built-in t)
 (setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
+(setq org-html-validation-link nil)
 
+;;(set-frame-font "Iosevka-20")
 
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
@@ -13,7 +15,7 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.local/")
 (load-theme 'dark t)
-;;(rc/require-theme 'naysayer)
+;;(rc/require-theme 'gruber-darker)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -36,7 +38,6 @@
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq vterm-term-environment-variable "xterm-256color")
 
-(require 'dired-win)
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
@@ -44,7 +45,6 @@
 (require 'vlog-mode)
 
 ; PACKAGES
-
 (rc/require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
@@ -67,6 +67,7 @@
 (rc/require 'markdown-mode)
 (rc/require 'lua-mode)
 (rc/require 'zig-mode)
+
 (rc/require 'move-text)
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "M-p") 'move-text-up)
@@ -75,12 +76,6 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(require 'man)
-(set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
-(set-face-attribute 'Man-underline nil :inherit font-lock-keyword-face :underline t)
-(global-set-key (kbd "C-c m") #'man)
-
-
 (rc/require 'rust-mode)
 (rc/require 'auctex-label-numbers)
 (dolist (buf (buffer-list))
@@ -88,7 +83,7 @@
     (when (and buffer-file-name
                (string-match-p "\\.tex\\'" buffer-file-name))
       (auctex-label-numbers-mode 1))))
-(rc/require 'markdown-preview-mode)
+;;(rc/require 'markdown-preview-mode)
 (rc/require 'company)
 (global-company-mode)
 (put 'set-goal-column 'disabled nil)
@@ -102,7 +97,7 @@
 (require 'url-grabber)
 (require 'ssh-connect)
 (require 'generate-tags)
-
+(require 'vterm-mux)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)
@@ -113,7 +108,7 @@
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
 
-
 (rc/require 'yasnippet)
 (yas-global-mode)
 (rc/require 'rainbow-mode)
+(rc/require 'just-mode)
