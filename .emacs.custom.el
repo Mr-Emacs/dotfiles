@@ -18,7 +18,20 @@
      "8a9fef3a6778ad6e0cae765d1ebd4805c58868712ffda1da02b5d70ac798edce"
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
- '(display-line-numbers-type 't)
+ '(dired-listing-switches "-alh")
+ '(display-line-numbers-type 'relative)
+ '(global-display-line-numbers-mode t)
+ '(grep-command "grep -rn ")
+ '(grep-find-command
+   '("find . -type f -exec grep --color=auto -nH --null -e  \\{\\} +"
+     . 54))
+ '(grep-find-template
+   "find -H <D> <X> -type f <F> -exec grep <C> -nH --null -e <R> \\{\\} +")
+ '(grep-find-use-xargs 'exec-plus)
+ '(grep-highlight-matches 'auto)
+ '(grep-template "grep <X> <C> -nH --null -e <R> <F>")
+ '(grep-use-null-device nil)
+ '(grep-use-null-filename-separator t)
  '(package-selected-packages
    '(auctex-label-numbers company dash-functional gruber-darker-theme
                           just-mode lua-mode magit

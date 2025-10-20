@@ -14,8 +14,19 @@
 (load custom-file)
 (set-face-attribute 'default nil :height 180)
 
-;; (add-to-list 'custom-theme-load-path "~/.emacs.local/")
-;; (load-theme 'dark t)
+(dolist (hook '(python-mode-hook
+                js-mode-hook
+                emacs-lisp-mode-hook
+                simpc-mode-hook
+                java-mode-hook
+                ruby-mode-hook
+                go-mode-hook
+                rust-mode-hook
+                sh-mode-hook
+                yaml-mode-hook
+                markdown-mode-hook
+                org-mode-hook))
+  (add-hook hook 'whitespace-mode))
 (rc/require-theme 'gruber-darker)
 
 (tool-bar-mode 0)
@@ -109,7 +120,17 @@
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
 
+
 (rc/require 'yasnippet)
 (yas-global-mode)
 (rc/require 'rainbow-mode)
 (rc/require 'just-mode)
+
+(setq confirm-kill-processes nil)
+(setq confirm-kill-emacs nil)
+
+(add-hook 'kill-emacs-hook
+          (lambda () (save-some-buffers t)))
+
+(global-set-key (kbd "C-c g") 'grep)
+(global-set-key (kbd "C-c m") 'man)
