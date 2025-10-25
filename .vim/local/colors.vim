@@ -1,2 +1,2 @@
 set termguicolors
-colorscheme desert 
+colorscheme habamax

@@ -5,7 +5,7 @@
 (setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
 (setq org-html-validation-link nil)
 
-(set-frame-font "Iosevka-18")
+;;(set-frame-font "Iosevka-18")
 
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (load-file "~/.emacs.rc/rc.el")
@@ -27,6 +27,7 @@
                 markdown-mode-hook
                 org-mode-hook))
   (add-hook hook 'whitespace-mode))
+
 (rc/require-theme 'gruber-darker)
 
 (tool-bar-mode 0)
@@ -133,4 +134,5 @@
           (lambda () (save-some-buffers t)))
 
 (global-set-key (kbd "C-c g") 'grep)
+(global-set-key (kbd "C-c m") 'man)
 (global-set-key (kbd "C-c m") 'man)

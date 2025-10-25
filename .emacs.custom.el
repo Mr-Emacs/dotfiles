@@ -19,7 +19,7 @@
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
  '(dired-listing-switches "-alh")
- '(display-line-numbers-type 'relative)
+ '(display-line-numbers-type t)
  '(global-display-line-numbers-mode t)
  '(grep-command "grep -rn ")
  '(grep-find-command
