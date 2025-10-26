@@ -33,8 +33,8 @@
  '(grep-use-null-device nil)
  '(grep-use-null-filename-separator t)
  '(package-selected-packages
-   '(auctex-label-numbers company dash-functional gruber-darker-theme
-                          just-mode lua-mode magit
+   '(auctex-label-numbers company dash-functional go-mode
+                          gruber-darker-theme just-mode lua-mode magit
                           markdown-preview-mode mmm-mode move-text
                           multiple-cursors naysayer-theme
                           naysayer-theme-theme nix-mode rainbow-mode

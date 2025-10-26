@@ -120,7 +120,7 @@
 
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
-
+(rc/require 'go-mode)
 
 (rc/require 'yasnippet)
 (yas-global-mode)

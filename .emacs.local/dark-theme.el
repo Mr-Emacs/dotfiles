@@ -1,9 +1,9 @@
-;;; dark-theme.el --- Casey Muratori's Emacs Theme with custom minibuffer -*- lexical-binding: t; -*-
+;;; dark-theme.el --- Jonathan blow Emacs Theme with custom minibuffer -*- lexical-binding: t; -*-
 
 (deftheme dark
   "A dark theme based on Casey Muratori's editor colors.")
 (let ((class '((class color) (min-colors 89)))
-      ;; Base colors from Casey's theme
+      ;; Base colors from Jonathan blow theme
       (bg        "#062329")
       (fg        "#ffffff")
       (cursor    "#40FF40")
