@@ -1,6 +1,6 @@
 eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
-feh --bg-fill ~/wallpaper/smooth_pengernal.jpg &
+feh --bg-fill ~/wallpaper/penger/smooth_pengernal.jpg &
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
 pipewire &
@@ -9,5 +9,5 @@ pipewire-pulse &
 flameshot &
 # picom --config ~/Programming/xsoder/nwm/picom.conf &
 exec ~/Programming/xsoder/nwm/nwm
-#exec i3
 #exec ~/thirdparty/oxwm/target/release/oxwm
+#exec i3

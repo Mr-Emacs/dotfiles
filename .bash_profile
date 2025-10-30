@@ -19,7 +19,7 @@ if [[ "$INSIDE_EMACS" == *vterm* ]]; then
     PS1+="\[\e[38;2;255;0;0m\]\$(git_branch)\[\e[0m\]"
     PS1+="\[\e[38;2;${CONSTANT}m\]\$ \[\e[0m\]"
 else
-    alias ls='ls'
+    alias ls='ls --color=auto'
     BLUE='\e[0;34m'
     WHITE='\[\e[97m\]'
     RESET='\[\e[0m\]'
@@ -27,10 +27,9 @@ else
     PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
 fi
 
-. "$HOME/.cargo/env"
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
 if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
     exec startx
 fi
-
+. "$HOME/.cargo/env"

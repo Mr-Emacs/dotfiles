@@ -6,7 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(company-format-margin-function nil)
  '(custom-safe-themes
-   '("caeb6faf66081ab38498a75fadad09abeea4ff75d6093ae57d94b80305f0b7ec"
+   '("01a9797244146bbae39b18ef37e6f2ca5bebded90d9fe3a2f342a9e863aaa4fd"
+     "caeb6faf66081ab38498a75fadad09abeea4ff75d6093ae57d94b80305f0b7ec"
      "347e8979e3ff98b4707bab5d793c2b22d4006643198976eaced7f98af60354fc"
      "f7ced2c7d9d5de211c3683ad46543fa636c05c26366c9434498182bff0dd91e0"
      "5c2aedf48b1ad6316381798af5b320899d6ec760ab0ced6bf81cce6de0a8dc22"
@@ -39,8 +40,8 @@
                           multiple-cursors naysayer-theme
                           naysayer-theme-theme nix-mode rainbow-mode
                           rose-pine-theme roseline-theme rust-mode
-                          smex solarized-dark-theme vterm yasnippet
-                          zig-mode))
+                          smex solarized-dark-theme sqlite3 vterm
+                          yasnippet zig-mode))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

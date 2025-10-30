@@ -4,6 +4,8 @@
 (setq package-install-upgrade-built-in t)
 (setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
 (setq org-html-validation-link nil)
+(setq-default word-wrap t)
+(setq dired-dwim-target t)
 ;;(set-frame-font "Iosevka-18")
 
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -12,8 +14,7 @@
 (add-to-list 'load-path "~/.emacs.local/")
 (load custom-file)
 (set-face-attribute 'default nil :height 180)
-(add-to-list 'custom-theme-load-path "~/.emacs.local/")
-(load-theme 'dark t)
+(add-hook 'org-mode-hook #'visual-line-mode)
 
 (dolist (hook '(python-mode-hook
                 js-mode-hook
@@ -29,7 +30,7 @@
                 org-mode-hook))
   (add-hook hook 'whitespace-mode))
 
-;; (rc/require-theme 'gruber-darker)
+(rc/require-theme 'gruber-darker)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -137,3 +138,5 @@
 (global-set-key (kbd "C-c g") 'grep)
 (global-set-key (kbd "C-c m") 'man)
 (global-set-key (kbd "C-c m") 'man)
+
+(rc/require 'sqlite3)

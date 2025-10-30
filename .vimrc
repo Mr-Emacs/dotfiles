@@ -4,4 +4,3 @@ source ~/.vim/local/plugins.vim
 source ~/.vim/local/colors.vim
 source ~/.vim/local/comp.vim
 source ~/.vim/local/fzf.vim
-source ~/.vim/local/lsp.vim
