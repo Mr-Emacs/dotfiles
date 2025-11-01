@@ -2,21 +2,17 @@
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
 (setq package-install-upgrade-built-in t)
-    ;; This is a kde fix
-    ;;(setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
-    ;;
 (setq org-html-validation-link nil)
 (setq-default word-wrap t)
 (setq dired-dwim-target t)
-;;(set-frame-font "Iosevka-18")
-;;(set-frame-font "Ubuntu mono-25")
-
+(setq org-agenda-files '("~/dotfiles/agenda.org"))
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (load custom-file)
-(set-face-attribute 'default nil :height 180)
+
+(set-frame-font "Ubuntu Mono-22")
 (add-hook 'org-mode-hook #'visual-line-mode)
 
 (dolist (hook '(python-mode-hook
@@ -116,6 +112,7 @@
 (require 'ssh-connect)
 (require 'generate-tags)
 (require 'vterm-mux)
+(require 'todo-mode)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)

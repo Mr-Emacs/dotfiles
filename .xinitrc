@@ -3,11 +3,8 @@ eval $(dbus-launch --sh-syntax)
 feh --bg-fill ~/wallpaper/penger/smooth_pengernal.jpg &
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
-pipewire &
-wireplumber &
-pipewire-pulse &
 flameshot &
 # picom --config ~/Programming/xsoder/nwm/picom.conf &
-exec ~/Programming/xsoder/nwm/nwm
+#exec ~/Programming/xsoder/nwm/nwm
 #exec ~/thirdparty/oxwm/target/release/oxwm
-#exec i3
+exec i3
