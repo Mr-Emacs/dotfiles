@@ -33,3 +33,7 @@ if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
     exec startx
 fi
 . "$HOME/.cargo/env"
+# Only run fastfetch in real terminal sessions
+if [[ $- == *i* ]] && [ -t 0 ] && [ -z "$INSIDE_EMACS" ] && [ -z "$EMACS" ]; then
+    fastfetch
+fi

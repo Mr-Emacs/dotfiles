@@ -2,11 +2,14 @@
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
 (setq package-install-upgrade-built-in t)
-(setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
+    ;; This is a kde fix
+    ;;(setq default-frame-alist '((undecorated . nil) (fullscreen . nil)))
+    ;;
 (setq org-html-validation-link nil)
 (setq-default word-wrap t)
 (setq dired-dwim-target t)
 ;;(set-frame-font "Iosevka-18")
+;;(set-frame-font "Ubuntu mono-25")
 
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (load-file "~/.emacs.rc/rc.el")
@@ -140,3 +143,4 @@
 (global-set-key (kbd "C-c m") 'man)
 
 (rc/require 'sqlite3)
+(rc/require 'd-mode)

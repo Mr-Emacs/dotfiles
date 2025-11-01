@@ -5,7 +5,7 @@ export HISTTIMEFORMAT='%F %T '
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT='-c'
 
-export LD_LIBRARY_PATH="build:deps/raylib/lib"
+export LD_LIBRARY_PATH="/home/xsoder/opt/raylib-5.5_linux_amd64/lib"
 export PATH="$HOME/scripts:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
