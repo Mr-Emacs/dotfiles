@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
+(load custom-file)
 (setq package-install-upgrade-built-in t)
 (setq org-html-validation-link nil)
 (setq-default word-wrap t)
@@ -10,10 +11,14 @@
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
-(load custom-file)
+(add-to-list 'custom-theme-load-path
+             (expand-file-name "~/.emacs.local/"))
 
+(load-theme 'dark)
 (set-frame-font "Ubuntu Mono-22")
 (add-hook 'org-mode-hook #'visual-line-mode)
+(global-hl-line-mode 1)
+(setq global-hl-line-sticky-flag t)
 
 (dolist (hook '(python-mode-hook
                 js-mode-hook
@@ -28,8 +33,6 @@
                 markdown-mode-hook
                 org-mode-hook))
   (add-hook hook 'whitespace-mode))
-
-(rc/require-theme 'gruber-darker)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -113,6 +116,7 @@
 (require 'generate-tags)
 (require 'vterm-mux)
 (require 'todo-mode)
+(require 'cgoogle)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)
@@ -136,8 +140,11 @@
           (lambda () (save-some-buffers t)))
 
 (global-set-key (kbd "C-c g") 'grep)
-(global-set-key (kbd "C-c m") 'man)
+
+;; man - page colored
+(require 'man)
+(set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
+(set-face-attribute 'Man-underline nil :inherit font-lock-keyword-face :underline t)
 (global-set-key (kbd "C-c m") 'man)
 
-(rc/require 'sqlite3)
-(rc/require 'd-mode)
+(global-set-key (kbd "C-c C-g") #'cgoogle-search)

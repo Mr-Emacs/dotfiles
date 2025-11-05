@@ -27,12 +27,12 @@
    `(fringe ((,class (:background ,bg :foreground ,fg))))
    `(show-paren-match ((,class (:background ,purple :foreground ,fg :weight bold))))
    `(show-paren-mismatch ((,class (:background ,invalid :foreground ,fg :weight bold))))
-   
+
    ;; Search highlighting
    `(isearch ((,class (:background ,purple :foreground ,fg :weight bold))))
    `(lazy-highlight ((,class (:background ,purple :foreground ,fg :weight normal))))
    `(isearch-fail ((,class (:background ,invalid :foreground ,fg :weight bold))))
-   
+
    ;; Syntax highlighting (no italics)
    `(font-lock-keyword-face       ((,class (:foreground ,keyword :weight bold :slant normal))))
    `(font-lock-builtin-face       ((,class (:foreground ,bracket :slant normal))))

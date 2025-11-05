@@ -15,12 +15,8 @@ function! s:ensure(repo)
 endfunction
 
 
-call s:ensure('rose-pine/vim')
 call s:ensure('itchyny/lightline.vim')
 call s:ensure('tpope/vim-fugitive')
 call s:ensure('junegunn/fzf')
 call s:ensure('junegunn/fzf.vim')
-call s:ensure('tomasiser/vim-code-dark')
-call s:ensure('yegappan/lsp')
-call s:ensure('ojroques/vim-oscyank')
 call s:ensure('tpope/vim-commentary')
