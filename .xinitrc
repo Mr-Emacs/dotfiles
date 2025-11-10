@@ -10,4 +10,4 @@ bash ~/scripts/dwmbar &
 #exec ~/dev/nwm/nwm
 exec ~/Programming/xsoder/nwm/nwm
 #exec ~/thirdparty/oxwm/target/release/oxwm
-# exec i3
+#exec i3

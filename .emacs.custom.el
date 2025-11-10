@@ -7,7 +7,8 @@
  '(cgoogle-auto-index-on-load t)
  '(cgoogle-index-stdlib-on-load t)
  '(cgoogle-stdlib-essential-headers
-   '("stdio.h" "stdlib.h" "string.h" "math.h" "pthread.h" "unistd.h"))
+   '("stdio.h" "stdlib.h" "string.h" "math.h" "pthread.h" "unistd.h"
+     "dirent.h"))
  '(company-format-margin-function nil)
  '(custom-safe-themes
    '("633de145e8d8e55bf81c605d65348d5e470564af525bade3b13d1e63f1df4668"
