@@ -40,7 +40,7 @@
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
  '(dired-listing-switches "-alh")
- '(display-line-numbers-type 'visual)
+ '(display-line-numbers-type t)
  '(global-display-line-numbers-mode t)
  '(grep-command "grep -rn ")
  '(grep-find-command
@@ -53,15 +53,7 @@
  '(grep-template "grep <X> <C> -nH --null -e <R> <F>")
  '(grep-use-null-device nil)
  '(grep-use-null-filename-separator t)
- '(package-selected-packages
-   '(auctex-label-numbers company d-mode dash-functional go-mode
-                          gruber-darker-theme just-mode lua-mode magit
-                          markdown-preview-mode mmm-mode move-text
-                          multiple-cursors naysayer-theme
-                          naysayer-theme-theme nix-mode rainbow-mode
-                          rose-pine-theme roseline-theme rust-mode
-                          smex solarized-dark-theme sqlite3 vterm
-                          yasnippet zig-mode))
+ '(package-selected-packages nil)
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

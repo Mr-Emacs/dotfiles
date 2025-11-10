@@ -37,8 +37,15 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
-(ido-mode 1)
-(ido-everywhere 1)
+(ido-mode t)
+(ido-everywhere t)
+
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(rc/require 'ido-completing-read+)
+(ido-ubiquitous-mode)
+
 (column-number-mode 1)
 
 (global-display-line-numbers-mode 1)
@@ -64,6 +71,7 @@
 ; PACKAGES
 (rc/require 'smex)
 (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (rc/require 'multiple-cursors)
@@ -141,7 +149,6 @@
 
 (global-set-key (kbd "C-c g") 'grep)
 
-;; man - page colored
 (require 'man)
 (set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
 (set-face-attribute 'Man-underline nil :inherit font-lock-keyword-face :underline t)
