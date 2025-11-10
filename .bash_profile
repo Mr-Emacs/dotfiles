@@ -21,18 +21,12 @@ if [[ "$INSIDE_EMACS" == *vterm* ]]; then
 else
     alias ls='ls --color=auto'
     BLUE='\e[0;34m'
-    WHITE='\[\e[97m\]'
+    WHITE='\[\e[38m\]'
     RESET='\[\e[0m\]'
     cwd="\W"
-    PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
+    PS1="${BLUE}${cwd} ${WHITE}λ ${RESET}"
 fi
 
-export XDG_RUNTIME_DIR="/run/user/$(id -u)"
-
-if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-    exec startx
-fi
-. "$HOME/.cargo/env"
 # Only run fastfetch in real terminal sessions
 # if [[ $- == *i* ]] && [ -t 0 ] && [ -z "$INSIDE_EMACS" ] && [ -z "$EMACS" ]; then
 #     fastfetch

@@ -15,7 +15,7 @@
              (expand-file-name "~/.emacs.local/"))
 
 (load-theme 'dark)
-(set-frame-font "Ubuntu Mono-22")
+(set-frame-font "Ubuntu Mono-18")
 (add-hook 'org-mode-hook #'visual-line-mode)
 (global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)

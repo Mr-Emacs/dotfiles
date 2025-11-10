@@ -1,0 +1,49 @@
+{
+    "position": "bottom",
+    "height": 20,
+    "spacing": 3,
+    
+    "modules-left": ["niri/workspaces"],
+    "modules-center": ["niri/window"],
+    "modules-right": ["pulseaudio", "clock", "tray"],
+    
+    "niri/workspaces": {
+        "format": "{index}",
+        "all-outputs": true
+    },
+    
+    "niri/window": {
+        "tooltip": false,
+        "format": "{title}",
+        "max-length": 50
+    },
+    
+    "tray": {
+        "spacing": 10
+    },
+    
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "<span color='#ffffff'>{:%H:%M %d/%m/%Y}</span>"
+    },
+    
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "alacritty -e pulsemixer",
+        "tooltip": false
+    }
+}
