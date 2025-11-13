@@ -1,4 +1,7 @@
 .tmux.conf|symlink|
+runit|symlink|
+service|symlink|
+service-enabled|symlink|
 #.dwm|symlink|
 .vimrc|symlink|
 .xinitrc|symlink|
@@ -15,7 +18,6 @@ wallpaper|symlink|
 .emacs.local|symlink|
 #.env|symlink|
 .vim|symlink|
-waybar|symlink|.config
-alacritty|symlink|.config
-niri|symlink|.config
+nvim|symlink|.config
+.local|symlink|
 .clang-format|symlink|

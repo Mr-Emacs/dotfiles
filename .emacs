@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (select-frame frame)
+            (set-frame-font "Hack-22" t t)))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq package-install-upgrade-built-in t)
@@ -15,7 +19,6 @@
              (expand-file-name "~/.emacs.local/"))
 
 (load-theme 'dark)
-(set-frame-font "Ubuntu Mono-18")
 (add-hook 'org-mode-hook #'visual-line-mode)
 (global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)
@@ -128,13 +131,13 @@
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)
+
 (global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
 (global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
 (global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
 
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
-(rc/require 'go-mode)
 
 (rc/require 'yasnippet)
 (yas-global-mode)
@@ -155,3 +158,8 @@
 (global-set-key (kbd "C-c m") 'man)
 
 (global-set-key (kbd "C-c C-g") #'cgoogle-search)
+(setq initial-scratch-message "")
+(add-hook 'vterm-mode-hook
+          (lambda ()
+            (setq-local global-hl-line-mode nil)
+            (hl-line-mode -1)))

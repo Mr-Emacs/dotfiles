@@ -1,0 +1,4 @@
+#!/bin/sh
+# Start Emacs daemon as this user
+exec 2>&1
+exec emacs --daemon

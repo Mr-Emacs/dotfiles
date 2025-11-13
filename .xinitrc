@@ -1,9 +1,13 @@
 eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
-feh --bg-fill ~/wallpaper/penger/main.jpg &
+feh --bg-fill ~/wallpaper/penger/win-emacs.png &
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
-#flameshot &
+SERVICE_DIR="$HOME/runit/service"
+if ! pgrep -f "runsvdir $SERVICE_DIR" > /dev/null; then
+    runsvdir "$SERVICE_DIR" &
+fi
+flameshot &
 #bash ~/scripts/slstatus &
 bash ~/scripts/dwmbar &
 # picom --config ~/Programming/xsoder/nwm/picom.conf &

@@ -13,4 +13,3 @@ export NVM_DIR="$HOME/.nvm"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 alias ll='ls -l'
-alias vim='nvim'
