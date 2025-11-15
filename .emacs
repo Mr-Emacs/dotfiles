@@ -3,7 +3,7 @@
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)
-            (set-frame-font "Hack-22" t t)))
+            (set-frame-font "Hack-14" t t)))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq package-install-upgrade-built-in t)
@@ -42,6 +42,7 @@
 (menu-bar-mode 0)
 (ido-mode t)
 (ido-everywhere t)
+(which-key-mode 0)
 
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
@@ -159,7 +160,10 @@
 
 (global-set-key (kbd "C-c C-g") #'cgoogle-search)
 (setq initial-scratch-message "")
-(add-hook 'vterm-mode-hook
-          (lambda ()
-            (setq-local global-hl-line-mode nil)
-            (hl-line-mode -1)))
+(defun my-disable-hl-line-mode ()
+  "Disable hl-line-mode."
+  (setq-local global-hl-line-mode nil)
+  (hl-line-mode -1))
+
+(add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
+(add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
