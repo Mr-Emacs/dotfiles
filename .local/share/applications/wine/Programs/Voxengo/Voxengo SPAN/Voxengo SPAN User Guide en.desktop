@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Voxengo SPAN User Guide en
+Exec=env "WINEPREFIX=/home/xsoder/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Voxengo\\\\Voxengo SPAN\\\\Voxengo SPAN User Guide en.lnk"
+Type=Application
+StartupNotify=true
+Path=/home/xsoder/.wine/drive_c/Program Files/Voxengo/Voxengo SPAN
+StartupWMClass=voxengo span user guide en.pdf

@@ -1,0 +1,10 @@
+WRN 2025-11-13T09:25:38.817 ui.17965   tui_handle_term_mode:233: TUI: terminal mode 69 detected, state 2
+WRN 2025-11-13T09:25:38.817 ui.17965   tui_handle_term_mode:223: TUI: terminal mode 2026 unavailable, state 0
+WRN 2025-11-13T09:25:38.817 ui.17965   tui_handle_term_mode:223: TUI: terminal mode 2027 unavailable, state 0
+WRN 2025-11-13T09:25:38.817 ui.17965   tui_handle_term_mode:223: TUI: terminal mode 2031 unavailable, state 0
+WRN 2025-11-13T09:25:38.817 ui.17965   tui_handle_term_mode:223: TUI: terminal mode 2048 unavailable, state 0
+WRN 2025-11-13T09:30:17.857 ui.15241   tui_handle_term_mode:233: TUI: terminal mode 69 detected, state 2
+WRN 2025-11-13T09:30:17.857 ui.15241   tui_handle_term_mode:223: TUI: terminal mode 2026 unavailable, state 0
+WRN 2025-11-13T09:30:17.857 ui.15241   tui_handle_term_mode:223: TUI: terminal mode 2027 unavailable, state 0
+WRN 2025-11-13T09:30:17.857 ui.15241   tui_handle_term_mode:223: TUI: terminal mode 2031 unavailable, state 0
+WRN 2025-11-13T09:30:17.857 ui.15241   tui_handle_term_mode:223: TUI: terminal mode 2048 unavailable, state 0

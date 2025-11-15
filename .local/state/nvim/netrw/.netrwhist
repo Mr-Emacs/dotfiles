@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/xsoder'
+let g:netrw_dirhist_0='/home/xsoder/Programming/xsoder/bore'
+let g:netrw_dirhist_9='/home/xsoder/scripts'
+let g:netrw_dirhist_8='/home/xsoder/Programming/xsoder/bore'
+let g:netrw_dirhist_7='/home/xsoder/Programming/xsoder'
+let g:netrw_dirhist_6='/home/xsoder/Programming'
+let g:netrw_dirhist_5='/home/xsoder'
+let g:netrw_dirhist_4='/home/xsoder/opt'
+let g:netrw_dirhist_3='/home/xsoder/opt/jai'
+let g:netrw_dirhist_2='/home/xsoder/opt/jai/bin'

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=What's New
+Exec=env "WINEPREFIX=/home/xsoder/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Voxengo\\\\Voxengo SPAN\\\\What's New.lnk"
+Type=Application
+StartupNotify=true
+Path=/home/xsoder/.wine/drive_c/Program Files/Voxengo/Voxengo SPAN
+Icon=336A_whatsnew.0
+StartupWMClass=whatsnew.txt

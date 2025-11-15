@@ -1,0 +1,10 @@
+[default-routes]
+alsa_card.pci-0000_00_1f.3:input:analog-input-internal-mic={"channelVolumes":[0.025449, 0.025449], "latencyOffsetNsec":0, "channelMap":["FL", "FR"], "mute":false}
+alsa_card.pci-0000_00_1f.3:output:analog-output-headphones={"mute":false, "latencyOffsetNsec":0, "channelVolumes":[0.216007, 0.216007], "channelMap":["FL", "FR"]}
+alsa_card.pci-0000_00_1f.3:output:analog-output-speaker={"channelMap":["FL", "FR"], "latencyOffsetNsec":0, "mute":false, "channelVolumes":[1.000000, 1.000000]}
+alsa_card.pci-0000_00_1f.3:profile:output:analog-stereo+input:analog-stereo=["analog-input-internal-mic"]
+bluez_card.41_42_94_3B_6B_4F:input:headphone-input={"channelMap":["MONO"], "mute":false, "channelVolumes":[1.000000]}
+bluez_card.41_42_94_3B_6B_4F:output:headphone-hf-output={"channelMap":["MONO"], "mute":false, "channelVolumes":[1.000000]}
+bluez_card.41_42_94_3B_6B_4F:output:headphone-output={"channelMap":["FL", "FR"], "latencyOffsetNsec":0, "mute":false, "channelVolumes":[0.421875, 0.421875]}
+bluez_card.41_42_94_3B_6B_4F:profile:a2dp-sink=["headphone-output", "headphone-input"]
+bluez_card.41_42_94_3B_6B_4F:profile:headset-head-unit=["headphone-hf-output", "headphone-input"]
