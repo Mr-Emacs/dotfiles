@@ -19,5 +19,5 @@ fi
 
 bash ~/scripts/dwmbar &
 
-# exec ~/Programming/xsoder/nwm/nwm
-exec i3
+exec ~/Programming/xsoder/nwm/nwm
+#exec i3
