@@ -23,13 +23,13 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="spice://127.0.0.1:5930" added="2025-11-15T04:14:05.041001Z" modified="2025-11-15T04:30:25.258018Z" visited="2025-11-15T04:14:05.041002Z">
+  <bookmark href="spice://127.0.0.1:5930" added="2025-11-15T04:14:05.041001Z" modified="2025-11-19T04:30:47.920070Z" visited="2025-11-15T04:14:05.041002Z">
     <title>spice://127.0.0.1:5930</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="application/x-spice"/>
         <bookmark:applications>
-          <bookmark:application name="remote-viewer" exec="&apos;remote-viewer %u&apos;" modified="2025-11-15T04:30:25.258017Z" count="4"/>
+          <bookmark:application name="remote-viewer" exec="&apos;remote-viewer %u&apos;" modified="2025-11-19T04:30:47.920069Z" count="6"/>
         </bookmark:applications>
       </metadata>
     </info>
@@ -50,6 +50,16 @@
         <mime:mime-type type="application/x-qemu-disk"/>
         <bookmark:applications>
           <bookmark:application name="virt-manager" exec="&apos;virt-manager %u&apos;" modified="2025-11-15T19:15:06.881263Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/xsoder/media/Picture/screenshot/military-grade-lexer.png" added="2025-11-17T18:01:36.929520Z" modified="2025-11-17T18:06:24.555717Z" visited="2025-11-17T18:01:36.929521Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:applications>
+          <bookmark:application name="chromium" exec="&apos;chromium %u&apos;" modified="2025-11-17T18:06:24.555715Z" count="3"/>
         </bookmark:applications>
       </metadata>
     </info>

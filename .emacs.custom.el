@@ -11,7 +11,10 @@
      "dirent.h"))
  '(company-format-margin-function nil)
  '(custom-safe-themes
-   '("633de145e8d8e55bf81c605d65348d5e470564af525bade3b13d1e63f1df4668"
+   '("74e7de508d5813d810b7c77980c554b0ac852e6032ea9042bccf1b0e90e2a9ef"
+     "c68bad4015e9997097e3a4d0ad2be19af459c9dde4386586546ce2f70560599c"
+     "b5732e233b019c9a616a623d2609344a7d2d1358ace87d0e06a9fde410db002c"
+     "633de145e8d8e55bf81c605d65348d5e470564af525bade3b13d1e63f1df4668"
      "d35094fa5f896e62caed89acd56346d59755174c619d43aad778d1ab0715ce9d"
      "34a59305dc48cfb706403a00f4411eb7249ea2833694401520d88de00704bcec"
      "06c4fbb01a78b5cef26b3a9f75af8d17e02c75c30b360b809cee593171b1592c"
@@ -40,7 +43,7 @@
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
  '(dired-listing-switches "-alh")
- '(display-line-numbers-type t)
+ '(display-line-numbers-type 'visual)
  '(global-display-line-numbers-mode t)
  '(grep-command "grep -rn ")
  '(grep-find-command
@@ -53,6 +56,7 @@
  '(grep-template "grep <X> <C> -nH --null -e <R> <F>")
  '(grep-use-null-device nil)
  '(grep-use-null-filename-separator t)
+ '(line-number-mode nil)
  '(package-selected-packages nil)
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces

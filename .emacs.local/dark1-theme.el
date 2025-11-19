@@ -1,6 +1,6 @@
 ;;; dark-theme.el --- Casey Muratori's Emacs Theme with custom minibuffer -*- lexical-binding: t; -*-]
 
-(deftheme dark
+(deftheme dark1
   "A dark theme based on Casey Muratori's editor colors.")
 (let ((class '((class color) (min-colors 89)))
       ;; Base colors from Casey's theme
@@ -67,5 +67,5 @@
    `(dired-symlink   ((,class (:foreground ,fg :weight normal :slant normal))))
    `(dired-marked    ((,class (:foreground ,fg :weight normal :slant normal))))
    `(dired-flagged   ((,class (:foreground ,invalid :weight bold :slant normal))))))
-(provide-theme 'dark)
+(provide-theme 'dark1)
 ;;; dark-theme.el ends here

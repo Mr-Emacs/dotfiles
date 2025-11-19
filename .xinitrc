@@ -1,7 +1,8 @@
+#!/bin/sh
 eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
 if ! pgrep -f "feh" > /dev/null; then
-    feh --bg-fill ~/wallpaper/gnu-anime.jpg &
+    feh --bg-fill ~/wallpaper/anime/wp11814616-kita-ikuyo-wallpapers.jpg &
 fi
 
 bash ~/scripts/autostart &
@@ -13,11 +14,9 @@ fi
 if ! pgrep -f "flameshot" > /dev/null; then
     flameshot &
 fi
-if ! pgrep -f "blueman-applet" > /dev/null; then
-    blueman-applet &
-fi
-
-bash ~/scripts/dwmbar &
-
-exec ~/Programming/xsoder/nwm/nwm
-#exec i3
+# if ! pgrep -f "blueman-applet" > /dev/null; then
+#     blueman-applet &
+# fi
+#
+#exec ~/Programming/xsoder/nwm/nwm
+exec i3

@@ -19,20 +19,15 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Floating modifier
 floating_modifier $mod
 tiling_drag modifier titlebar
 
-# Launch terminal
 bindsym $mod+Return exec st
 
-# Kill focused window
 bindsym $mod+q kill
 
-# Launch dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run
 
-# Focus change
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -42,7 +37,6 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
@@ -52,25 +46,19 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Split orientation
 bindsym $mod+h split h
 bindsym $mod+v split v
 
-# Fullscreen toggle
 bindsym $mod+f fullscreen toggle
 
-# Container layout
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# Toggle floating
 bindsym $mod+Shift+space floating toggle
 
-# Focus mode toggle
 bindsym $mod+space focus mode_toggle
 
-# Parent/child focus
 bindsym $mod+a focus parent
 
 # Workspaces
@@ -128,41 +116,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Core colors
-set $bg        #161616
-set $fg        #000000
-set $cursor    #40FF40
-set $accent    #3a3a8f
-set $invalid   #f44747
-set $comment   #7f7f7f
-set $gold      #cd950c
-set $bracket   #cdaa7d
-
-# Windows
-client.focused          $bracket $bracket $fg $cursor $bracket
-client.focused_inactive $accent  $bg      $comment $accent $accent
-client.unfocused        $accent  $bg      $comment $accent $accent
-client.urgent           $invalid $invalid $fg $invalid $invalid
-client.placeholder      $bg      $bg      $fg $bg $bg
-
 bar {
     status_command i3blocks
-    position bottom
+}              
 
-    colors {
-        background #0e0e0e
-        statusline #ffffff
-        separator  #3a3a8f 
-
-        # Workspaces
-        focused_workspace  #cdaa7d #cdaa7d #161616
-        active_workspace   #3a3a8f #0e0e0e #ffffff
-        inactive_workspace #0e0e0e #0e0e0e #7f7f7f
-        urgent_workspace   #f44747 #f44747 #ffffff
-    }
-}
-
-# App bindings
 bindsym $mod+c exec emacs
 bindsym $mod+b exec chromium
 bindsym $mod+Shift+s exec "/home/xsoder/scripts/screenshot"

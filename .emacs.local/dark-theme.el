@@ -1,7 +1,8 @@
 (deftheme dark
   "A dark theme based on Casey Muratori's editor colors.")
 (let ((class '((class color) (min-colors 89)))
-      (bg        "#161616")
+      ;; (bg        "#161616")
+      (bg        "#062329")
       (fg        "#ffffff")
       (cursor    "#40FF40")
       (hl-line   "#101040")

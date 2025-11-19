@@ -1,30 +1,24 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (select-frame frame)
-            (set-frame-font "Hack-14" t t)))
+(set-frame-font "Ubuntu Mono-14" t t)
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
+(setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (setq package-install-upgrade-built-in t)
 (setq org-html-validation-link nil)
 (setq-default word-wrap t)
 (setq dired-dwim-target t)
 (setq org-agenda-files '("~/dotfiles/agenda.org"))
-(setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path
              (expand-file-name "~/.emacs.local/"))
 
-(load-theme 'dark)
-(add-hook 'org-mode-hook #'visual-line-mode)
-(global-hl-line-mode 1)
-(setq global-hl-line-sticky-flag t)
 
 (dolist (hook '(python-mode-hook
                 js-mode-hook
+                asm-mode-hook
                 emacs-lisp-mode-hook
                 simpc-mode-hook
                 java-mode-hook
@@ -36,6 +30,12 @@
                 markdown-mode-hook
                 org-mode-hook))
   (add-hook hook 'whitespace-mode))
+;; (rc/require-theme 'naysayer)
+(rc/require-theme 'gruber-darker)
+;; (load-theme ')
+(add-hook 'org-mode-hook #'visual-line-mode)
+(global-hl-line-mode 1)
+(setq global-hl-line-sticky-flag t)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -52,14 +52,8 @@
 
 (column-number-mode 1)
 
-(global-display-line-numbers-mode 1)
-
-(dolist (mode '(eshell-mode-hook
-                vterm-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
 (electric-pair-mode 1)
-
+(global-display-line-numbers-mode 1)
 (setq shell-command-switch "-ic")
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -145,12 +139,6 @@
 (rc/require 'rainbow-mode)
 (rc/require 'just-mode)
 
-(setq confirm-kill-processes nil)
-(setq confirm-kill-emacs nil)
-
-(add-hook 'kill-emacs-hook
-          (lambda () (save-some-buffers t)))
-
 (global-set-key (kbd "C-c g") 'grep)
 
 (require 'man)
@@ -163,6 +151,7 @@
 (defun my-disable-hl-line-mode ()
   "Disable hl-line-mode."
   (setq-local global-hl-line-mode nil)
+  (setq-local global-display-line-numbers-mode nil)
   (hl-line-mode -1))
 
 (add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
