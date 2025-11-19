@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
-(set-frame-font "Ubuntu Mono-14" t t)
+(set-frame-font "Ubuntu mono-14" t t)
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -149,10 +149,21 @@
 (global-set-key (kbd "C-c C-g") #'cgoogle-search)
 (setq initial-scratch-message "")
 (defun my-disable-hl-line-mode ()
-  "Disable hl-line-mode."
-  (setq-local global-hl-line-mode nil)
-  (setq-local global-display-line-numbers-mode nil)
-  (hl-line-mode -1))
+  "Disable hl-line-mode and display-line-numbers-mode."
+  (hl-line-mode -1)
+  (display-line-numbers-mode -1))
 
 (add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
+
+(defun reload-emacs-config ()
+  "Reload Emacs configuration from ~/.emacs."
+  (interactive)
+  (let ((config-file "~/.emacs"))
+    (if (file-exists-p config-file)
+        (progn
+          (load-file config-file)
+          (message "Emacs configuration reloaded."))
+      (message "Configuration file not found: %s" config-file))))
+
+(global-set-key (kbd "C-c r") #'reload-emacs-config)

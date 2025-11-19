@@ -18,5 +18,6 @@ fi
 #     blueman-applet &
 # fi
 #
-#exec ~/Programming/xsoder/nwm/nwm
-exec i3
+bash ~/scripts/dwmbar &
+exec ~/Programming/xsoder/nwm/nwm
+#exec i3

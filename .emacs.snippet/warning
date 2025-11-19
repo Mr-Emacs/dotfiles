@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: warn
+# key: warn
+# --
+#+BEGIN_WARN
+This is a warning message.
+#+END_WARN

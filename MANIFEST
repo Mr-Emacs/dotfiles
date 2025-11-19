@@ -16,6 +16,7 @@ wallpaper|symlink|
 .emacs.custom.el|symlink|
 .emacs.rc|symlink|
 .emacs.local|symlink|
+.emacs.snippet|symlink|
 #.env|symlink|
 .vim|symlink|
 nvim|symlink|.config
