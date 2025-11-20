@@ -20,5 +20,7 @@ wallpaper|symlink|
 #.env|symlink|
 .vim|symlink|
 nvim|symlink|.config
+niri|symlink|.config
+waybar|symlink|.config
 .local|symlink|
 .clang-format|symlink|

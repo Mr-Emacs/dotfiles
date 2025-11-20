@@ -18,6 +18,6 @@ fi
 #     blueman-applet &
 # fi
 #
-bash ~/scripts/dwmbar &
+bash ~/scripts/dwmbar & disown
 exec ~/Programming/xsoder/nwm/nwm
 #exec i3

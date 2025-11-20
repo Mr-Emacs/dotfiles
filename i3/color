@@ -1,0 +1,33 @@
+# Core colors
+set $bg        #161616
+set $fg        #000000
+set $cursor    #40FF40
+set $accent    #3a3a8f
+set $invalid   #f44747
+set $comment   #7f7f7f
+set $gold      #cd950c
+set $bracket   #cdaa7d
+
+# Windows
+client.focused          $bracket $bracket $fg $cursor $bracket
+client.focused_inactive $accent  $bg      $comment $accent $accent
+client.unfocused        $accent  $bg      $comment $accent $accent
+client.urgent           $invalid $invalid $fg $invalid $invalid
+client.placeholder      $bg      $bg      $fg $bg $bg
+
+bar {
+    status_command i3blocks
+    position bottom
+
+    colors {
+        background #0e0e0e
+        statusline #ffffff
+        separator  #3a3a8f 
+
+        # Workspaces
+        focused_workspace  #cdaa7d #cdaa7d #161616
+        active_workspace   #3a3a8f #0e0e0e #ffffff
+        inactive_workspace #0e0e0e #0e0e0e #7f7f7f
+        urgent_workspace   #f44747 #f44747 #ffffff
+    }
+}

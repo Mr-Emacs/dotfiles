@@ -32,7 +32,7 @@
   (add-hook hook 'whitespace-mode))
 ;; (rc/require-theme 'naysayer)
 (rc/require-theme 'gruber-darker)
-;; (load-theme ')
+;; (load-theme 'dark)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)
