@@ -57,6 +57,7 @@ layout {
 }
 
 spawn-sh-at-startup "bash ~/.config/niri/quickshell.sh"
+spawn-at-startup "runsvdir" "/home/xsoder/.local/service"
 
 layer-rule {
     match namespace="^noctalia-wallpaper-eDP-1$"
