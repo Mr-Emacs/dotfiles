@@ -56,20 +56,38 @@ layout {
     }
 }
 
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-spawn-at-startup "swww-daemon"
+spawn-sh-at-startup "bash ~/.config/niri/quickshell.sh"
 
-spawn-sh-at-startup "bash ~/scripts/wallpaper"
 layer-rule {
-    match namespace="^swww-daemon$"
+    match namespace="^noctalia-wallpaper-eDP-1$"
     place-within-backdrop true
 }
 
 layer-rule {
-    match namespace="^waybar$"
+    match namespace="^noctalia-background-eDP-1$"
     place-within-backdrop true
 }
+
+layer-rule {
+    match namespace="^noctalia-bar-content-eDP-1$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^noctalia-bar-exclusion-eDP-1$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^noctalia-dock-eDP-1$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
 overview {
     zoom 0.5
     workspace-shadow {

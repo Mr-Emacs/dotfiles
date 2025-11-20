@@ -1,0 +1,5 @@
+require('options')
+require('keybinds')
+require('colors')
+require('lsp')
+require('plugs')
