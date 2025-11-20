@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Voxengo SPAN License Agreement
-Exec=env "WINEPREFIX=/home/xsoder/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Voxengo\\\\Voxengo SPAN\\\\Voxengo SPAN License Agreement.lnk"
-Type=Application
-StartupNotify=true
-Path=/home/xsoder/.wine/drive_c/Program Files/Voxengo/Voxengo SPAN
-Icon=7108_Voxengo SPAN License Agreement.0
-StartupWMClass=voxengo span license agreement.rtf
