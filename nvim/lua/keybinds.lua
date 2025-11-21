@@ -17,7 +17,6 @@ vim.api.nvim_set_keymap('n', '<leader>pg', ':Telescope git_files<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<leader>ps', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', ':FloatTerm<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>pp', ':!~/.config/nvim/packer<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
@@ -44,3 +43,6 @@ vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
 
 vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tt', ':FloatermToggle<CR>', { noremap = true, silent = true })
