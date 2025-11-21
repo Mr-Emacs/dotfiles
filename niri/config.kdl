@@ -113,11 +113,6 @@ window-rule {
     default-column-width {}
 }
 
-window-rule {
-    match app-id=r#"firefox$"# 
-    open-maximized true
-}
-
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
@@ -138,8 +133,8 @@ binds {
     Mod+C hotkey-overlay-title="Open emacs: emacs" { spawn "emacs"; }
     Mod+B hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
     Mod+D hotkey-overlay-title="Run an Application launcher: wmenu" { spawn "wmenu-run"; }
-    Mod+Z hotkey-overlay-title="Run an zommer: woomer" { spawn "woomer"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 

@@ -22,6 +22,6 @@ vim.opt.updatetime = 300
 vim.opt.undofile = true
 
 vim.g.netrw_banner = 0
-vim.opt.shortmess:append("I")
+-- vim.opt.shortmess:append("I")
 vim.opt.number = true
 vim.opt.guicursor = ""

@@ -17,6 +17,7 @@ vim.api.nvim_set_keymap('n', '<leader>pg', ':Telescope git_files<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<leader>ps', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ft', ':FloatTerm<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>pp', ':!~/.config/nvim/packer<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
