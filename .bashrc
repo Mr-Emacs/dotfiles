@@ -13,3 +13,7 @@ export NVM_DIR="$HOME/.nvm"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 alias ll='ls -l'
+
+
+[ -f "/home/xsoder/.ghcup/env" ] && . "/home/xsoder/.ghcup/env" # ghcup-env
+xrdb -merge ~/.Xresources

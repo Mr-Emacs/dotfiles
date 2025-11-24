@@ -6,7 +6,6 @@ CONSTANT="107;142;35"
 COMMAND="97;175;239"
 BRACKET="205;170;125"
 INVALID="244;71;71"
-
 # git_branch() {
 #     git rev-parse --abbrev-ref HEAD 2>/dev/null | awk '{print " ("$1")"}'
 # }
@@ -28,15 +27,15 @@ export PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
 
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
-# if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-#     exec startx
-# fi
+if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
+    exec startx
+fi
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
-if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-    exec niri
-fi
+# if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
+#     exec niri
+# fi
 . "$HOME/.cargo/env"
 # Only run fastfetch in real terminal sessions
 # if [[ $- == *i* ]] && [ -t 0 ] && [ -z "$INSIDE_EMACS" ] && [ -z "$EMACS" ]; then

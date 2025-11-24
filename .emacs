@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
-(set-frame-font "Ubuntu mono-14" t t)
+(set-frame-font "Ubuntu mono-16" t t)
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -14,7 +14,6 @@
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path
              (expand-file-name "~/.emacs.local/"))
-
 
 (dolist (hook '(python-mode-hook
                 js-mode-hook
@@ -68,6 +67,7 @@
 
 ; PACKAGES
 (rc/require 'smex)
+(rc/require 'haskell-mode)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)

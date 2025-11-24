@@ -7,7 +7,8 @@ fi
 
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
-SERVICE_DIR="$HOME/runit/service"
+
+SERVICE_DIR="$HOME/.local/service"
 if ! pgrep -f "runsvdir $SERVICE_DIR" > /dev/null; then
     runsvdir "$SERVICE_DIR" &
 fi
@@ -20,4 +21,5 @@ fi
 #
 bash ~/scripts/dwmbar & disown
 exec ~/Programming/xsoder/nwm/nwm
+# exec ~/thirdparty/oxwm/target/release/oxwm
 #exec i3

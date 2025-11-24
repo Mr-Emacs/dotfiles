@@ -1,5 +1,5 @@
 vim.opt.number = false
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.smartindent = true
 vim.opt.autoindent = true
@@ -24,4 +24,6 @@ vim.opt.undofile = true
 vim.g.netrw_banner = 0
 -- vim.opt.shortmess:append("I")
 vim.opt.number = true
+vim.opt.termguicolors = true
 vim.opt.guicursor = ""
+
