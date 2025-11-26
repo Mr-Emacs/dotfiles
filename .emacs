@@ -1,6 +1,8 @@
-;; -*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; -*
+;; Maximize Emacs on startup
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Hack 18"))
+(add-to-list 'default-frame-alist '(font . "Ubuntu mono 18"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))

@@ -62,15 +62,7 @@
  '(grep-use-null-filename-separator t)
  '(haskell-process-log t)
  '(line-number-mode nil)
- '(package-selected-packages
-   '(auctex-label-numbers company d-mode dash-functional go-mode
-                          gruber-darker-theme haskell-mode
-                          ido-completing-read+ just-mode lua-mode
-                          magit markdown-preview-mode mmm-mode
-                          move-text multiple-cursors naysayer-theme
-                          nix-mode rainbow-mode roseline-theme
-                          rust-mode smex sqlite3 vertico vterm xwwp
-                          yasnippet zig-mode))
+ '(package-selected-packages nil)
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

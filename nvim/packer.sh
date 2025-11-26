@@ -62,7 +62,7 @@ PLUGINS=(
     "saadparwaiz1/cmp_luasnip"
     # "vimpostor/vim-tpipeline"
     "voldikss/vim-floaterm"
-
+    "mason-org/mason.nvim"
 )
 
 if [[ $# -eq 0 ]]; then
