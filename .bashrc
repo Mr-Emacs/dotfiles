@@ -1,19 +1,16 @@
-source "$HOME"/.bash_profile
-PROMPT_COMMAND='history -a'
-export HISTTIMEFORMAT='%F %T '
+# .bashrc
 
-export MANPAGER="less -R --use-color -Dd+r -Du+b"
-export MANROFFOPT='-c'
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-export PATH="$HOME/scripts:$PATH"
+alias ls='ls --color=auto'
+BLUE='\e[0;34m'
+WHITE='\[\e[97m\]'
+RESET='\[\e[0m\]'
+cwd="\W"
+PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
+. "$HOME/.cargo/env"
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
-alias ll='ls -l'
-
-
-[ -f "/home/xsoder/.ghcup/env" ] && . "/home/xsoder/.ghcup/env" # ghcup-env
-xrdb -merge ~/.Xresources
