@@ -11,7 +11,10 @@
      "dirent.h"))
  '(company-format-margin-function nil)
  '(custom-safe-themes
-   '("d543f0f80da544f74d9902759ab01143900a9c1602dd3715598c08b1fd4a9584"
+   '("ddd904137225ad353f74e9fcc31db91030d5047286320230af649828e18f0738"
+     "2b79c3d1f8cf12d9ae5e265e198ebc4fcf892360598600c6454cb6cdc824ad74"
+     "a3613917d3671f38fe0c18cf140e643103e285683cc3e37e3e2532457148af0c"
+     "d543f0f80da544f74d9902759ab01143900a9c1602dd3715598c08b1fd4a9584"
      "74e7de508d5813d810b7c77980c554b0ac852e6032ea9042bccf1b0e90e2a9ef"
      "c68bad4015e9997097e3a4d0ad2be19af459c9dde4386586546ce2f70560599c"
      "b5732e233b019c9a616a623d2609344a7d2d1358ace87d0e06a9fde410db002c"
@@ -44,7 +47,7 @@
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
  '(dired-listing-switches "-alh")
- '(display-line-numbers-type 'visual)
+ '(display-line-numbers-type t)
  '(global-display-line-numbers-mode t)
  '(grep-command "grep -rn ")
  '(grep-find-command
@@ -66,8 +69,8 @@
                           magit markdown-preview-mode mmm-mode
                           move-text multiple-cursors naysayer-theme
                           nix-mode rainbow-mode roseline-theme
-                          rust-mode smex sqlite3 vterm yasnippet
-                          zig-mode))
+                          rust-mode smex sqlite3 vertico vterm xwwp
+                          yasnippet zig-mode))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

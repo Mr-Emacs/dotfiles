@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Hack 18"))
+(set-frame-font "Ubuntu mono-16" t t)
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -29,8 +29,9 @@
                 markdown-mode-hook
                 org-mode-hook))
   (add-hook hook 'whitespace-mode))
-
-(load-theme 'dark)
+;; (rc/require-theme 'naysayer)
+(rc/require-theme 'gruber-darker)
+;; (load-theme 'dark)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)
@@ -38,7 +39,15 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
+(ido-mode t)
+(ido-everywhere t)
 (which-key-mode 0)
+
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(rc/require 'ido-completing-read+)
+(ido-ubiquitous-mode)
 
 (column-number-mode 1)
 
@@ -57,10 +66,12 @@
 (require 'vlog-mode)
 
 ; PACKAGES
+(rc/require 'smex)
 (rc/require 'haskell-mode)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(rc/require 'vertico)
-(vertico-mode)
 (rc/require 'multiple-cursors)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -78,6 +89,7 @@
 (rc/require 'transient)
 (rc/require 'markdown-mode)
 (rc/require 'lua-mode)
+(rc/require 'zig-mode)
 
 (rc/require 'move-text)
 (global-set-key (kbd "M-n") 'move-text-down)
@@ -88,7 +100,13 @@
             (local-set-key (kbd "M-n") 'move-text-down)))
 
 (rc/require 'rust-mode)
-
+(rc/require 'auctex-label-numbers)
+(dolist (buf (buffer-list))
+  (with-current-buffer buf
+    (when (and buffer-file-name
+               (string-match-p "\\.tex\\'" buffer-file-name))
+      (auctex-label-numbers-mode 1))))
+;;(rc/require 'markdown-preview-mode)
 (rc/require 'company)
 (global-company-mode)
 (put 'set-goal-column 'disabled nil)
@@ -99,13 +117,6 @@
 
 (require 'vterm-toggle)
 (require 'vterm-buffer)
-(global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
-(global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
-(global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
-
-(global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
-(global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
-
 (require 'url-grabber)
 (require 'ssh-connect)
 (require 'generate-tags)
@@ -116,8 +127,16 @@
 (rc/require 'mmm-mode)
 (require 'chc-mode)
 
+(global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
+(global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
+(global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
+
+(global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
+(global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
+
 (rc/require 'yasnippet)
 (yas-global-mode)
+(rc/require 'rainbow-mode)
 (rc/require 'just-mode)
 
 (global-set-key (kbd "C-c g") 'grep)

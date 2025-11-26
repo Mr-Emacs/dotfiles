@@ -19,6 +19,9 @@ fi
 #     blueman-applet &
 # fi
 #
+if ! pgrep -u "$USER" -x emacs >/dev/null 2>&1; then
+    emacs --daemon
+fi
 bash ~/scripts/dwmbar & disown
 exec ~/Programming/xsoder/nwm/nwm
 # exec ~/thirdparty/oxwm/target/release/oxwm
