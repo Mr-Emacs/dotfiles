@@ -1,5 +1,4 @@
 ;; -*- lexical-binding: t; -*
-;; Maximize Emacs on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
 (add-to-list 'default-frame-alist '(font . "Ubuntu mono 18"))
@@ -45,7 +44,7 @@
 (column-number-mode 1)
 
 (electric-pair-mode 1)
-(global-display-line-numbers-mode 1)
+(global-display-line-numbers-mode 0)
 (setq shell-command-switch "-ic")
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -61,8 +60,20 @@
 ; PACKAGES
 (rc/require 'haskell-mode)
 
-(rc/require 'vertico)
-(vertico-mode)
+(ido-mode t)
+(ido-everywhere t)
+
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(rc/require 'ido-completing-read+)
+(ido-ubiquitous-mode)
+
+(rc/require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
 (rc/require 'multiple-cursors)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -139,6 +150,32 @@
 (add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
 
+;; Email
+(require 'mu4e)
+(setq mu4e-user-mail-address-alist
+      `(("tadihailukebe@gmail.com" . ,(concat "tadihailukebe@gmail.com"))))
+
+(setq mu4e-change-filenames-when-moving t)
+
+(setq mu4e-update-interval (* 10 60))
+(setq mu4e-get-mail-command "mbsync -a")
+(setq mu4e-maildir "~/Mail")
+
+(setq mu4e-drafts-folder "/[Gmail]/Drafts")
+(setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
+(setq mu4e-refile-folder "/[Gmail]/All Mail")
+(setq mu4e-trash-folder  "/[Gmail]/Trash")
+
+(setq mu4e-maildir-shortcuts
+      '(("/Inbox"             . ?i)
+        ("/[Gmail]/Sent Mail" . ?s)
+        ("/[Gmail]/Trash"     . ?t)
+        ("/[Gmail]/Drafts"    . ?d)
+        ("/[Gmail]/All Mail"  . ?a)))
+
+(global-set-key (kbd "C-c C-m") 'mu4e)
+
+;; Reload emacs
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
   (interactive)
