@@ -45,7 +45,7 @@
 
 (electric-pair-mode 1)
 (global-display-line-numbers-mode 0)
-(setq shell-command-switch "-ic")
+;; (setq shell-command-switch "-ic")
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -59,20 +59,39 @@
 
 ; PACKAGES
 (rc/require 'haskell-mode)
+(rc/require 'eshell-toggle)
+(rc/require 'eshell-git-prompt)
 
-(ido-mode t)
-(ido-everywhere t)
+(eshell-git-prompt-use-theme 'robbyrussell)
+(global-set-key (kbd "C-c e") 'eshell-toggle)
 
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-create-new-buffer 'always)
-(rc/require 'ido-completing-read+)
-(ido-ubiquitous-mode)
+(defun eshell-new (name)
+  (interactive "sName: ")
+  (setq name (concat "$" name))
+  (eshell)
+  (rename-buffer name))
 
-(rc/require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "M-e") 'eshell-new)
+
+;; (ido-mode t)
+;; (ido-everywhere t)
+
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-use-filename-at-point 'guess)
+;; (setq ido-create-new-buffer 'always)
+;; (rc/require 'ido-completing-read+)
+;; (ido-ubiquitous-mode)
+
+;; (rc/require 'smex)r
+(rc/require 'ivy)
+(ivy-mode)
+
+(require 'olivia-menu)
+
+(global-set-key (kbd "M-x") 'olivia/M-x)
+;; (global-set-key (kbd "M-x") 'smex)
+;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (rc/require 'multiple-cursors)
 
@@ -101,6 +120,8 @@
             (local-set-key (kbd "M-n") 'move-text-down)))
 
 (rc/require 'rust-mode)
+(rc/require 'cmake-mode)
+(rc/require 'yaml-mode)
 
 (rc/require 'company)
 (global-company-mode)
@@ -119,7 +140,6 @@
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
 
-(require 'url-grabber)
 (require 'ssh-connect)
 (require 'generate-tags)
 (require 'vterm-mux)
@@ -152,14 +172,15 @@
 
 ;; Email
 (require 'mu4e)
-(setq mu4e-user-mail-address-alist
-      `(("tadihailukebe@gmail.com" . ,(concat "tadihailukebe@gmail.com"))))
 
 (setq mu4e-change-filenames-when-moving t)
 
 (setq mu4e-update-interval (* 10 60))
 (setq mu4e-get-mail-command "mbsync -a")
 (setq mu4e-maildir "~/Mail")
+
+(setq mu4e-user-mail-address "tadihailukebe@gmail.com")
+(setq mu4e-send-from-sender "tadihailukebe@gmail.com")
 
 (setq mu4e-drafts-folder "/[Gmail]/Drafts")
 (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")

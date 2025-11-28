@@ -63,9 +63,11 @@
  '(haskell-process-log t)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(company dash-functional haskell-mode ido-completing-read+ just-mode
-             lua-mode magit markdown-mode mmm-mode move-text
-             multiple-cursors rust-mode smex vertico vterm yasnippet))
+   '(cmake-mode company dash dash-functional eshell-git-prompt
+                eshell-toggle eshell-vterm exwm haskell-mode
+                ido-completing-read+ ivy just-mode lua-mode magit
+                markdown-mode mmm-mode move-text multiple-cursors
+                rust-mode smex vertico vterm yaml-mode yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
