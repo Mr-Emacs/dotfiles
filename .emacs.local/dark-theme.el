@@ -66,6 +66,8 @@
    `(whitespace-tab ((,class (:foreground "#404040"))))
    `(whitespace-newline ((,class (:foreground "#404040"))))
    `(whitespace-trailing ((,class (:background ,invalid :foreground ,fg))))
+   `(mode-line ((,class (:background ,bg :foreground ,fg :box (:line-width -1 :color)))))
+   `(mode-line-inactive ((,class (:background ,bg :foreground ,comment :box (:line-width -1 :color)))))
    `(whitespace-empty ((,class (:foreground "#404040"))))
    `(line-number ((,class (:foreground ,comment :inherit default))))
    `(line-number-current-line ((,class (:foreground ,keyword :weight bold :inherit default))))

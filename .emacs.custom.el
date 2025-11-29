@@ -11,7 +11,9 @@
      "dirent.h"))
  '(company-format-margin-function nil)
  '(custom-safe-themes
-   '("ddd904137225ad353f74e9fcc31db91030d5047286320230af649828e18f0738"
+   '("bb8266a9a1cfdb9585ef07a2af60e0b4e00faab61c59ec03f317230d1a7a102e"
+     "20ee8c856a034667dc2d1bf3d01f518f25c86a7b5f0efbd2b0f8a39293bfad74"
+     "ddd904137225ad353f74e9fcc31db91030d5047286320230af649828e18f0738"
      "2b79c3d1f8cf12d9ae5e265e198ebc4fcf892360598600c6454cb6cdc824ad74"
      "a3613917d3671f38fe0c18cf140e643103e285683cc3e37e3e2532457148af0c"
      "d543f0f80da544f74d9902759ab01143900a9c1602dd3715598c08b1fd4a9584"
@@ -63,11 +65,13 @@
  '(haskell-process-log t)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(cmake-mode company dash dash-functional eshell-git-prompt
-                eshell-toggle eshell-vterm exwm haskell-mode
-                ido-completing-read+ ivy just-mode lua-mode magit
-                markdown-mode mmm-mode move-text multiple-cursors
-                rust-mode smex vertico vterm yaml-mode yasnippet))
+   '(cmake-mode company dash dash-functional dired-icon doom-modeline
+                eshell-git-prompt eshell-toggle eshell-vterm exwm
+                haskell-mode ido-completing-read+ ivy just-mode
+                lua-mode magit markdown-mode mmm-mode move-text
+                multiple-cursors nerd-icons-dired org-bullets
+                org-present org-superstar rust-mode smex vertico vterm
+                yaml-mode yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

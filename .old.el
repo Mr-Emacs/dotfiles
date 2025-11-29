@@ -167,3 +167,18 @@
       (message "Configuration file not found: %s" config-file))))
 
 (global-set-key (kbd "C-c r") #'reload-emacs-config)
+
+;; (global-set-key (kbd "M-x") 'smex)
+;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; (ido-mode t)
+;; (ido-everywhere t)
+
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-use-filename-at-point 'guess)
+;; (setq ido-create-new-buffer 'always)
+;; (rc/require 'ido-completing-read+)
+;; (ido-ubiquitous-mode)
+
+;; (rc/require 'smex)r

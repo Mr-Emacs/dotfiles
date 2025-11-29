@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Ubuntu mono 18"))
+(add-to-list 'default-frame-alist '(font . "Hack Nerd Font 14"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -45,7 +45,7 @@
 
 (electric-pair-mode 1)
 (global-display-line-numbers-mode 0)
-;; (setq shell-command-switch "-ic")
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -59,8 +59,7 @@
 
 ; PACKAGES
 (rc/require 'haskell-mode)
-(rc/require 'eshell-toggle)
-(rc/require 'eshell-git-prompt)
+(rc/require 'eshell-toggle 'eshell-git-prompt)
 
 (eshell-git-prompt-use-theme 'robbyrussell)
 (global-set-key (kbd "C-c e") 'eshell-toggle)
@@ -73,25 +72,12 @@
 
 (global-set-key (kbd "M-e") 'eshell-new)
 
-;; (ido-mode t)
-;; (ido-everywhere t)
-
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-use-filename-at-point 'guess)
-;; (setq ido-create-new-buffer 'always)
-;; (rc/require 'ido-completing-read+)
-;; (ido-ubiquitous-mode)
-
-;; (rc/require 'smex)r
 (rc/require 'ivy)
 (ivy-mode)
 
-(require 'olivia-menu)
+(require 'csode-menu)
 
-(global-set-key (kbd "M-x") 'olivia/M-x)
-;; (global-set-key (kbd "M-x") 'smex)
-;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "M-x") 'csode/M-x)
 
 (rc/require 'multiple-cursors)
 
@@ -119,8 +105,7 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(rc/require 'rust-mode)
-(rc/require 'cmake-mode)
+(rc/require 'rust-mode 'cmake-mode)
 (rc/require 'yaml-mode)
 
 (rc/require 'company)
@@ -154,6 +139,7 @@
 (rc/require 'just-mode)
 
 (global-set-key (kbd "C-c g") 'grep)
+(global-set-key (kbd "C-c C-c") 'compile)
 
 (require 'man)
 (set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
@@ -169,6 +155,36 @@
 
 (add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
+
+(rc/require 'nerd-icons-dired)
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (nerd-icons-dired-mode 1)))
+
+(rc/require 'doom-modeline)
+(doom-modeline-mode)
+
+(rc/require 'org-bullets 'org-superstar 'org-present)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (org-bullets-mode 1)
+            (org-superstar-mode 1)))
+
+(defun custom-org-heading-sizes ()
+  "Set custom sizes for Org mode headings."
+  (set-face-attribute 'org-level-1 nil :height 1.5)
+  (set-face-attribute 'org-level-2 nil :height 1.4)
+  (set-face-attribute 'org-level-3 nil :height 1.3)
+  (set-face-attribute 'org-level-4 nil :height 1.2)
+  (set-face-attribute 'org-level-5 nil :height 1.1))
+
+(add-hook 'org-mode-hook 'custom-org-heading-sizes)
+
+(setq org-hide-block-startup t)
+(setq org-src-preserve-indentation t)
+
+(setq org-hide-emphasis-markers t)
+(add-hook 'org-mode-hook #'org-indent-mode)
 
 ;; Email
 (require 'mu4e)
