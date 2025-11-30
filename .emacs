@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Hack Nerd Font 14"))
+(add-to-list 'default-frame-alist '(font . "Hack Nerd Font 16"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -20,6 +20,7 @@
                 js-mode-hook
                 asm-mode-hook
                 emacs-lisp-mode-hook
+                c-mode-hook
                 simpc-mode-hook
                 java-mode-hook
                 ruby-mode-hook
@@ -35,6 +36,7 @@
 (add-hook 'org-mode-hook #'visual-line-mode)
 (global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)
+(global-display-line-numbers-mode)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -50,10 +52,9 @@
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq vterm-term-environment-variable "xterm-256color")
 
-(require 'simpc-mode)
-(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
-(add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
-
+;; (require 'simpc-mode)
+;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+;; (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
 (require 'vlog-mode)
 
 (rc/require 'haskell-mode)
@@ -119,11 +120,7 @@
 (rc/require 'vterm)
 (require 'vterm-toggle)
 (require 'vterm-buffer)
-(global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
 (global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
-(global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
-(global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
-(global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
 
 (require 'ssh-connect)
 (require 'generate-tags)
