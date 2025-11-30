@@ -71,6 +71,13 @@
 
 (rc/require 'ivy 'ivy-posframe)
 (ivy-mode)
+(ivy-posframe-mode)
+(setq ivy-posframe-parameters
+      '((internal-border-width . 4)
+        (internal-border-color . "#5f5f87")))
+
+(setq ivy-posframe-display-functions-alist
+      '((t . ivy-posframe-display-at-frame-bottom-center)))
 
 (require 'csode-menu)
 (global-set-key (kbd "M-x") 'csode/M-x)
@@ -187,37 +194,32 @@
 (require 'exwm-systemtray)
 
 (setq exwm-workspace-number 5)
-(setq exwm-input-prefix-keys
-    '(?\C-x
-      ?\C-u
-      ?\C-h
-      ?\M-x
-      ?\M-`
-      ?\M-&
-      ?\M-:
-      ?\C-\M-j
-      ?\C-\ ))
-
-;; Monitor mapping
 (setq exwm-randr-workspace-monitor-plist '(0 "HDMI-0" 1 "DP-1"))
 (exwm-randr-mode)
 (exwm-systemtray-mode)
 
-(exwm-input-set-key (kbd "M-x") 'csode/M-x)
 (start-process-shell-command
  "xrandr" nil
  "xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal \
           --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal")
 
+(defun csode/exwm-update-class()
+  (exwm-workspace-rename-buffer  exwm-title))
+
+(add-hook 'exwm-update-title-hook
+          #'csode/exwm-update-class)
+
+(setq exwm-input-prefix-keys
+      '(?\C-x ?\C-u ?\C-h ?\M-` ?\M-& ?\M-: ?\C-\M-j ?\C-\ ))
+
 (setq exwm-input-global-keys
       `(
-
         ([s-return] . eshell)
         ([s-M-return] . vterm-toggle-new-window)
-
         ([?\s-r] . exwm-reset)
         ([?\s-q] . kill-emacs)
         ([?\s-w] . exwm-workspace-switch)
+        ([?\s-x] . csode/M-x)
 
         ,@(mapcar (lambda (i)
                     `(,(kbd (format "s-%d" i)) .
@@ -225,7 +227,7 @@
                         (interactive)
                         (exwm-workspace-switch-create ,i))))
                   (number-sequence 0 9))
-))
+        ))
 
 (exwm-enable)
 
