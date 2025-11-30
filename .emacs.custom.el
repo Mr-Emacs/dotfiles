@@ -67,11 +67,12 @@
  '(package-selected-packages
    '(cmake-mode company dash dash-functional dired-icon doom-modeline
                 eshell-git-prompt eshell-toggle eshell-vterm exwm
-                exwm-randr haskell-mode ido-completing-read+ ivy
-                ivy-posframe just-mode lua-mode magit markdown-mode
-                mmm-mode move-text multiple-cursors nerd-icons-dired
-                org-bullets org-present org-superstar rust-mode smex
-                vertico vterm yaml-mode yasnippet))
+                exwm-modeline exwm-randr haskell-mode
+                ido-completing-read+ ivy ivy-posframe just-mode
+                lua-mode magit markdown-mode mmm-mode move-text
+                multiple-cursors nerd-icons-dired org-bullets
+                org-present org-superstar rust-mode smex vertico vterm
+                yaml-mode yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

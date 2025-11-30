@@ -10,6 +10,7 @@
 (setq-default word-wrap t)
 (setq dired-dwim-target t)
 (setq org-agenda-files '("~/dotfiles/agenda.org"))
+
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
@@ -79,9 +80,6 @@
 (setq ivy-posframe-display-functions-alist
       '((t . ivy-posframe-display-at-frame-bottom-center)))
 
-(require 'csode-menu)
-(global-set-key (kbd "M-x") 'csode/M-x)
-
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->")         'mc/mark-next-like-this)
@@ -115,6 +113,9 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+(rc/require 'doom-modeline)
+(doom-modeline-mode)
+
 (rc/require 'vterm)
 (require 'vterm-toggle)
 (require 'vterm-buffer)
@@ -129,6 +130,7 @@
 (require 'vterm-mux)
 (require 'todo-mode)
 (require 'cgoogle)
+(require 'csode-menu)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)
@@ -161,9 +163,6 @@
           (lambda ()
             (nerd-icons-dired-mode 1)))
 
-(rc/require 'doom-modeline)
-(doom-modeline-mode)
-
 (rc/require 'org-bullets 'org-superstar 'org-present)
 (add-hook 'org-mode-hook
           (lambda ()
@@ -185,8 +184,8 @@
 (setq org-hide-emphasis-markers t)
 (add-hook 'org-mode-hook #'org-indent-mode)
 
-
-(rc/require 'exwm)
+(rc/require 'exwm 'exwm-modeline)
+(exwm-modeline-mode)
 
 (require 'exwm)
 (require 'exwm-input)
@@ -220,6 +219,7 @@
         ([?\s-q] . kill-emacs)
         ([?\s-w] . exwm-workspace-switch)
         ([?\s-x] . csode/M-x)
+        ([?\s-f] . exwm-layout-toggle-fullscreen)
 
         ,@(mapcar (lambda (i)
                     `(,(kbd (format "s-%d" i)) .
