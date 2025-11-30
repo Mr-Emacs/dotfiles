@@ -1,9 +1,9 @@
 #!/bin/sh
 eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
-if ! pgrep -f "feh" > /dev/null; then
-    feh --bg-fill ~/wallpaper/anime/wp11814616-kita-ikuyo-wallpapers.jpg &
-fi
+# if ! pgrep -f "feh" > /dev/null; then
+#     feh --bg-fill ~/wallpaper/anime/wp11814616-kita-ikuyo-wallpapers.jpg &
+# fi
 
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
@@ -19,10 +19,13 @@ fi
 #     blueman-applet &
 # fi
 #
-if ! pgrep -u "$USER" -x emacs >/dev/null 2>&1; then
-    emacs --daemon
-fi
-bash ~/scripts/dwmbar & disown
-exec ~/Programming/xsoder/nwm/nwm
+
+# if ! pgrep -u "$USER" -x emacs >/dev/null 2>&1; then
+#     emacs --daemon
+# fi
+# bash ~/scripts/dwmbar & disown
+# exec ~/Programming/xsoder/nwm/nwm
 # exec ~/thirdparty/oxwm/target/release/oxwm
-#exec i3
+# exec i3
+setxkbmap -option altwin:meta_alt
+exec emacsclient -a "" -c

@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*
+;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
 (add-to-list 'default-frame-alist '(font . "Hack Nerd Font 14"))
@@ -13,8 +13,7 @@
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
-(add-to-list 'custom-theme-load-path
-             (expand-file-name "~/.emacs.local/"))
+(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 
 (dolist (hook '(python-mode-hook
                 js-mode-hook
@@ -42,7 +41,6 @@
 (which-key-mode 0)
 
 (column-number-mode 1)
-
 (electric-pair-mode 1)
 (global-display-line-numbers-mode 0)
 
@@ -57,7 +55,6 @@
 
 (require 'vlog-mode)
 
-; PACKAGES
 (rc/require 'haskell-mode)
 (rc/require 'eshell-toggle 'eshell-git-prompt)
 
@@ -70,17 +67,15 @@
   (eshell)
   (rename-buffer name))
 
-(global-set-key (kbd "M-e") 'eshell-new)
+(global-set-key (kbd "C-c C-t") 'eshell-new)
 
-(rc/require 'ivy)
+(rc/require 'ivy 'ivy-posframe)
 (ivy-mode)
 
 (require 'csode-menu)
-
 (global-set-key (kbd "M-x") 'csode/M-x)
 
 (rc/require 'multiple-cursors)
-
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->")         'mc/mark-next-like-this)
 (global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
@@ -90,8 +85,7 @@
 
 (require 'seq)
 (rc/require 'magit)
-(setq magit-display-buffer-function
-      #'magit-display-buffer-fullframe-status-v1)
+(setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
 (rc/require 'transient)
 (rc/require 'markdown-mode)
@@ -107,21 +101,19 @@
 
 (rc/require 'rust-mode 'cmake-mode)
 (rc/require 'yaml-mode)
-
 (rc/require 'company)
 (global-company-mode)
+
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
 (rc/require 'vterm)
-
 (require 'vterm-toggle)
 (require 'vterm-buffer)
 (global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
 (global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
 (global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
-
 (global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
 (global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
 
@@ -148,6 +140,7 @@
 
 (global-set-key (kbd "C-c C-g") #'cgoogle-search)
 (setq initial-scratch-message "")
+
 (defun my-disable-hl-line-mode ()
   "Disable hl-line-mode and display-line-numbers-mode."
   (hl-line-mode -1)
@@ -182,37 +175,60 @@
 
 (setq org-hide-block-startup t)
 (setq org-src-preserve-indentation t)
-
 (setq org-hide-emphasis-markers t)
 (add-hook 'org-mode-hook #'org-indent-mode)
 
-;; Email
-(require 'mu4e)
 
-(setq mu4e-change-filenames-when-moving t)
+(rc/require 'exwm)
 
-(setq mu4e-update-interval (* 10 60))
-(setq mu4e-get-mail-command "mbsync -a")
-(setq mu4e-maildir "~/Mail")
+(require 'exwm)
+(require 'exwm-input)
+(require 'exwm-randr)
+(require 'exwm-systemtray)
 
-(setq mu4e-user-mail-address "tadihailukebe@gmail.com")
-(setq mu4e-send-from-sender "tadihailukebe@gmail.com")
+(setq exwm-workspace-number 5)
+(setq exwm-input-prefix-keys
+    '(?\C-x
+      ?\C-u
+      ?\C-h
+      ?\M-x
+      ?\M-`
+      ?\M-&
+      ?\M-:
+      ?\C-\M-j
+      ?\C-\ ))
 
-(setq mu4e-drafts-folder "/[Gmail]/Drafts")
-(setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-(setq mu4e-refile-folder "/[Gmail]/All Mail")
-(setq mu4e-trash-folder  "/[Gmail]/Trash")
+;; Monitor mapping
+(setq exwm-randr-workspace-monitor-plist '(0 "HDMI-0" 1 "DP-1"))
+(exwm-randr-mode)
+(exwm-systemtray-mode)
 
-(setq mu4e-maildir-shortcuts
-      '(("/Inbox"             . ?i)
-        ("/[Gmail]/Sent Mail" . ?s)
-        ("/[Gmail]/Trash"     . ?t)
-        ("/[Gmail]/Drafts"    . ?d)
-        ("/[Gmail]/All Mail"  . ?a)))
+(exwm-input-set-key (kbd "M-x") 'csode/M-x)
+(start-process-shell-command
+ "xrandr" nil
+ "xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal \
+          --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal")
 
-(global-set-key (kbd "C-c C-m") 'mu4e)
+(setq exwm-input-global-keys
+      `(
 
-;; Reload emacs
+        ([s-return] . eshell)
+        ([s-M-return] . vterm-toggle-new-window)
+
+        ([?\s-r] . exwm-reset)
+        ([?\s-q] . kill-emacs)
+        ([?\s-w] . exwm-workspace-switch)
+
+        ,@(mapcar (lambda (i)
+                    `(,(kbd (format "s-%d" i)) .
+                      (lambda ()
+                        (interactive)
+                        (exwm-workspace-switch-create ,i))))
+                  (number-sequence 0 9))
+))
+
+(exwm-enable)
+
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
   (interactive)

@@ -189,7 +189,7 @@ Each element is (NAME . FUNCTION).")
                                    (add-to-list 'csode/url-http-history url)
                                    (browse-url (concat "http://" url))))))))
 
-;; Shell Menu
+;; Compile Menu
 (csode/define-menu
  "shell"
  '(("Run Command" . (lambda ()
