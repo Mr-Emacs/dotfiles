@@ -1,7 +1,6 @@
-;; -*- lexical-binding: t; -*
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; -*- lexical-binding: t; -*-
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Hack Nerd Font 14"))
+(set-frame-font "Iosevka 16" t t)
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -31,20 +30,29 @@
                 org-mode-hook))
   (add-hook hook 'whitespace-mode))
 
-(load-theme 'dark)
+(rc/require-theme 'gruber-darker)
+
 (add-hook 'org-mode-hook #'visual-line-mode)
-(global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
+(ido-mode t)
+(ido-everywhere t)
 (which-key-mode 0)
+
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(rc/require 'ido-completing-read+)
+(ido-ubiquitous-mode)
 
 (column-number-mode 1)
 
 (electric-pair-mode 1)
 (global-display-line-numbers-mode 0)
+(global-hl-line-mode)
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -59,25 +67,10 @@
 
 ; PACKAGES
 (rc/require 'haskell-mode)
-(rc/require 'eshell-toggle 'eshell-git-prompt)
-
-(eshell-git-prompt-use-theme 'robbyrussell)
-(global-set-key (kbd "C-c e") 'eshell-toggle)
-
-(defun eshell-new (name)
-  (interactive "sName: ")
-  (setq name (concat "$" name))
-  (eshell)
-  (rename-buffer name))
-
-(global-set-key (kbd "M-e") 'eshell-new)
-
-(rc/require 'ivy)
-(ivy-mode)
-
-(require 'csode-menu)
-
-(global-set-key (kbd "M-x") 'csode/M-x)
+(rc/require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (rc/require 'multiple-cursors)
 
@@ -96,6 +89,7 @@
 (rc/require 'transient)
 (rc/require 'markdown-mode)
 (rc/require 'lua-mode)
+(rc/require 'zig-mode)
 
 (rc/require 'move-text)
 (global-set-key (kbd "M-n") 'move-text-down)
@@ -105,8 +99,13 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(rc/require 'rust-mode 'cmake-mode)
-(rc/require 'yaml-mode)
+(rc/require 'rust-mode)
+(rc/require 'auctex-label-numbers)
+(dolist (buf (buffer-list))
+  (with-current-buffer buf
+    (when (and buffer-file-name
+               (string-match-p "\\.tex\\'" buffer-file-name))
+      (auctex-label-numbers-mode 1))))
 
 (rc/require 'company)
 (global-company-mode)
@@ -118,13 +117,6 @@
 
 (require 'vterm-toggle)
 (require 'vterm-buffer)
-(global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
-(global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
-(global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
-
-(global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
-(global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
-
 (require 'ssh-connect)
 (require 'generate-tags)
 (require 'vterm-mux)
@@ -134,12 +126,19 @@
 (rc/require 'mmm-mode)
 (require 'chc-mode)
 
+(global-set-key (kbd "C-<return>") #'vterm-toggle-new-window)
+(global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
+(global-set-key (kbd "C-c s") #'vterm-switch-buffer-dmenu)
+
+(global-set-key (kbd "C-c C-k") #'vterm-copy-mode)
+(global-set-key (kbd "C-c k") #'vterm-copy-mode-done)
+
 (rc/require 'yasnippet)
 (yas-global-mode)
+(rc/require 'rainbow-mode)
 (rc/require 'just-mode)
 
 (global-set-key (kbd "C-c g") 'grep)
-(global-set-key (kbd "C-c C-c") 'compile)
 
 (require 'man)
 (set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
@@ -156,63 +155,6 @@
 (add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
 
-(rc/require 'nerd-icons-dired)
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (nerd-icons-dired-mode 1)))
-
-(rc/require 'doom-modeline)
-(doom-modeline-mode)
-
-(rc/require 'org-bullets 'org-superstar 'org-present)
-(add-hook 'org-mode-hook
-          (lambda ()
-            (org-bullets-mode 1)
-            (org-superstar-mode 1)))
-
-(defun custom-org-heading-sizes ()
-  "Set custom sizes for Org mode headings."
-  (set-face-attribute 'org-level-1 nil :height 1.5)
-  (set-face-attribute 'org-level-2 nil :height 1.4)
-  (set-face-attribute 'org-level-3 nil :height 1.3)
-  (set-face-attribute 'org-level-4 nil :height 1.2)
-  (set-face-attribute 'org-level-5 nil :height 1.1))
-
-(add-hook 'org-mode-hook 'custom-org-heading-sizes)
-
-(setq org-hide-block-startup t)
-(setq org-src-preserve-indentation t)
-
-(setq org-hide-emphasis-markers t)
-(add-hook 'org-mode-hook #'org-indent-mode)
-
-;; Email
-(require 'mu4e)
-
-(setq mu4e-change-filenames-when-moving t)
-
-(setq mu4e-update-interval (* 10 60))
-(setq mu4e-get-mail-command "mbsync -a")
-(setq mu4e-maildir "~/Mail")
-
-(setq mu4e-user-mail-address "tadihailukebe@gmail.com")
-(setq mu4e-send-from-sender "tadihailukebe@gmail.com")
-
-(setq mu4e-drafts-folder "/[Gmail]/Drafts")
-(setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-(setq mu4e-refile-folder "/[Gmail]/All Mail")
-(setq mu4e-trash-folder  "/[Gmail]/Trash")
-
-(setq mu4e-maildir-shortcuts
-      '(("/Inbox"             . ?i)
-        ("/[Gmail]/Sent Mail" . ?s)
-        ("/[Gmail]/Trash"     . ?t)
-        ("/[Gmail]/Drafts"    . ?d)
-        ("/[Gmail]/All Mail"  . ?a)))
-
-(global-set-key (kbd "C-c C-m") 'mu4e)
-
-;; Reload emacs
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
   (interactive)

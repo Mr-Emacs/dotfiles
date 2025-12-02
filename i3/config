@@ -4,10 +4,13 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:Ubuntu Mono 12
+font pango:Iosevka 10
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id pipewire 
+exec --no-startup-id wireplumber
+exec --no-startup-id nm-applet
 
 # Screen locking
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -117,7 +120,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    status_command i3blocks
+    status_command i3status
 }              
 
 bindsym $mod+c exec emacs

@@ -64,14 +64,7 @@
  '(grep-use-null-filename-separator t)
  '(haskell-process-log t)
  '(line-number-mode nil)
- '(package-selected-packages
-   '(cmake-mode company dash dash-functional dired-icon doom-modeline
-                eshell-git-prompt eshell-toggle eshell-vterm exwm
-                haskell-mode ido-completing-read+ ivy just-mode
-                lua-mode magit markdown-mode mmm-mode move-text
-                multiple-cursors nerd-icons-dired org-bullets
-                org-present org-superstar rust-mode smex vertico vterm
-                yaml-mode yasnippet))
+ '(package-selected-packages nil)
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
