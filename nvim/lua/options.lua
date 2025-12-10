@@ -26,4 +26,6 @@ vim.g.netrw_banner = 0
 vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.guicursor = ""
-
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.g.compile_mode = {}

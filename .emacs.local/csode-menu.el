@@ -88,27 +88,28 @@ Each element is (NAME . FUNCTION).")
 ;; ðŸ“¦ XBPS MENU
 ;; ============================================================
 
-(defun csode/xbps ()
-  "Interactive XBPS menu."
+(defun csode/pacman ()
+  "Interactive pacman menu."
   (interactive)
-  (let* ((commands '(("Install" . "sudo xbps-install")
-                     ("Update (XBPS)" . "sudo xbps-install -Syu")
-                     ("Reinstall" . "sudo xbps-install")
-                     ("Remove" . "sudo xbps-remove -R")
-                     ("Search (XBPS)" . "xbps-query -Rs")
-                     ("Search File (XBPS)" . "xbps-query -Rf")
-                     ("Clean Orphans" . "xbps-remove -o")
-                     ("Clean Cached" . "xbps-remove -y0")))
-         (choice (ivy-read "xbps Command: " (mapcar #'car commands)))
+    (let* ((commands '(("Install" . "sudo pacman -S")
+                     ("Update (Pacman)" . "sudo pacman -Syu")
+                     ("Update (Yay)" . "pacman -Syu")
+                     ("Reinstall" . "sudo pacman -S --reinstall")
+                     ("Remove" . "sudo pacman -Rns")
+                     ("Search (Pacman)" . "pacman -Ss")
+                     ("Search (Yay)" . "pacman -Ss")
+                     ("Clean Cache" . "sudo pacman -Sc")
+                     ("Clean Orphans" . "sudo pacman -Rns $(pacman -Qdtq)")))
+         (choice (ivy-read "Pacman Command: " (mapcar #'car commands)))
          (command (cdr (assoc choice commands)))
          (pkg (if (string-match-p "Search\\|Install\\|Reinstall\\|Remove" choice)
                   (read-string "Package Name: "))))
     (let ((full-command (if (and pkg (not (string-empty-p pkg)))
                             (concat command " " pkg)
                           command)))
-      (async-shell-command full-command "*XBPS*"))))
+      (async-shell-command full-command "*PACMAN*"))))
 
-(csode/define-package-manager "XBPS" #'csode/xbps)
+(csode/define-package-manager "PACMAN" #'csode/pacman)
 
 ;; ============================================================
 ;; ROOT MENU + REGISTRY

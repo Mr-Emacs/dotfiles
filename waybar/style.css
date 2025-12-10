@@ -1,61 +1,148 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Iosevka Nerd Font;
-    font-size: 10pt;
+    font-family: "Ubuntu mono";
+    font-weight: bold;
+    font-size: 12px;
     min-height: 0;
 }
-
 window#waybar {
-    background: #1d1f21;
-    color: white;
+    background: rgba(0, 0, 0, 0);
+    color: #ffffff;
 }
-
 tooltip {
-    background: #1d1f21;
-    border: 1px solid #327bd1;
+    background: #000000;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #1a1a1a;
 }
-
-tooltip label {
-    color: white;
-}
-
-/* Updated for niri workspaces */
 #workspaces button {
-    padding: 0 5px;
-    background: #1d1f21;
-    color: white;
+    padding: 3px 5px;
+    color: #666666;
+    margin-right: 5px;
+    background: transparent;
 }
-
-/* Niri uses 'active' for the current workspace */
 #workspaces button.active {
-    background: #333333;
-    border-bottom: 2px solid #327bd1;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-radius: 5px;
 }
-
-/* Hover effect */
+#workspaces button.focused {
+    color: #ffffff;
+    background: #ff6b9d;
+    border-radius: 5px;
+}
+#workspaces button.urgent {
+    color: #ffffff;
+    background: #ff0000;
+    border-radius: 5px;
+}
 #workspaces button:hover {
-    background: #2a2a2a;
+    background: #222222;
+    color: #ffffff;
+    border-radius: 5px;
 }
-
-/* Niri window title */
-#window {
-    padding: 0 10px;
-    color: white;
+#custom-power_profile,
+#custom-weather,
+#custom-moon,
+#custom-wallpaper,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-temperature,
+#custom-memory,
+#workspaces,
+#tray,
+#backlight {
+    background: #000000;
+    opacity: 0.8;
+    padding: 3px 5px;
+    margin: 3px 0px;
+    border: 1px solid #0a0a0a;
 }
-
-#pulseaudio {
-    padding-right: 10px;
+#custom-memory {
+    color: #ff6b9d;
 }
-
-#clock {
-    padding-right: 10px;
+#custom-temperature {
+    border-radius: 10px;
+    margin-right: 5px;
+    color: #ffaa00;
 }
-
+#custom-temperature.critical {
+    color: #ff0000;
+}
+#backlight {
+    border-radius: 10px;
+    margin-right: 5px;
+}
 #tray {
-    padding-right: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
 }
-
-#custom-btop {
-    padding-right: 15px;
+#workspaces {
+    background: #000000;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#custom-power_profile {
+    color: #00ff00;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#window {
+    border-radius: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: normal;
+}
+#clock {
+    color: #ff9933;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+#custom-weather {
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#custom-moon {
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#custom-wall {
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#network {
+    color: #ffff00;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#bluetooth {
+    color: #3399ff;
+    border-radius: 10px;
+    margin-right: 10px;
+} 
+#pulseaudio {
+    color: #3399ff;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#pulseaudio.microphone {
+    color: #cc66ff;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+#battery {
+    color: #00ff00;
+    border-radius: 10px;
+    margin-right: 10px;
 }

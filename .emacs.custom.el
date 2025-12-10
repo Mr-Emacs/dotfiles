@@ -11,7 +11,17 @@
      "dirent.h"))
  '(company-format-margin-function nil)
  '(custom-safe-themes
-   '("bb8266a9a1cfdb9585ef07a2af60e0b4e00faab61c59ec03f317230d1a7a102e"
+   '("4115a475d5a37007a5eb2da427e76e5b92f4102d90a4a7fdaf5410c2ca7afa36"
+     "f693c100eed9a8dc13f020997530737c67581fa524da6fb3ca7e9afc48fa485d"
+     "117f7dfb273bb39b83a228018ccffeb85ba0983c5d4a63155a5a48ad7f7c7c86"
+     "d2c76098def8b2b10b45d2092c86ca9c8b95d58fabbc8850d28899181d8f6581"
+     "2d86b16397a564f25f6459d1829ca47ec76c9acea83a63b8a67d82855f925b21"
+     "a953f228e6712c9eff7014b2ca975e397d9f71150450d388e22ba4276c493a7c"
+     "6df9654e9e778229bad7c68af2e98369b5c7051492692e249589808f52241d84"
+     "0f6e75c4c0c265c7562a9fad5301f903b92bba1ab608bda577ba6e228eab97d8"
+     "5fa34a63eef088ebfbb52bf4b2fd43c8f9b6efa1a3e480958c3202a9ded23673"
+     "aa92c5258e1777df4c5a937ad0babbad1ac01f6381b87df971bfe48a1b905b25"
+     "bb8266a9a1cfdb9585ef07a2af60e0b4e00faab61c59ec03f317230d1a7a102e"
      "20ee8c856a034667dc2d1bf3d01f518f25c86a7b5f0efbd2b0f8a39293bfad74"
      "ddd904137225ad353f74e9fcc31db91030d5047286320230af649828e18f0738"
      "2b79c3d1f8cf12d9ae5e265e198ebc4fcf892360598600c6454cb6cdc824ad74"
@@ -65,13 +75,10 @@
  '(haskell-process-log t)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(cmake-mode company dash dash-functional dired-icon doom-modeline
-                eshell-git-prompt eshell-toggle eshell-vterm exwm
-                exwm-modeline exwm-randr haskell-mode
-                ido-completing-read+ ivy ivy-posframe just-mode
+   '(cmake-mode company-box dash-functional ef-themes eshell-git-prompt
+                eshell-toggle helm ido-completing-read+ just-mode
                 lua-mode magit markdown-mode mmm-mode move-text
-                multiple-cursors nerd-icons-dired org-bullets
-                org-present org-superstar rust-mode smex vertico vterm
+                multiple-cursors naysayer-theme rust-mode smex vterm
                 yaml-mode yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces

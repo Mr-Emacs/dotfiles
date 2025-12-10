@@ -1,117 +1,61 @@
+[colors.primary]
+background = '#0A1A1A'
+foreground = '#C4E3DC'
+
 [bell]
 animation = "EaseOutExpo"
-color = "#ffffff"
 duration = 0
 
 [colors]
-draw_bold_text_with_bright_colors = false
+draw_bold_text_with_bright_colors = true
 
 [colors.bright]
-black = "#7f7f7f"
-blue = "#61afef"
-cyan = "#61afef"
-green = "#6b8e23"
-magenta = "#654CA8"
-red = "#f44747"
-white = "#ffffff"
-yellow = "#cd950c"
-
-[colors.cursor]
-cursor = "#40FF40"
-text = "#161616"
-
-[colors.dim]
-black = "#404040"
-blue = "#61afef"
-cyan = "#61afef"
-green = "#6b8e23"
-magenta = "#654CA8"
-red = "#f44747"
-white = "#7f7f7f"
-yellow = "#cd950c"
+black = "0x002b36"
+blue = "0x839496"
+cyan = "0x93a1a1"
+green = "0x586e75"
+magenta = "0x6c71c4"
+red = "0xcb4b16"
+white = "0xfdf6e3"
+yellow = "0x657b83"
 
 [colors.normal]
-black = "#161616"
-blue = "#61afef"
-cyan = "#61afef"
-green = "#6b8e23"
-magenta = "#654CA8"
-red = "#f44747"
-white = "#ffffff"
-yellow = "#cd950c"
-
-[colors.primary]
-background = "#161616"
-foreground = "#ffffff"
-
-[colors.selection]
-background = "#3a3a8f"
-text = "#ffffff"
+black = "0x073642"
+blue = "0x268bd2"
+cyan = "0x2aa198"
+green = "0x859900"
+magenta = "0xd33682"
+red = "0xdc322f"
+white = "0xeee8d5"
+yellow = "0xb58900"
 
 [cursor]
 style = "Block"
 unfocused_hollow = true
 
-[debug]
-log_level = "Warn"
-persistent_logging = false
-print_events = false
-render_timer = false
-
-[env]
-TERM = "xterm-256color"
-
 [font]
-size = 20
+size = 12.0
 
-[font.glyph_offset]
-x = 0
-y = 0
+[font.bold]
+family = "Hack"
+
+[font.italic]
+family = "Hack"
 
 [font.normal]
-family = "Ubuntu mono"
-style = "Medium"
-
-[font.offset]
-x = -1
-y = -1
-
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "Plus"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "Minus"
-mods = "Control"
+family = "Hack"
 
 [[mouse.bindings]]
-action = "Copy"
+action = "PasteSelection"
 mouse = "Middle"
 
 [scrolling]
 history = 10000
-multiplier = 1
+multiplier = 3
 
-[selection]
-save_to_clipboard = false
-semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+[window.dimensions]
+columns = 80
+lines = 24
 
-[window]
-dynamic_padding = false
-dynamic_title = true
-title = "Alacritty"
-startup_mode = "Maximized"
-
-[window.class]
-general = "Alacritty"
-instance = "Alacritty"
-
-[window.padding]
-x = 2
-y = 2
-
-[general]
-live_config_reload = true
-working_directory = "None"
+[terminal.shell]
+program = "/usr/bin/fish"

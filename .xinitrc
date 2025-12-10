@@ -1,13 +1,11 @@
 #!/bin/sh
-eval $(dbus-launch --sh-syntax)
+# eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
-# if ! pgrep -f "feh" > /dev/null; then
-#     feh --bg-fill ~/wallpaper/anime/wp11814616-kita-ikuyo-wallpapers.jpg &
-# fi
-
+if ! pgrep -f "feh" > /dev/null; then
+    feh --bg-fill ~/wallpaper/anime/wp11814616-kita-ikuyo-wallpapers.jpg &
+fi
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
-
 SERVICE_DIR="$HOME/.local/service"
 if ! pgrep -f "runsvdir $SERVICE_DIR" > /dev/null; then
     runsvdir "$SERVICE_DIR" &
@@ -18,14 +16,13 @@ fi
 # if ! pgrep -f "blueman-applet" > /dev/null; then
 #     blueman-applet &
 # fi
-#
-
+# bash ~/scripts/dwmbar &
+# exec ~/Programming/xsoder/nwm/nwm
+exec i3
+# For the other Window manager
 # if ! pgrep -u "$USER" -x emacs >/dev/null 2>&1; then
 #     emacs --daemon
 # fi
-# bash ~/scripts/dwmbar & disown
-# exec ~/Programming/xsoder/nwm/nwm
 # exec ~/thirdparty/oxwm/target/release/oxwm
-# exec i3
-setxkbmap -option altwin:meta_alt
-exec emacsclient -a "" -c
+# setxkbmap -option altwin:meta_alt
+# exec emacsclient -a "" -c

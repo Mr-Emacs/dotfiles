@@ -1,5 +1,5 @@
-(deftheme dark
-  "A dark theme based on Casey Muratori's editor colors.")
+(deftheme cmp-darker
+  "A cmp-darker theme based on Casey Muratori's editor colors.")
 (let ((class '((class color) (min-colors 89)))
       (bg        "#161616")
       (fg        "#ffffff")
@@ -15,7 +15,7 @@
       (command   "#61afef")
       (purple    "#654CA8"))
   (custom-theme-set-faces
-   'dark
+   'cmp-darker
    `(default ((,class (:background ,bg :foreground ,fg))))
    `(cursor ((,class (:background ,cursor))))
    `(hl-line ((,class (:background ,hl-line))))
@@ -71,6 +71,70 @@
    `(whitespace-empty ((,class (:foreground "#404040"))))
    `(line-number ((,class (:foreground ,comment :inherit default))))
    `(line-number-current-line ((,class (:foreground ,keyword :weight bold :inherit default))))
+
+   `(magit-section-heading ((,class (:foreground ,keyword :weight bold))))
+   `(magit-section-highlight ((,class (:background ,hl-line))))
+   `(magit-section-heading-selection ((,class (:foreground ,keyword :background ,selection :weight bold))))
+
+   `(magit-diff-file-heading ((,class (:foreground ,bracket :weight bold))))
+   `(magit-diff-file-heading-highlight ((,class (:foreground ,bracket :background ,hl-line :weight bold))))
+   `(magit-diff-file-heading-selection ((,class (:foreground ,bracket :background ,selection :weight bold))))
+   `(magit-diff-hunk-heading ((,class (:foreground ,command :background ,hl-line))))
+   `(magit-diff-hunk-heading-highlight ((,class (:foreground ,command :background ,selection))))
+   `(magit-diff-hunk-heading-selection ((,class (:foreground ,command :background ,selection :weight bold))))
+   `(magit-diff-context ((,class (:foreground ,comment))))
+   `(magit-diff-context-highlight ((,class (:foreground ,fg :background ,hl-line))))
+   `(magit-diff-added ((,class (:foreground ,cursor :background "#0f2f0f"))))
+   `(magit-diff-added-highlight ((,class (:foreground ,cursor :background "#1a3f1a"))))
+   `(magit-diff-removed ((,class (:foreground ,invalid :background "#2f0f0f"))))
+   `(magit-diff-removed-highlight ((,class (:foreground ,invalid :background "#3f1a1a"))))
+   `(magit-diff-lines-heading ((,class (:foreground ,fg :background ,purple :weight bold))))
+
+   `(magit-dimmed ((,class (:foreground ,comment))))
+   `(magit-hash ((,class (:foreground ,purple))))
+   `(magit-tag ((,class (:foreground ,keyword :weight bold))))
+   `(magit-branch-local ((,class (:foreground ,command :weight bold))))
+   `(magit-branch-remote ((,class (:foreground ,string :weight bold))))
+   `(magit-branch-current ((,class (:foreground ,cursor :weight bold :box t))))
+   `(magit-head ((,class (:foreground ,command :weight bold))))
+   `(magit-refname ((,class (:foreground ,comment :weight bold))))
+   `(magit-refname-stash ((,class (:foreground ,comment :weight bold))))
+   `(magit-refname-wip ((,class (:foreground ,comment :weight bold))))
+   `(magit-signature-good ((,class (:foreground ,cursor))))
+   `(magit-signature-bad ((,class (:foreground ,invalid :weight bold))))
+   `(magit-signature-untrusted ((,class (:foreground ,keyword))))
+   `(magit-signature-expired ((,class (:foreground ,keyword))))
+   `(magit-signature-revoked ((,class (:foreground ,invalid))))
+   `(magit-signature-error ((,class (:foreground ,invalid))))
+   `(magit-cherry-unmatched ((,class (:foreground ,command))))
+   `(magit-cherry-equivalent ((,class (:foreground ,purple))))
+
+   `(magit-log-author ((,class (:foreground ,bracket))))
+   `(magit-log-date ((,class (:foreground ,comment))))
+   `(magit-log-graph ((,class (:foreground ,comment))))
+
+   `(magit-sequence-pick ((,class (:foreground ,fg))))
+   `(magit-sequence-stop ((,class (:foreground ,cursor))))
+   `(magit-sequence-part ((,class (:foreground ,keyword))))
+   `(magit-sequence-head ((,class (:foreground ,command))))
+   `(magit-sequence-drop ((,class (:foreground ,invalid))))
+   `(magit-sequence-done ((,class (:foreground ,comment))))
+   `(magit-sequence-onto ((,class (:foreground ,comment))))
+
+   `(magit-bisect-good ((,class (:foreground ,cursor))))
+   `(magit-bisect-skip ((,class (:foreground ,keyword))))
+   `(magit-bisect-bad ((,class (:foreground ,invalid))))
+
+   `(magit-blame-heading ((,class (:background ,hl-line :foreground ,fg))))
+   `(magit-blame-hash ((,class (:background ,hl-line :foreground ,purple))))
+   `(magit-blame-name ((,class (:background ,hl-line :foreground ,bracket))))
+   `(magit-blame-date ((,class (:background ,hl-line :foreground ,comment))))
+   `(magit-blame-summary ((,class (:background ,hl-line :foreground ,fg))))
+
+   `(magit-process-ok ((,class (:foreground ,cursor :weight bold))))
+   `(magit-process-ng ((,class (:foreground ,invalid :weight bold))))
+
+   `(magit-section-secondary-heading ((,class (:foreground ,bracket :weight bold))))
    ))
 
-(provide-theme 'dark)
+(provide-theme 'cmp-darker)

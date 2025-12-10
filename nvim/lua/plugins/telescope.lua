@@ -10,7 +10,7 @@ require('telescope').setup {
             vertical = {
                 width = 0.9,
                 height = 0.9,
-            }
+            },
         },
         file_sorter = require('telescope.sorters').get_fuzzy_file,
         color_devicons = true,
@@ -19,6 +19,9 @@ require('telescope').setup {
         oldfiles = {
             theme = "ivy",
             previewer = false,
+            layout_config = {
+                height = 0.4,  -- Use percentage of screen height
+            },
         },
         find_files = {
             layout_strategy = "vertical",
@@ -27,6 +30,16 @@ require('telescope').setup {
         live_grep = {
             theme = "ivy",
             previewer = true,
+            layout_config = {
+                height = 0.5,  -- Adjust between 0.2-0.5
+            },
+        },
+        buffers = {
+            theme = "ivy",
+            previewer = true,
+            layout_config = {
+                height = 0.4,
+            },
         },
     },
     extensions = {

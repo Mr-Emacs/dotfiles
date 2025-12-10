@@ -18,12 +18,10 @@ install_plugin() {
 
     mkdir -p "$INSTALL_DIR"
 
-    # If plugin directory already exists: stay silent
     if [[ -d "$INSTALL_DIR/$dirname" ]]; then
         return
     fi
 
-    # Install silently except for success message
     git clone -q "$url" "$INSTALL_DIR/$dirname"
     echo "Installed plugin: $plugin_name"
 }
@@ -49,20 +47,18 @@ PLUGINS=(
     "nvim-lua/plenary.nvim"
     "windwp/nvim-autopairs"
     "goolord/alpha-nvim"
-    "folke/todo-comments.nvim"
     "kdheepak/lazygit.nvim"
-    "nvim-lualine/lualine.nvim"
     "axieax/urlview.nvim"
     "mbbill/undotree"
     "hrsh7th/nvim-cmp"
-    "hrsh7th/cmp-nvim-lsp"
     "hrsh7th/cmp-buffer"
     "hrsh7th/cmp-path"
     "L3MON4D3/LuaSnip"
     "saadparwaiz1/cmp_luasnip"
-    # "vimpostor/vim-tpipeline"
     "voldikss/vim-floaterm"
     "mason-org/mason.nvim"
+    "jdhao/whitespace.nvim"
+    "ej-shafran/compile-mode.nvim"
 )
 
 if [[ $# -eq 0 ]]; then

@@ -27,16 +27,20 @@ export PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
 
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
-if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-    exec startx
-fi
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
+if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
+    exec startx
+fi
+
 # if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
 #     exec niri
 # fi
-. "$HOME/.cargo/env"
+#if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
+#    exec hyprland
+#fi
+#. "$HOME/.cargo/env"
 # Only run fastfetch in real terminal sessions
 # if [[ $- == *i* ]] && [ -t 0 ] && [ -z "$INSIDE_EMACS" ] && [ -z "$EMACS" ]; then
 #     fastfetch

@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:Ubuntu Mono 12
+font pango:Hack 10
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
@@ -22,7 +22,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
 
 bindsym $mod+q kill
 
@@ -118,10 +118,10 @@ bindsym $mod+r mode "resize"
 
 bar {
     status_command i3blocks
-}              
+}
 
 bindsym $mod+c exec emacs
-bindsym $mod+b exec chromium
+bindsym $mod+b exec firefox-developer-edition
 bindsym $mod+Shift+s exec "/home/xsoder/scripts/screenshot"
 bindsym $mod+Shift+p exec "/home/xsoder/scripts/screenshot-select"
 bindsym $mod+z exec boomer

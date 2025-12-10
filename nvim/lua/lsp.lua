@@ -52,7 +52,7 @@ vim.lsp.config.ts_ls = {
 
 vim.lsp.config.clangd = {
     cmd = { 'clangd' },
-    filetypes = { 'c', 'cpp' },
+    filetypes = { 'c', 'cc', 'cpp' },
     root_markers = { '.git', 'compile_commands.json' },
 }
 vim.lsp.enable('lua_ls')
@@ -83,9 +83,9 @@ for type, icon in pairs(signs) do
 end
 
 -- C/C++ Only Features
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = { '*.c', '*.cpp', '*.h', '*.hpp' },
-    callback = function()
-        vim.lsp.buf.format()
-    end
-})
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--     pattern = { '*.c', '*.cc','*.cpp', '*.h', '*.hpp' },
+--     callback = function()
+--         vim.lsp.buf.format()
+--     end
+-- })

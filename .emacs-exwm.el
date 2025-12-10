@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Hack-16"))
+(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-16"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -11,57 +11,42 @@
 (setq dired-dwim-target t)
 (setq org-agenda-files '("~/dotfiles/agenda.org"))
 
-(setq eglot-autoloads nil)
-
 (setq eglot-ignored-server-capabilities '(:documentHighlight))
+
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 
-;; (dolist (hook '(python-mode-hook
-;;                 js-mode-hook
-;;                 asm-mode-hook
-;;                 emacs-lisp-mode-hook
-;;                 simpc-mode-hook
-;;                 c-mode-hook
-;;                 java-mode-hook
-;;                 ruby-mode-hook
-;;                 go-mode-hook
-;;                 rust-mode-hook
-;;                 sh-mode-hook
-;;                 yaml-mode-hook
-;;                 markdown-mode-hook
-;;                 org-mode-hook))
-;;   (add-hook hook 'whitespace-mode))
+(dolist (hook '(python-mode-hook
+                js-mode-hook
+                asm-mode-hook
+                emacs-lisp-mode-hook
+                simpc-mode-hook
+                c-mode-hook
+                java-mode-hook
+                ruby-mode-hook
+                go-mode-hook
+                rust-mode-hook
+                sh-mode-hook
+                yaml-mode-hook
+                markdown-mode-hook
+                org-mode-hook))
+  (add-hook hook 'whitespace-mode))
 
-;; (rc/require-theme 'gruber-darker)
-;; (rc/require-theme 'naysayer)
-(rc/require 'ef-themes)
-(setq ef-dream-palette-overrides
-      '((bg-main "#131015")
-        (bg-hl-line "#232224")
-        (fg-mode-line "#f2ddcf")
-          (bg-mode-line "#472b00")
-          (yellow-cooler "#ff9f0a")
-          (bg-hl-line "#2e1a3a")
-          (bg-hl-line "#352102")
-          (bg-hl-line "#3b393e")
-          (bg-mode-line "#5E4527")
-          ))
-(load-theme 'ef-dream)
+(load-theme 'dark)
 (add-hook 'org-mode-hook #'visual-line-mode)
+(global-hl-line-mode 1)
 (setq global-hl-line-sticky-flag t)
-(global-hl-line-mode)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (which-key-mode 0)
-(global-display-line-numbers-mode -1)
 
-(column-number-mode)
-(electric-pair-mode)
+(column-number-mode 1)
+(electric-pair-mode 1)
+(global-display-line-numbers-mode)
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
@@ -69,6 +54,19 @@
 (setq vterm-term-environment-variable "xterm-256color")
 (require 'vlog-mode)
 (require 'simpc-mode)
+
+;; (with-eval-after-load 'eglot
+;;   (add-to-list 'eglot-server-programs
+;;                '(simpc-mode . ("clangd"
+;;                                "--background-index"
+;;                                "--clang-tidy"
+;;                                "--completion-style=bundled"
+;;                                "--header-insertion=iwyu")))
+;;   (add-to-list 'eglot-server-programs
+;;                '(rust-mode . ("rust-analyzer"))))
+
+;; (add-hook 'simpc-mode-hook #'eglot-ensure)
+;; (add-hook 'rust-mode-hook #'eglot-ensure)
 
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
@@ -133,6 +131,9 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+(rc/require 'doom-modeline)
+(doom-modeline-mode)
+
 (rc/require 'vterm)
 (require 'vterm-toggle)
 (require 'vterm-buffer)
@@ -143,7 +144,7 @@
 (require 'vterm-mux)
 (require 'todo-mode)
 (require 'cgoogle)
-;; (require 'csode-menu)
+(require 'csode-menu)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)
@@ -171,9 +172,79 @@
 (add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'eshell-mode-hook 'my-disable-hl-line-mode)
-(add-hook 'compilation-mode-hook 'my-disable-hl-line-mode)
 
+(rc/require 'nerd-icons-dired)
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (nerd-icons-dired-mode 1)))
+
+(rc/require 'org-bullets 'org-superstar 'org-present)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (org-bullets-mode 1)
+            (org-superstar-mode 1)))
+
+(defun custom-org-heading-sizes ()
+  "Set custom sizes for Org mode headings."
+  (set-face-attribute 'org-level-1 nil :height 1.5)
+  (set-face-attribute 'org-level-2 nil :height 1.4)
+  (set-face-attribute 'org-level-3 nil :height 1.3)
+  (set-face-attribute 'org-level-4 nil :height 1.2)
+  (set-face-attribute 'org-level-5 nil :height 1.1))
+
+(add-hook 'org-mode-hook 'custom-org-heading-sizes)
+
+(setq org-hide-block-startup t)
+(setq org-src-preserve-indentation t)
+(setq org-hide-emphasis-markers t)
+(add-hook 'org-mode-hook #'org-indent-mode)
 (rc/require 'helm)
+(rc/require 'exwm 'exwm-modeline)
+(exwm-modeline-mode)
+
+(require 'exwm)
+(require 'exwm-input)
+(require 'exwm-randr)
+(require 'exwm-systemtray)
+
+(setq exwm-workspace-number 5)
+(setq exwm-randr-workspace-monitor-plist '(0 "HDMI-0" 1 "DP-1"))
+(exwm-randr-mode)
+(exwm-systemtray-mode)
+
+(start-process-shell-command
+"xrandr" nil
+"xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal \
+         --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal")
+
+(defun csode/exwm-update-class()
+ (exwm-workspace-rename-buffer  exwm-title))
+
+(add-hook 'exwm-update-title-hook
+         #'csode/exwm-update-class)
+
+(setq exwm-input-prefix-keys
+     '(?\C-x ?\C-u ?\C-h ?\M-` ?\M-& ?\M-: ?\C-\M-j ?\C-\ ))
+
+(setq exwm-input-global-keys
+     `(
+       ([s-return] . eshell)
+       ([s-M-return] . vterm-toggle-new-window)
+       ([?\s-r] . exwm-reset)
+       ([?\s-q] . kill-emacs)
+       ([?\s-w] . exwm-workspace-switch)
+       ([?\s-x] . csode/M-x)
+       ([?\s-f] . exwm-layout-toggle-fullscreen)
+
+       ,@(mapcar (lambda (i)
+                   `(,(kbd (format "s-%d" i)) .
+                     (lambda ()
+                       (interactive)
+                       (exwm-workspace-switch-create ,i))))
+                 (number-sequence 0 9))
+       ))
+
+(exwm-enable)
 
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
