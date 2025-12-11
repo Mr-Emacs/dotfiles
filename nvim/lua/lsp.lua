@@ -9,10 +9,16 @@ vim.lsp.config.lua_ls = {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { 'vim' }
+                globals = { 'vim' },
             }
         }
     }
+}
+
+vim.lsp.config.zls = {
+    cmd = { 'zls' },
+    filetypes = { 'zig' },
+    root_markers = { 'build.zig', 'zls.json', '.git' },
 }
 
 vim.lsp.config.rust_analyzer = {
@@ -61,6 +67,7 @@ vim.lsp.enable('ts_ls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('bash')
+vim.lsp.enable('zls')
 
 vim.diagnostic.config({
     virtual_text = true,

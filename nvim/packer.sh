@@ -59,6 +59,7 @@ PLUGINS=(
     "mason-org/mason.nvim"
     "jdhao/whitespace.nvim"
     "ej-shafran/compile-mode.nvim"
+    "folke/tokyonight.nvim"
 )
 
 if [[ $# -eq 0 ]]; then
