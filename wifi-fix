@@ -1,3 +1,4 @@
 #!/bin/sh
 
 sudo xbps-install -Sy xdg-utils xdg-desktop-portal xdg-desktop-portal-gtk gtk+3 dbus dbus-glib dbus-elogind
+sudo xbps-install -S which tar gzip coreutils python python3
