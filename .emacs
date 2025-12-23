@@ -138,6 +138,7 @@
 (require 'todo-mode)
 (require 'cgoogle)
 (require 'fasm-mode)
+(require 'highlight-todo-mode)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)
