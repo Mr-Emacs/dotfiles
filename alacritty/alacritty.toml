@@ -1,49 +1,18 @@
-[colors.primary]
-background = '#0A1A1A'
-foreground = '#C4E3DC'
-
-[bell]
-animation = "EaseOutExpo"
-duration = 0
-
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[colors.bright]
-black = "0x002b36"
-blue = "0x839496"
-cyan = "0x93a1a1"
-green = "0x586e75"
-magenta = "0x6c71c4"
-red = "0xcb4b16"
-white = "0xfdf6e3"
-yellow = "0x657b83"
-
-[colors.normal]
-black = "0x073642"
-blue = "0x268bd2"
-cyan = "0x2aa198"
-green = "0x859900"
-magenta = "0xd33682"
-red = "0xdc322f"
-white = "0xeee8d5"
-yellow = "0xb58900"
-
 [cursor]
 style = "Block"
 unfocused_hollow = true
 
 [font]
-size = 12.0
+size = 16.0
 
 [font.bold]
-family = "Hack"
+family = "Ubuntu mono"
 
 [font.italic]
-family = "Hack"
+family = "Ubuntu mono"
 
 [font.normal]
-family = "Hack"
+family = "Ubuntu mono"
 
 [[mouse.bindings]]
 action = "PasteSelection"
@@ -56,6 +25,3 @@ multiplier = 3
 [window.dimensions]
 columns = 80
 lines = 24
-
-[terminal.shell]
-program = "/usr/bin/fish"

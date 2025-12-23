@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "HackNerdFont-16"))
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-18"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -19,25 +19,31 @@
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 
-(dolist (hook '(python-mode-hook
-                js-mode-hook
-                asm-mode-hook
-                emacs-lisp-mode-hook
-                simpc-mode-hook
-                c-mode-hook
-                java-mode-hook
-                ruby-mode-hook
-                go-mode-hook
-                rust-mode-hook
-                sh-mode-hook
-                yaml-mode-hook
-                markdown-mode-hook
-                org-mode-hook))
-  (add-hook hook 'whitespace-mode))
+;; Function to check if the current theme is either cmp-darker or gruber-darker
+(defun my-attach-whitespace-mode-hooks ()
+  (when (or (string= (car custom-enabled-themes) "cmp-darker")
+            (string= (car custom-enabled-themes) "gruber-darker"))
+    (dolist (hook '(python-mode-hook
+                    js-mode-hook
+                    asm-mode-hook
+                    emacs-lisp-mode-hook
+                    simpc-mode-hook
+                    c-mode-hook
+                    java-mode-hook
+                    ruby-mode-hook
+                    go-mode-hook
+                    rust-mode-hook
+                    sh-mode-hook
+                    yaml-mode-hook
+                    markdown-mode-hook
+                    ccalc-mode-hook
+                    org-mode-hook))
+      (add-hook hook 'whitespace-mode))))
 
-(load-theme 'cmp-darker)
-;; (rc/require-theme 'gruber-darker)
-;; (rc/require-theme 'naysayer)
+;; (load-theme 'handmade)
+;; (load-theme 'cmp-darker)
+(rc/require-theme 'gruber-darker)
+(my-attach-whitespace-mode-hooks)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
 (global-hl-line-mode)
@@ -55,6 +61,7 @@
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq vterm-term-environment-variable "xterm-256color")
+
 (require 'vlog-mode)
 (require 'simpc-mode)
 
@@ -113,9 +120,8 @@
             (local-set-key (kbd "M-n") 'move-text-down)))
 
 (rc/require 'rust-mode 'cmake-mode 'yaml-mode)
-(rc/require 'company 'company-box)
+(rc/require 'company)
 (global-company-mode)
-(add-hook 'company-mode-hook 'company-box-mode)
 
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -131,7 +137,7 @@
 (require 'vterm-mux)
 (require 'todo-mode)
 (require 'cgoogle)
-;; (require 'csode-menu)
+(require 'fasm-mode)
 
 (rc/require 'mmm-mode)
 (require 'chc-mode)

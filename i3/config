@@ -4,10 +4,13 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:Hack 10
+font pango:Ubuntu mono 10
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id flameshot
+exec --no-startup-id pipewire wireplumber
+exec /home/scorlov/scripts/ssh-source
 
 # Screen locking
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -22,7 +25,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec st
 
 bindsym $mod+q kill
 
@@ -117,19 +120,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    status_command i3blocks
+    status_command i3status
 }
 
 bindsym $mod+c exec emacs
-bindsym $mod+b exec firefox-developer-edition
-bindsym $mod+Shift+s exec "/home/xsoder/scripts/screenshot"
-bindsym $mod+Shift+p exec "/home/xsoder/scripts/screenshot-select"
+bindsym $mod+Shift+d exec focus-linux
+bindsym $mod+b exec chromium
 bindsym $mod+z exec boomer
 bindsym $mod+Shift+o exec "/home/xsoder/scripts/master"
-bindsym $mod+Shift+d exec "/home/xsoder/.local/bin/dmenu-launch"
-bindsym $mod+t layout tabbed
 
 focus_follows_mouse no
 hide_edge_borders both
-for_window [title="Penger"] floating enable, sticky enable
 bindsym $mod+Tab workspace back_and_forth

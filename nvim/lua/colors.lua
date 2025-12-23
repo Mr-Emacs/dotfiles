@@ -1,10 +1,4 @@
-require('plugins.dark')
-
-vim.cmd('colorscheme rose-pine')
--- vim.cmd('colorscheme koehler') -- main colorscheme
--- vim.cmd('colorscheme morning')
--- vim.cmd('colorscheme morning')
-
+vim.cmd('colorscheme gruber-darker')
 vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
 vim.cmd('highlight NonText ctermbg=NONE guibg=NONE')
 vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
