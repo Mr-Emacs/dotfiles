@@ -33,9 +33,10 @@ fi
 if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
     exec startx
 fi
-
+# export XDG_SESSION_TYPE=wayland
+# export MOZ_ENABLE_WAYLAND=1
 # if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-#     exec niri
+#     exec sway
 # fi
 #if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
 #    exec hyprland

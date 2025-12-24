@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Hack-16"))
+(add-to-list 'default-frame-alist '(font . "Ubuntu mono-22"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -19,40 +19,27 @@
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 
-;; (dolist (hook '(python-mode-hook
-;;                 js-mode-hook
-;;                 asm-mode-hook
-;;                 emacs-lisp-mode-hook
-;;                 simpc-mode-hook
-;;                 c-mode-hook
-;;                 java-mode-hook
-;;                 ruby-mode-hook
-;;                 go-mode-hook
-;;                 rust-mode-hook
-;;                 sh-mode-hook
-;;                 yaml-mode-hook
-;;                 markdown-mode-hook
-;;                 org-mode-hook))
-;;   (add-hook hook 'whitespace-mode))
+(dolist (hook '(python-mode-hook
+                js-mode-hook
+                asm-mode-hook
+                emacs-lisp-mode-hook
+                simpc-mode-hook
+                c-mode-hook
+                java-mode-hook
+                ruby-mode-hook
+                go-mode-hook
+                rust-mode-hook
+                sh-mode-hook
+                yaml-mode-hook
+                markdown-mode-hook
+                org-mode-hook))
+  (add-hook hook 'whitespace-mode))
 
-;; (rc/require-theme 'gruber-darker)
-;; (rc/require-theme 'naysayer)
+(rc/require-theme 'gruber-darker)
 (rc/require 'ef-themes)
-(setq ef-dream-palette-overrides
-      '((bg-main "#131015")
-        (bg-hl-line "#232224")
-        (fg-mode-line "#f2ddcf")
-          (bg-mode-line "#472b00")
-          (yellow-cooler "#ff9f0a")
-          (bg-hl-line "#2e1a3a")
-          (bg-hl-line "#352102")
-          (bg-hl-line "#3b393e")
-          (bg-mode-line "#5E4527")
-          ))
-(load-theme 'ef-dream)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
-(global-hl-line-mode)
+(global-hl-line-mode -1)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -125,9 +112,8 @@
             (local-set-key (kbd "M-n") 'move-text-down)))
 
 (rc/require 'rust-mode 'cmake-mode 'yaml-mode)
-(rc/require 'company 'company-box)
+(rc/require 'company)
 (global-company-mode)
-(add-hook 'company-mode-hook 'company-box-mode)
 
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -155,10 +141,8 @@
 (global-set-key (kbd "C-c g") 'grep)
 (global-set-key (kbd "C-c C-c") 'compile)
 
-(require 'man)
-(set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
-(set-face-attribute 'Man-underline nil :inherit font-lock-keyword-face :underline t)
-(global-set-key (kbd "C-c m") 'man)
+(require 'woman)
+(global-set-key (kbd "C-c m") 'woman)
 
 (global-set-key (kbd "C-c C-g") #'cgoogle-search)
 (setq initial-scratch-message "")

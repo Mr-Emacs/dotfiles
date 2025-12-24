@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:Hack 10
+font pango:Ubuntu mono 12
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
@@ -22,7 +22,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec st
 
 bindsym $mod+q kill
 
@@ -118,6 +118,7 @@ bindsym $mod+r mode "resize"
 
 bar {
     status_command i3blocks
+    position bottom
 }
 
 bindsym $mod+c exec emacs

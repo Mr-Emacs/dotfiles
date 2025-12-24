@@ -64,7 +64,7 @@ vim.lsp.config.clangd = {
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('pyright')
 vim.lsp.enable('ts_ls')
-vim.lsp.enable('clangd')
+-- vim.lsp.enable('clangd')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('bash')
 vim.lsp.enable('zls')
