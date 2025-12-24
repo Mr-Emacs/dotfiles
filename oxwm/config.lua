@@ -44,7 +44,11 @@ local colors = {
 -- Workspace tags - can be numbers, names, or icons (requires a Nerd Font)
 --
 -- local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+<<<<<<< HEAD
 local tags = { "", "", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
+=======
+local tags = { "", "󰊯", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
+>>>>>>> origin/master
 
 -- Font for the status bar (use "fc-list" to see available fonts)
 local bar_font = "JetBrainsMono Nerd Font Propo:style=Regular:size=12"
@@ -118,7 +122,11 @@ oxwm.set_layout_symbol("tabbed", "[=]")
 -- Border configuration
 
 -- Width in pixels
+<<<<<<< HEAD
 oxwm.border.set_width(4)
+=======
+oxwm.border.set_width(2)
+>>>>>>> origin/master
 -- Color of focused window border
 oxwm.border.set_focused_color(colors.blue)
 -- Color of unfocused window borders
@@ -127,8 +135,14 @@ oxwm.border.set_unfocused_color(colors.grey)
 -- Smart Enabled = No border if 1 window
 oxwm.gaps.set_smart(false)
 -- Inner gaps (horizontal, vertical) in pixels
+<<<<<<< HEAD
 oxwm.gaps.set_inner(0, 0) -- Outer gaps (horizontal, vertical) in pixels
 oxwm.gaps.set_outer(0, 0)
+=======
+oxwm.gaps.set_inner(5, 5)
+-- Outer gaps (horizontal, vertical) in pixels
+oxwm.gaps.set_outer(5, 5)
+>>>>>>> origin/master
 
 -------------------------------------------------------------------------------
 -- Window Rules
@@ -184,12 +198,19 @@ oxwm.bar.set_scheme_selected(colors.cyan, colors.bg, colors.purple)
 
 oxwm.key.bind({ modkey }, "Return", oxwm.spawn_terminal())
 -- Launch Dmenu
+<<<<<<< HEAD
 oxwm.key.bind({ modkey }, "D", oxwm.spawn({ "sh", "-c", "dmenu_run" }))
+=======
+oxwm.key.bind({ modkey }, "D", oxwm.spawn({ "sh", "-c", "dmenu_run -l 10" }))
+>>>>>>> origin/master
 -- Copy screenshot to clipboard
 oxwm.key.bind({ modkey }, "S", oxwm.spawn({ "sh", "-c", "/home/xsoder/scripts/screenshot" }))
 oxwm.key.bind({ modkey, "Shift" }, "S", oxwm.spawn({ "sh", "-c", "/home/xsoder/scripts/screenshot-select" }))
 oxwm.key.bind({ modkey }, "Z", oxwm.spawn({ "sh", "-c", "boomer" }))
+<<<<<<< HEAD
 oxwm.key.bind({ modkey }, "C", oxwm.spawn({ "sh", "-c", "emacs" }))
+=======
+>>>>>>> origin/master
 oxwm.key.bind({ modkey }, "Q", oxwm.client.kill())
 
 -- Keybind overlay - Shows important keybindings on screen
@@ -201,7 +222,11 @@ oxwm.key.bind({ modkey, "Shift" }, "Space", oxwm.client.toggle_floating())
 
 -- Layout management
 oxwm.key.bind({ modkey }, "F", oxwm.layout.set("normie"))
+<<<<<<< HEAD
 oxwm.key.bind({ modkey }, "T", oxwm.layout.set("tiling"))
+=======
+oxwm.key.bind({ modkey }, "C", oxwm.layout.set("tiling"))
+>>>>>>> origin/master
 oxwm.key.bind({ modkey }, "W", oxwm.layout.set("tabbed"))
 -- Cycle through layouts
 oxwm.key.bind({ modkey }, "N", oxwm.layout.cycle())
@@ -297,11 +322,14 @@ oxwm.key.chord({
     { {},         "T" }
 }, oxwm.spawn_terminal())
 
+<<<<<<< HEAD
 oxwm.key.chord({
     { { modkey }, "Space" },
     { {},         "F" }
 }, oxwm.toggle_gaps())
 
+=======
+>>>>>>> origin/master
 -------------------------------------------------------------------------------
 -- Autostart
 -------------------------------------------------------------------------------

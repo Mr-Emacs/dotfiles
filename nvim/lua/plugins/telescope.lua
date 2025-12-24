@@ -20,7 +20,7 @@ require('telescope').setup {
             theme = "ivy",
             previewer = false,
             layout_config = {
-                height = 0.4,  -- Use percentage of screen height
+                height = 0.4,
             },
         },
         find_files = {
@@ -31,7 +31,7 @@ require('telescope').setup {
             theme = "ivy",
             previewer = true,
             layout_config = {
-                height = 0.5,  -- Adjust between 0.2-0.5
+                height = 0.5,
             },
         },
         buffers = {

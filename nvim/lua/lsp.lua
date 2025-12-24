@@ -2,6 +2,11 @@ vim.lsp.config('*', {
     root_markers = { '.git' }
 })
 
+vim.lsp.config.zls = {
+    cmd = { 'zls' },
+    filetypes = { 'zig' },
+}
+
 vim.lsp.config.lua_ls = {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },

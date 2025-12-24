@@ -11,7 +11,8 @@
      "dirent.h"))
  '(company-format-margin-function nil)
  '(custom-safe-themes
-   '("4115a475d5a37007a5eb2da427e76e5b92f4102d90a4a7fdaf5410c2ca7afa36"
+   '("3d39093437469a0ae165c1813d454351b16e4534473f62bc6e3df41bb00ae558"
+     "4115a475d5a37007a5eb2da427e76e5b92f4102d90a4a7fdaf5410c2ca7afa36"
      "f693c100eed9a8dc13f020997530737c67581fa524da6fb3ca7e9afc48fa485d"
      "117f7dfb273bb39b83a228018ccffeb85ba0983c5d4a63155a5a48ad7f7c7c86"
      "d2c76098def8b2b10b45d2092c86ca9c8b95d58fabbc8850d28899181d8f6581"
@@ -81,4 +82,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(hl-line ((t (:background "#2a2e38" :underline nil)))))

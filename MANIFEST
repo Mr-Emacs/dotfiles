@@ -1,2 +1,16 @@
 ghostty|symlink|.config
+<<<<<<< HEAD
 oxwm|symlink|.config
+=======
+nvim|symlink|.config
+niri|symlink|.config
+i3|symlink|.config
+alacritty|symlink|.config
+.xprofile|symlink|
+.tmux.conf|symlink|
+.emacs|symlink|
+.emacs.local|symlink|
+.emacs.rc|symlink|
+.emacs.custom.el|symlink|
+.emacs.snippet|symlink|
+>>>>>>> origin/master

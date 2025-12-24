@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [colors.primary]
 # background = '#000000'
 # foreground = '#c0caf5'
@@ -35,6 +36,14 @@
 #
 [font]
 size = 18.0
+=======
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font]
+size = 16.0
+>>>>>>> origin/master
 
 [font.bold]
 family = "Ubuntu mono"
@@ -44,6 +53,7 @@ family = "Ubuntu mono"
 
 [font.normal]
 family = "Ubuntu mono"
+<<<<<<< HEAD
 #
 # [[mouse.bindings]]
 # action = "PasteSelection"
@@ -63,3 +73,17 @@ family = "Ubuntu mono"
 # # [terminal.shell]
 # # program = "/usr/bin/tmux"
 # # args = ["new-session", "-A", "-s", "default"]
+=======
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window.dimensions]
+columns = 80
+lines = 24
+>>>>>>> origin/master
