@@ -1,11 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-<<<<<<< HEAD
 (add-to-list 'default-frame-alist '(font . "Ubuntu mono-22"))
-=======
-(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-18"))
->>>>>>> origin/master
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -23,26 +19,6 @@
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 
-<<<<<<< HEAD
-(dolist (hook '(python-mode-hook
-                js-mode-hook
-                asm-mode-hook
-                emacs-lisp-mode-hook
-                simpc-mode-hook
-                c-mode-hook
-                java-mode-hook
-                ruby-mode-hook
-                go-mode-hook
-                rust-mode-hook
-                sh-mode-hook
-                yaml-mode-hook
-                markdown-mode-hook
-                org-mode-hook))
-  (add-hook hook 'whitespace-mode))
-
-(rc/require-theme 'gruber-darker)
-(rc/require 'ef-themes)
-=======
 ;; Function to check if the current theme is either cmp-darker or gruber-darker
 (defun my-attach-whitespace-mode-hooks ()
   (when (or (string= (car custom-enabled-themes) "cmp-darker")
@@ -64,11 +40,8 @@
                     org-mode-hook))
       (add-hook hook 'whitespace-mode))))
 
-;; (load-theme 'handmade)
-;; (load-theme 'cmp-darker)
 (rc/require-theme 'gruber-darker)
 (my-attach-whitespace-mode-hooks)
->>>>>>> origin/master
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
 (global-hl-line-mode -1)
