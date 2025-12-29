@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
-(add-to-list 'default-frame-alist '(font . "Ubuntu mono-22"))
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
@@ -10,16 +9,14 @@
 (setq-default word-wrap t)
 (setq dired-dwim-target t)
 (setq org-agenda-files '("~/dotfiles/agenda.org"))
-
 (setq eglot-autoloads nil)
-
 (setq eglot-ignored-server-capabilities '(:documentHighlight))
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
+(set-face-attribute 'default nil :height 180)
 
-;; Function to check if the current theme is either cmp-darker or gruber-darker
 (defun my-attach-whitespace-mode-hooks ()
   (when (or (string= (car custom-enabled-themes) "cmp-darker")
             (string= (car custom-enabled-themes) "gruber-darker"))
@@ -37,10 +34,11 @@
                     yaml-mode-hook
                     markdown-mode-hook
                     ccalc-mode-hook
+                    d-mode-hook
                     org-mode-hook))
       (add-hook hook 'whitespace-mode))))
 
-(rc/require-theme 'gruber-darker)
+(rc/require-theme 'naysayer)
 (my-attach-whitespace-mode-hooks)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
@@ -61,10 +59,9 @@
 (setq vterm-term-environment-variable "xterm-256color")
 
 (require 'vlog-mode)
-(require 'simpc-mode)
-
-(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
-(add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
+;; (require 'simpc-mode)
+;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+;; (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
 
 (rc/require 'eshell-toggle 'eshell-git-prompt)
 
@@ -117,7 +114,7 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(rc/require 'rust-mode 'cmake-mode 'yaml-mode)
+(rc/require 'rust-mode 'd-mode 'cmake-mode 'yaml-mode)
 (rc/require 'company)
 (global-company-mode)
 
