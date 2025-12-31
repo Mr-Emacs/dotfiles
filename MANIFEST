@@ -1,9 +1,3 @@
-ghostty|symlink|.config
-nvim|symlink|.config
-niri|symlink|.config
-i3|symlink|.config
-.xprofile|symlink|
-.tmux.conf|symlink|
 .emacs|symlink|
 .emacs.local|symlink|
 .emacs.rc|symlink|

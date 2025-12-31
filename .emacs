@@ -56,7 +56,6 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/tmp-files/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
-(setq vterm-term-environment-variable "xterm-256color")
 
 (require 'vlog-mode)
 ;; (require 'simpc-mode)
@@ -122,14 +121,8 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-(rc/require 'vterm)
-(require 'vterm-toggle)
-(require 'vterm-buffer)
-(global-set-key (kbd "C-x t") #'vterm-toggle-vertical-split)
-
 (require 'ssh-connect)
 (require 'generate-tags)
-(require 'vterm-mux)
 (require 'todo-mode)
 (require 'cgoogle)
 (require 'fasm-mode)
@@ -156,7 +149,6 @@
   (hl-line-mode -1)
   (display-line-numbers-mode -1))
 
-(add-hook 'vterm-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'eshell-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'compilation-mode-hook 'my-disable-hl-line-mode)
