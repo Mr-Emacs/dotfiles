@@ -15,7 +15,7 @@
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
-(set-face-attribute 'default nil :height 180)
+(set-face-attribute 'default nil :font "Ubuntu mono-20")
 
 (defun my-attach-whitespace-mode-hooks ()
   (when (or (string= (car custom-enabled-themes) "cmp-darker")
@@ -38,7 +38,8 @@
                     org-mode-hook))
       (add-hook hook 'whitespace-mode))))
 
-(rc/require-theme 'naysayer)
+(rc/require-theme 'gruber-darker)
+(rc/require 'vterm)
 (my-attach-whitespace-mode-hooks)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
@@ -58,7 +59,10 @@
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
 (require 'vlog-mode)
-;; (require 'simpc-mode)
+(require 'vterm-mux)
+(require 'vterm-toggle)
+(require 'simpc-mode)
+(require 'ccalc-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
 
@@ -128,8 +132,9 @@
 (require 'fasm-mode)
 (require 'highlight-todo-mode)
 
-(rc/require 'mmm-mode)
+(rc/require 'mmm-mode 'meson-mode)
 (require 'chc-mode)
+(require 'umka-mode)
 
 (rc/require 'yasnippet)
 (yas-global-mode)

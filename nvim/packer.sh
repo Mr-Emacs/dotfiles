@@ -60,6 +60,8 @@ PLUGINS=(
     "jdhao/whitespace.nvim"
     "ej-shafran/compile-mode.nvim"
     "blazkowolf/gruber-darker.nvim"
+    "NeogitOrg/neogit"
+    "sindrets/diffview.nvim"
 )
 
 if [[ $# -eq 0 ]]; then
