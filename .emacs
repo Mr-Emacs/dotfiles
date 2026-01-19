@@ -15,7 +15,12 @@
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
-(set-face-attribute 'default nil :font "Ubuntu mono-20")
+(defun rc/get-default-font ()
+  (cond
+   ((eq system-type 'windows-nt) "Hack-16")
+   ((eq system-type 'gnu/linux) "Ubuntu mono-20")))
+
+(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
 (defun my-attach-whitespace-mode-hooks ()
   (when (or (string= (car custom-enabled-themes) "cmp-darker")
@@ -38,8 +43,38 @@
                     org-mode-hook))
       (add-hook hook 'whitespace-mode))))
 
-(rc/require-theme 'gruber-darker)
-(rc/require 'vterm)
+
+(when (eq system-type 'gnu/linux)
+  (rc/require-theme 'gruber-darker)
+  (rc/require 'vterm)
+  (require 'vterm-mux)
+  (require 'vterm-toggle)
+  (require 'ssh-connect)
+  (require 'generate-tags)
+  (require 'cgoogle)
+  (rc/require 'helm)
+  (global-set-key (kbd "C-c g") 'grep)
+  (global-set-key (kbd "C-c C-g") #'cgoogle-search))
+
+(when (eq system-type 'windows-nt)
+  (rc/require-theme 'naysayer))
+
+(require 'todo-mode)
+
+(rc/require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(ido-mode t)
+(ido-everywhere t)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+
+(rc/require 'ido-completing-read+)
+(ido-ubiquitous-mode)
+
 (my-attach-whitespace-mode-hooks)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
@@ -58,11 +93,8 @@
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
-(require 'vlog-mode)
-(require 'vterm-mux)
-(require 'vterm-toggle)
-(require 'simpc-mode)
 (require 'ccalc-mode)
+;; (require 'simpc-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
 
@@ -78,20 +110,6 @@
   (rename-buffer name))
 
 (global-set-key (kbd "C-c C-t") 'eshell-new)
-
-(rc/require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-(ido-mode t)
-(ido-everywhere t)
-
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-create-new-buffer 'always)
-(rc/require 'ido-completing-read+)
-(ido-ubiquitous-mode)
 
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -125,10 +143,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-(require 'ssh-connect)
-(require 'generate-tags)
-(require 'todo-mode)
-(require 'cgoogle)
 (require 'fasm-mode)
 (require 'highlight-todo-mode)
 
@@ -138,16 +152,6 @@
 
 (rc/require 'yasnippet)
 (yas-global-mode)
-(rc/require 'just-mode)
-
-(global-set-key (kbd "C-c g") 'grep)
-(global-set-key (kbd "C-c C-c") 'compile)
-
-(require 'woman)
-(global-set-key (kbd "C-c m") 'woman)
-
-(global-set-key (kbd "C-c C-g") #'cgoogle-search)
-(setq initial-scratch-message "")
 
 (defun my-disable-hl-line-mode ()
   "Disable hl-line-mode and display-line-numbers-mode."
@@ -157,8 +161,6 @@
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'eshell-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'compilation-mode-hook 'my-disable-hl-line-mode)
-
-(rc/require 'helm)
 
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
