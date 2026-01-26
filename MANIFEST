@@ -4,3 +4,4 @@
 .emacs.custom.el|symlink|
 .emacs.snippet|symlink|
 foot|symlink|.config
+kitty|symlink|.config

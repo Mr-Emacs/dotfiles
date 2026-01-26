@@ -38,7 +38,7 @@
                     sh-mode-hook
                     yaml-mode-hook
                     markdown-mode-hook
-                    ccalc-mode-hook
+                    aoxim-mode-hook
                     d-mode-hook
                     org-mode-hook))
       (add-hook hook 'whitespace-mode))))
@@ -93,7 +93,7 @@
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
-(require 'ccalc-mode)
+(require 'aoxim-mode)
 ;; (require 'simpc-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
