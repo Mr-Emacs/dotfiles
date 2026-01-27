@@ -185,6 +185,14 @@ If no right window exists, split vertically."
              '("\\*compilation\\*"
                my/display-buffer-right-only))
 
+(add-to-list 'display-buffer-alist
+             '("\\*Shell Command Output\\*"
+               my/display-buffer-right-only))
+
+(add-to-list 'display-buffer-alist
+             '("\\*Async Shell Command\\*"
+               my/display-buffer-right-only))
+
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
   (interactive)
