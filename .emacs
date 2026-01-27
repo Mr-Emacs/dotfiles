@@ -10,17 +10,32 @@
 (setq dired-dwim-target t)
 (setq org-agenda-files '("~/dotfiles/agenda.org"))
 (setq eglot-autoloads nil)
+(setq compilation-scroll-output t)
 (setq eglot-ignored-server-capabilities '(:documentHighlight))
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
+(setq default-directory
+      (cond
+       ((eq system-type 'gnu/linux) "~/projects/")
+       ((eq system-type 'windows-nt)
+        "C:/Users/tadih/Documents/Programming/")
+       (t "~/")))
+
 (defun rc/get-default-font ()
   (cond
-   ((eq system-type 'windows-nt) "Hack-16")
+   ((eq system-type 'windows-nt) "Maple Mono NL-12")
    ((eq system-type 'gnu/linux) "Ubuntu mono-20")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
+
+(defun my/split-window-on-startup ()
+  "Split window vertically on startup."
+  (when (one-window-p)
+    (split-window-right)))
+
+(add-hook 'emacs-startup-hook #'my/split-window-on-startup)
 
 (defun my-attach-whitespace-mode-hooks ()
   (when (or (string= (car custom-enabled-themes) "cmp-darker")
@@ -43,9 +58,7 @@
                     org-mode-hook))
       (add-hook hook 'whitespace-mode))))
 
-
 (when (eq system-type 'gnu/linux)
-  (rc/require-theme 'gruber-darker)
   (rc/require 'vterm)
   (require 'vterm-mux)
   (require 'vterm-toggle)
@@ -56,9 +69,7 @@
   (global-set-key (kbd "C-c g") 'grep)
   (global-set-key (kbd "C-c C-g") #'cgoogle-search))
 
-(when (eq system-type 'windows-nt)
-  (rc/require-theme 'naysayer))
-
+(load-theme 'wheatgrass)
 (require 'todo-mode)
 
 (rc/require 'smex)
@@ -94,9 +105,6 @@
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
 (require 'aoxim-mode)
-;; (require 'simpc-mode)
-;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
-;; (add-to-list 'auto-mode-alist '("\\.[b]\\'" . simpc-mode))
 
 (rc/require 'eshell-toggle 'eshell-git-prompt)
 
@@ -161,6 +169,21 @@
 (add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'eshell-mode-hook 'my-disable-hl-line-mode)
 (add-hook 'compilation-mode-hook 'my-disable-hl-line-mode)
+
+(defun my/display-buffer-right-only (buffer alist)
+  "Display BUFFER in the rightmost window, never the left one.
+If no right window exists, split vertically."
+  (let ((right-window
+         (or (window-in-direction 'right)
+             (when (one-window-p)
+               (split-window-right)))))
+    (when right-window
+      (set-window-buffer right-window buffer)
+      right-window)))
+
+(add-to-list 'display-buffer-alist
+             '("\\*compilation\\*"
+               my/display-buffer-right-only))
 
 (defun reload-emacs-config ()
   "Reload Emacs configuration from ~/.emacs."
