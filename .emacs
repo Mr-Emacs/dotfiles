@@ -18,7 +18,7 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 (setq default-directory
       (cond
-       ((eq system-type 'gnu/linux) "~/projects/")
+       ((eq system-type 'gnu/linux) "~/Programming/")
        ((eq system-type 'windows-nt)
         "C:/Users/tadih/Documents/Programming/")
        (t "~/")))
@@ -26,7 +26,7 @@
 (defun rc/get-default-font ()
   (cond
    ((eq system-type 'windows-nt) "Maple Mono NL-12")
-   ((eq system-type 'gnu/linux) "Ubuntu mono-20")))
+   ((eq system-type 'gnu/linux) "Ubuntu mono-14")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
@@ -72,20 +72,6 @@
 (load-theme 'wheatgrass)
 (require 'todo-mode)
 
-(rc/require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-(ido-mode t)
-(ido-everywhere t)
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-create-new-buffer 'always)
-
-(rc/require 'ido-completing-read+)
-(ido-ubiquitous-mode)
-
 (my-attach-whitespace-mode-hooks)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
@@ -110,6 +96,7 @@
 
 (eshell-git-prompt-use-theme 'robbyrussell)
 (global-set-key (kbd "C-c e") 'eshell-toggle)
+(global-set-key (kbd "C-c C-c") 'compile)
 
 (defun eshell-new (name)
   (interactive "sName: ")
