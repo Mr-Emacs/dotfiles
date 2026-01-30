@@ -79,7 +79,7 @@
 
 (defconst aoxim-keywords
   '("if" "else" "while" "lambda" "const" "import"
-    "return" "break" "continue" "True" "False" "struct" "self" "@"))
+    "return" "break" "continue" "True" "False" "struct" "self" "@" "ptr" "or" "and" "deref"))
 
 (defconst aoxim-builtins
   '("print" "len" "range" "help" "type" "assert" "test" "link" "extern" "match" "os"))

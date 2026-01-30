@@ -1,17 +1,14 @@
-;; -*- lexical-binding: t; -*-
+ ;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
-(setq whitespace-style '(face tabs spaces trailing space-before-tab space-after-tab space-mark tab-mark))
 (setq package-install-upgrade-built-in t)
 (setq org-html-validation-link nil)
 (setq-default word-wrap t)
 (setq dired-dwim-target t)
 (setq org-agenda-files '("~/dotfiles/agenda.org"))
-(setq eglot-autoloads nil)
 (setq compilation-scroll-output t)
-(setq eglot-ignored-server-capabilities '(:documentHighlight))
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
@@ -37,37 +34,10 @@
 
 (add-hook 'emacs-startup-hook #'my/split-window-on-startup)
 
-(defun my-attach-whitespace-mode-hooks ()
-  (when (or (string= (car custom-enabled-themes) "cmp-darker")
-            (string= (car custom-enabled-themes) "gruber-darker"))
-    (dolist (hook '(python-mode-hook
-                    js-mode-hook
-                    asm-mode-hook
-                    emacs-lisp-mode-hook
-                    simpc-mode-hook
-                    c-mode-hook
-                    java-mode-hook
-                    ruby-mode-hook
-                    go-mode-hook
-                    rust-mode-hook
-                    sh-mode-hook
-                    yaml-mode-hook
-                    markdown-mode-hook
-                    aoxim-mode-hook
-                    d-mode-hook
-                    org-mode-hook))
-      (add-hook hook 'whitespace-mode))))
-
 (when (eq system-type 'gnu/linux)
-  (rc/require 'vterm)
-  (require 'vterm-mux)
-  (require 'vterm-toggle)
   (require 'ssh-connect)
-  (require 'generate-tags)
-  (require 'cgoogle)
   (rc/require 'helm)
-  (global-set-key (kbd "C-c g") 'grep)
-  (global-set-key (kbd "C-c C-g") #'cgoogle-search))
+  (global-set-key (kbd "C-c g") 'grep))
 
 (load-theme 'wheatgrass)
 (require 'todo-mode)
@@ -91,20 +61,7 @@
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
 (require 'aoxim-mode)
-
-(rc/require 'eshell-toggle 'eshell-git-prompt)
-
-(eshell-git-prompt-use-theme 'robbyrussell)
-(global-set-key (kbd "C-c e") 'eshell-toggle)
 (global-set-key (kbd "C-c C-c") 'compile)
-
-(defun eshell-new (name)
-  (interactive "sName: ")
-  (setq name (concat "$" name))
-  (eshell)
-  (rename-buffer name))
-
-(global-set-key (kbd "C-c C-t") 'eshell-new)
 
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
