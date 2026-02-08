@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>o', ':Ex<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>o', ':Yazi<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true, silent = true })
@@ -33,18 +33,9 @@ vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, { desc = 'Format buffer' }
 
 vim.keymap.set("n", "<leader>pu", "<Cmd>UrlView<CR>", { desc = "View buffer URLs" })
 vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>", { desc = "Show Undo files" })
-
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
-
-vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>", { silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tt', ':FloatermToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })

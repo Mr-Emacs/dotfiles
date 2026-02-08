@@ -29,3 +29,5 @@ vim.opt.guicursor = ""
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.g.compile_mode = {}
+vim.opt.autochdir = true
+vim.cmd('source ~/.config/nvim/lua/plugins/aoxim.vim')

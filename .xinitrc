@@ -2,13 +2,13 @@
 eval $(dbus-launch --sh-syntax)
 [ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
 if ! pgrep -f "feh" > /dev/null; then
-    feh --bg-fill ~/Downloads/pexels-pixabay-33109.jpg
+    feh --bg-fill ~/dotfiles/wallpaper.png
 fi
 bash ~/scripts/autostart &
 bash ~/scripts/hdmi &
 bash ~/scripts/network &
+bash ~/scripts/dwmbar &
 if ! pgrep -f "pulseaudio" > /dev/null; then
     pulseaudio &
 fi
-#jexec ~/Programming/xsoder/nwm/nwm
-exec i3
+exec ~/Programming/xsoder/nwm/nwm
