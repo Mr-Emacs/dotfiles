@@ -42,7 +42,6 @@
 (load-theme 'wheatgrass)
 (require 'todo-mode)
 
-(my-attach-whitespace-mode-hooks)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
 (global-hl-line-mode -1)
