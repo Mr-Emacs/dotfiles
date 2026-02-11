@@ -63,7 +63,6 @@ PLUGINS=(
     "NeogitOrg/neogit"
     "sindrets/diffview.nvim"
     "mikavilpas/yazi.nvim"
-    "3rd/image.nvim"
 )
 
 if [[ $# -eq 0 ]]; then
