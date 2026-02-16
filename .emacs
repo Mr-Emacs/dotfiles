@@ -35,7 +35,16 @@
   (rc/require 'helm)
   (global-set-key (kbd "C-c g") 'grep))
 
-(load-theme 'wheatgrass)
+(rc/require-theme 'gruber-darker)
+(rc/require 'smex 'ido-completing-read+)
+(require 'ido-completing-read+)
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x M-x") 'execute-extended-command)
+
 (require 'todo-mode)
 
 (add-hook 'org-mode-hook #'visual-line-mode)
@@ -55,7 +64,6 @@
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
 (require 'aoxim-mode)
-(global-set-key (kbd "C-c C-c") 'compile)
 
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -77,8 +85,7 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(rc/require 'rust-mode 'd-mode 'cmake-mode 'yaml-mode)
-(rc/require 'company)
+(rc/require 'rust-mode 'company)
 (global-company-mode)
 
 (put 'set-goal-column 'disabled nil)
@@ -86,26 +93,17 @@
 (put 'narrow-to-region 'disabled nil)
 
 (require 'fasm-mode)
-(rc/require 'mmm-mode)
-(require 'chc-mode)
 
-(defun my/display-buffer-right-only (buffer alist)
-  (let ((right-window
-         (or (window-in-direction 'right)
-             (when (one-window-p)
-               (split-window-right)))))
-    (when right-window
-      (set-window-buffer right-window buffer)
-      right-window)))
+(require 'simpc-mode)
+(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
-(add-to-list 'display-buffer-alist
-             '("\\*compilation\\*"
-               my/display-buffer-right-only))
-
-(add-to-list 'display-buffer-alist
-             '("\\*Shell Command Output\\*"
-               my/display-buffer-right-only))
-
-(add-to-list 'display-buffer-alist
-             '("\\*Async Shell Command\\*"
-               my/display-buffer-right-only))
+(defun astyle-buffer ()
+  (interactive)
+  (let ((saved-line-number (line-number-at-pos)))
+    (shell-command-on-region
+     (point-min)
+     (point-max)
+     "astyle --style=kr"
+     nil
+     t)
+    (goto-line saved-line-number)))
