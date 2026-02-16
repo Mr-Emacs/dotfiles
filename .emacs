@@ -4,10 +4,7 @@
 (setq custom-file"~/.emacs.custom.el")
 (load custom-file)
 (setq package-install-upgrade-built-in t)
-(setq org-html-validation-link nil)
 (setq-default word-wrap t)
-(setq dired-dwim-target t)
-(setq org-agenda-files '("~/dotfiles/agenda.org"))
 (setq compilation-scroll-output t)
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
@@ -17,7 +14,7 @@
       (cond
        ((eq system-type 'gnu/linux) "~/Programming/")
        ((eq system-type 'windows-nt)
-        "C:/Users/tadih/Documents/Programming/")
+        "C:/Programming/")
        (t "~/")))
 
 (defun rc/get-default-font ()
@@ -28,7 +25,6 @@
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
 (defun my/split-window-on-startup ()
-  "Split window vertically on startup."
   (when (one-window-p)
     (split-window-right)))
 
@@ -45,7 +41,6 @@
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)
 (global-hl-line-mode -1)
-
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
@@ -74,10 +69,6 @@
 (rc/require 'magit)
 (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
-(rc/require 'transient)
-(rc/require 'markdown-mode)
-(rc/require 'lua-mode)
-
 (rc/require 'move-text)
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "M-p") 'move-text-up)
@@ -95,27 +86,10 @@
 (put 'narrow-to-region 'disabled nil)
 
 (require 'fasm-mode)
-(require 'highlight-todo-mode)
-
-(rc/require 'mmm-mode 'meson-mode)
+(rc/require 'mmm-mode)
 (require 'chc-mode)
-(require 'umka-mode)
-
-(rc/require 'yasnippet)
-(yas-global-mode)
-
-(defun my-disable-hl-line-mode ()
-  "Disable hl-line-mode and display-line-numbers-mode."
-  (hl-line-mode -1)
-  (display-line-numbers-mode -1))
-
-(add-hook 'dired-mode-hook 'my-disable-hl-line-mode)
-(add-hook 'eshell-mode-hook 'my-disable-hl-line-mode)
-(add-hook 'compilation-mode-hook 'my-disable-hl-line-mode)
 
 (defun my/display-buffer-right-only (buffer alist)
-  "Display BUFFER in the rightmost window, never the left one.
-If no right window exists, split vertically."
   (let ((right-window
          (or (window-in-direction 'right)
              (when (one-window-p)
@@ -135,15 +109,3 @@ If no right window exists, split vertically."
 (add-to-list 'display-buffer-alist
              '("\\*Async Shell Command\\*"
                my/display-buffer-right-only))
-
-(defun reload-emacs-config ()
-  "Reload Emacs configuration from ~/.emacs."
-  (interactive)
-  (let ((config-file "~/.emacs"))
-    (if (file-exists-p config-file)
-        (progn
-          (load-file config-file)
-          (message "Emacs configuration reloaded."))
-      (message "Configuration file not found: %s" config-file))))
-
-(global-set-key (kbd "C-c r") #'reload-emacs-config)

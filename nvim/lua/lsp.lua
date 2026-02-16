@@ -66,10 +66,18 @@ vim.lsp.config.clangd = {
     filetypes = { 'c', 'cc', 'cpp' },
     root_markers = { '.git', 'compile_commands.json' },
 }
+
+vim.lsp.config.ellec = {
+    cmd = { 'ellec', '--lsp' },
+    filetypes = { 'le' },
+    root_markers = { '.git' },
+}
+
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('pyright')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('clangd')
+vim.lsp.enable('ellec')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('bash')
 vim.lsp.enable('zls')

@@ -1,8 +1,0 @@
-#!/bin/sh
-exec 2>&1
-
-# Wait for pipewire to be ready
-sv check pipewire >/dev/null 2>&1 || exit 1
-sleep 1
-
-exec pipewire-pulse

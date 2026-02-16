@@ -10,6 +10,7 @@ RESET='\[\e[0m\]'
 cwd="\W"
 PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
 . "$HOME/.cargo/env"
+export PATH="/home/xsoder/.local/bin/:$PATH"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
