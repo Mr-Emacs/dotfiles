@@ -6,6 +6,7 @@
 (setq package-install-upgrade-built-in t)
 (setq-default word-wrap t)
 (setq compilation-scroll-output t)
+(setq scroll-step 3)
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
@@ -16,13 +17,6 @@
        ((eq system-type 'windows-nt)
         "C:/Programming/")
        (t "~/")))
-
-(defun rc/get-default-font ()
-  (cond
-   ((eq system-type 'windows-nt) "Maple Mono NL-12")
-   ((eq system-type 'gnu/linux) "UbuntuMono Nerd Font Mono-14")))
-
-(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
 (defun my/split-window-on-startup ()
   (when (one-window-p)
@@ -35,7 +29,6 @@
   (rc/require 'helm)
   (global-set-key (kbd "C-c g") 'grep))
 
-(rc/require-theme 'gruber-darker)
 (rc/require 'smex 'ido-completing-read+)
 (require 'ido-completing-read+)
 (ido-mode 1)
@@ -50,10 +43,21 @@
 (require 'vterm-mux)
 (require 'vterm-toggle)
 
+(setq fixme-modes '(simpc-mode emacs-lisp-mode))
 
-(add-hook 'org-mode-hook #'visual-line-mode)
+(make-face 'font-lock-fixme-face)
+(make-face 'font-lock-note-face)
+(modify-face 'font-lock-fixme-face "Red" nil nil t nil t nil nil)
+(modify-face 'font-lock-note-face "Dark Green" nil nil t nil t nil nil)
+
+(mapc (lambda (mode)
+        (font-lock-add-keywords
+         mode
+         '(("\\<\\(TODO\\)" 1 'font-lock-fixme-face t)
+           ("\\<\\(NOTE\\)" 1 'font-lock-note-face t))))
+      fixme-modes)
+
 (setq global-hl-line-sticky-flag t)
-(global-hl-line-mode -1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
@@ -111,3 +115,27 @@
      nil
      t)
     (goto-line saved-line-number)))
+
+(global-set-key (kbd "C-x w w") 'astyle-buffer)
+
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+(set-face-attribute 'default t :font "Liberation Mono-11.5")
+(set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
+(set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
+(set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
+(set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
+(set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
+(set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
+(set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
+(set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
+(set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3")
+
+(defun post-load-stuff ()
+  (interactive)
+  (set-foreground-color "burlywood3")
+  (set-background-color "#161616")
+  (set-cursor-color "#40FF40"))
+
+(global-hl-line-mode)
+(set-face-background 'hl-line "midnight blue")
+(add-hook 'window-setup-hook 'post-load-stuff t)
