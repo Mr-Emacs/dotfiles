@@ -46,8 +46,6 @@ PLUGINS=(
     "nvim-telescope/telescope.nvim"
     "nvim-lua/plenary.nvim"
     "windwp/nvim-autopairs"
-    "goolord/alpha-nvim"
-    "kdheepak/lazygit.nvim"
     "axieax/urlview.nvim"
     "mbbill/undotree"
     "hrsh7th/nvim-cmp"
@@ -55,14 +53,11 @@ PLUGINS=(
     "hrsh7th/cmp-path"
     "L3MON4D3/LuaSnip"
     "saadparwaiz1/cmp_luasnip"
-    "voldikss/vim-floaterm"
-    "mason-org/mason.nvim"
     "jdhao/whitespace.nvim"
-    "ej-shafran/compile-mode.nvim"
-    "blazkowolf/gruber-darker.nvim"
-    "NeogitOrg/neogit"
-    "sindrets/diffview.nvim"
     "mikavilpas/yazi.nvim"
+    "vague-theme/vague.nvim"
+    "hrsh7th/cmp-nvim-lsp"
+    "folke/tokyonight.nvim"
 )
 
 if [[ $# -eq 0 ]]; then

@@ -20,7 +20,7 @@
 (defun rc/get-default-font ()
   (cond
    ((eq system-type 'windows-nt) "Maple Mono NL-12")
-   ((eq system-type 'gnu/linux) "Ubuntu mono-14")))
+   ((eq system-type 'gnu/linux) "UbuntuMono Nerd Font Mono-14")))
 
 (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
@@ -46,6 +46,10 @@
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
 (require 'todo-mode)
+(require 'vterm-buffer)
+(require 'vterm-mux)
+(require 'vterm-toggle)
+
 
 (add-hook 'org-mode-hook #'visual-line-mode)
 (setq global-hl-line-sticky-flag t)

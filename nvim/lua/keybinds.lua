@@ -1,5 +1,16 @@
 vim.g.mapleader = " "
 
+vim.g.neovide_scale_factor = vim.g.neovide_scale_factor or 1.0
+
+if vim.g.neovide then
+    vim.api.nvim_set_keymap('n', '<C-=>', ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<C-->', ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<C-0>', ":lua vim.g.neovide_scale_factor = 1<CR>", { noremap = true, silent = true })
+
+    vim.api.nvim_set_keymap('v', '<C-=>', ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('v', '<C-->', ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { noremap = true, silent = true })
+end
+
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>o', ':Yazi<CR>', { noremap = true, silent = true })
@@ -15,10 +26,6 @@ vim.api.nvim_set_keymap('n', '<leader>pf', ':Telescope find_files<CR>', { norema
 vim.api.nvim_set_keymap('n', '<leader>bb', ':Telescope buffers<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>pg', ':Telescope git_files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ps', ':Telescope live_grep<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gg', ':Neogit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>pp', ':!~/.config/nvim/packer<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
@@ -36,6 +43,6 @@ vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>", { desc = "Show Undo 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>", { silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>tt', ':FloatermToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tt', ':VSplitTerminal<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>t', ':HSplitTerminal<CR>', { noremap = true, silent = true })

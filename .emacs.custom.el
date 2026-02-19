@@ -76,12 +76,9 @@
  '(haskell-process-log t)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(cmake-mode company d-mode dash-functional ef-themes
-                eshell-git-prompt eshell-toggle gruber-darker-theme
-                helm ido-completing-read+ just-mode lua-mode magit
-                markdown-mode meson-mode mmm-mode move-text
-                multiple-cursors naysayer-theme nix-mode rust-mode
-                smex vterm yaml-mode yasnippet))
+   '(company dash-functional gruber-darker-theme helm
+             ido-completing-read+ magit move-text multiple-cursors
+             rust-mode smex vterm))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
