@@ -26,7 +26,7 @@
 
 (when (eq system-type 'gnu/linux)
   (require 'ssh-connect)
-  (rc/require 'helm)
+  (rc/require 'helm 'vterm)
   (global-set-key (kbd "C-c g") 'grep))
 
 (rc/require 'smex 'ido-completing-read+)
@@ -38,7 +38,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
-(require 'todo-mode)
 (require 'vterm-buffer)
 (require 'vterm-mux)
 (require 'vterm-toggle)
@@ -134,6 +133,8 @@
   (interactive)
   (set-foreground-color "burlywood3")
   (set-background-color "#161616")
+  (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
+  (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
   (set-cursor-color "#40FF40"))
 
 (global-hl-line-mode)

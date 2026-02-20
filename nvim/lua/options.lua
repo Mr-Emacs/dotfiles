@@ -29,6 +29,6 @@ vim.opt.splitright = true
 vim.opt.autochdir = true
 
 if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMono Nerd Font:h24"
-    vim.cmd [[ autocmd VimEnter * cd C:/Programming ]]
+    vim.o.guifont = "JetBrainsMono Nerd Font:h12"
+    vim.cmd [[ autocmd VimEnter * cd /home/bortlov/Programming ]]
 end

@@ -5,3 +5,4 @@
 .emacs.snippet|symlink|
 .bashrc|symlink|
 nvim|symlink|.config
+i3|symlink|.config

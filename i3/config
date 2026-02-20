@@ -3,12 +3,14 @@
 
 set $mod Mod4
 
-font pango:Ubuntu mono 10
+font pango:Liberation Mono 10
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id flameshot
 exec /home/scorlov/scripts/ssh-source
+exec feh --bg-fill ~/dotfiles/wallpaper.jpg
+exec nm-applet
 
 # Screen locking
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -123,8 +125,9 @@ bar {
 }
 
 bindsym $mod+c exec emacs
-bindsym $mod+Shift+d exec focus-linux
-bindsym $mod+b exec chromium --ozone-platform=x11
+bindsym $mod+Shift+d exec focus-bin
+bindsym $mod+Shift+s exec spectacle
+bindsym $mod+b exec firefox
 bindsym $mod+z exec boomer
 bindsym $mod+Shift+o exec "/home/xsoder/scripts/master"
 
