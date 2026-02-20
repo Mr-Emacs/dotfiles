@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-AVAIL=$(df -h "$HOME" | awk 'NR==2 {print $4}')
-echo "Penger(porn folder): $AVAIL"
-echo "Penger(porn folder)"

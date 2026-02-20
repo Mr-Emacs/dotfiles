@@ -27,7 +27,14 @@
 (when (eq system-type 'gnu/linux)
   (require 'ssh-connect)
   (rc/require 'helm 'vterm)
+  (require 'vterm-buffer)
+  (require 'vterm-mux)
+  (require 'vterm-toggle)
   (global-set-key (kbd "C-c g") 'grep))
+
+(when (eq system-type 'windows-nt)
+  (rc/require 'powershell)
+  (global-set-key (kbd "C-c e") 'shell))
 
 (rc/require 'smex 'ido-completing-read+)
 (require 'ido-completing-read+)
@@ -38,9 +45,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
-(require 'vterm-buffer)
-(require 'vterm-mux)
-(require 'vterm-toggle)
 
 (setq fixme-modes '(simpc-mode emacs-lisp-mode))
 

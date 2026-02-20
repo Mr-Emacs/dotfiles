@@ -1,0 +1,8 @@
+.emacs|symlink|APPDATA
+.emacs.local|symlink|APPDATA
+.emacs.rc|symlink|APPDATA
+.emacs.custom.el|symlink|APPDATA
+.emacs.snippet|symlink|APPDATA
+#.bashrc|symlink|
+#nvim|symlink|LOCALAPPDATA
+#i3|symlink|.config
