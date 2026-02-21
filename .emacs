@@ -18,6 +18,12 @@
         "C:/Programming/")
        (t "~/")))
 
+(setq simpc-asm-preview-intel-syntax t)
+(setq simpc-asm-preview-strip-directives t)
+(setq simpc-asm-preview-flags '("-O0" "-std=c99"))
+(when (eq system-type 'windows-nt)
+  (setq simpc-asm-preview-compiler "clang.exe"))
+
 (defun my/split-window-on-startup ()
   (when (one-window-p)
     (split-window-right)))
@@ -140,6 +146,9 @@
   (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
   (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
   (set-cursor-color "#40FF40"))
+
+(require 'simpc-asm-preview)
+(add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
 
 (global-hl-line-mode)
 (set-face-background 'hl-line "midnight blue")
