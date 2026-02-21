@@ -96,7 +96,7 @@
             (local-set-key (kbd "M-p") 'move-text-up)
             (local-set-key (kbd "M-n") 'move-text-down)))
 
-(rc/require 'rust-mode 'company)
+(rc/require 'rust-mode 'company 'markdown-mode)
 (global-company-mode)
 
 (put 'set-goal-column 'disabled nil)
