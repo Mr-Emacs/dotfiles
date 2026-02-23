@@ -10,6 +10,8 @@
    '("stdio.h" "stdlib.h" "string.h" "math.h" "pthread.h" "unistd.h"
      "dirent.h"))
  '(company-format-margin-function nil)
+ '(confirm-kill-emacs 'y-or-n-p)
+ '(confirm-kill-processes t)
  '(custom-safe-themes
    '("3d39093437469a0ae165c1813d454351b16e4534473f62bc6e3df41bb00ae558"
      "4115a475d5a37007a5eb2da427e76e5b92f4102d90a4a7fdaf5410c2ca7afa36"
@@ -60,7 +62,8 @@
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
  '(dired-listing-switches "-alh")
- '(display-line-numbers-type t)
+ '(display-line-numbers-current-absolute nil)
+ '(display-line-numbers-type 'visual)
  '(global-display-line-numbers-mode t)
  '(grep-command "grep -rn ")
  '(grep-find-command
@@ -75,7 +78,10 @@
  '(grep-use-null-filename-separator t)
  '(haskell-process-log t)
  '(line-number-mode nil)
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(company dash-functional ido-completing-read+ magit markdown-mode
+             move-text multiple-cursors powershell rust-mode smex
+             sml-mode))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
