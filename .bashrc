@@ -5,8 +5,7 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-BLUE='\e[0;34m'
-WHITE='\[\e[97m\]'
-RESET='\[\e[0m\]'
-cwd="\W"
-PS1="${WHITE}[\h${BLUE}@\u ${WHITE}${cwd}] ${WHITE}\\$ ${RESET}"
+#export PS1='\u@\h:\w\$ '
+export PS1='\[\e[32m\]\u@\h\[\e[34m\]:\w\[\e[0m\]\$ '
+. "$HOME/.cargo/env"
+export PATH="$HOME/.cargo/bin:$PATH"
