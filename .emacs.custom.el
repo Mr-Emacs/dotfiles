@@ -63,8 +63,8 @@
      default))
  '(dired-listing-switches "-alh")
  '(display-line-numbers-current-absolute nil)
- '(display-line-numbers-type 'visual)
- '(global-display-line-numbers-mode t)
+ '(display-line-numbers-type t)
+ '(global-display-line-numbers-mode nil)
  '(grep-command "grep -rn ")
  '(grep-find-command
    '("find . -type f -exec grep --color=auto -nH --null -e  \\{\\} +"
