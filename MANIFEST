@@ -3,6 +3,6 @@
 .emacs.rc|symlink|
 .emacs.custom.el|symlink|
 .emacs.snippet|symlink|
-.bashrc|symlink|
-nvim|symlink|.config
+#.bashrc|symlink|
+#nvim|symlink|.config
 i3|symlink|.config
