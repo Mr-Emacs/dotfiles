@@ -146,6 +146,7 @@
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 (setq dired-mouse-drag-files t)
+(setq dired-recursive-deletes 'always)
 
 (defun post-load-stuff ()
   (interactive)
@@ -161,3 +162,36 @@
 (global-hl-line-mode)
 (set-face-background 'hl-line "midnight blue")
 (add-hook 'window-setup-hook 'post-load-stuff t)
+
+;; LSP
+(require 'eglot)
+(when (eq system-type 'windows-nt)
+  (let ((llvm-path
+         "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/Llvm/x64/bin"))
+    (add-to-list 'exec-path llvm-path)
+    (setenv "PATH"
+            (concat llvm-path ";" (getenv "PATH")))))
+(when (eq system-type 'windows-nt)
+  (let ((cargo-path (expand-file-name "~/.cargo/bin")))
+    (add-to-list 'exec-path cargo-path)
+    (setenv "PATH"
+            (concat cargo-path ";" (getenv "PATH")))))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(simpc-mode . ("clangd")))
+  (add-to-list 'eglot-server-programs
+               '(rust-mode  . ("rust-analyzer"))))
+
+(add-hook 'simpc-mode-hook #'eglot-ensure)
+(add-hook 'rust-mode-hook  #'eglot-ensure)
+
+(setq eglot-stay-out-of '(format))
+
+(setq eglot-autoshutdown t)
+(setq eglot-sync-connect 1)
+(setq eglot-events-buffer-size 0)
+
+(global-set-key (kbd "C-c l a") #'eglot-code-actions)
+(global-set-key (kbd "C-c l r") #'eglot-rename)
+(global-set-key (kbd "C-c l h") #'eldoc)
