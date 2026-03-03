@@ -12,7 +12,7 @@ exec /home/scorlov/scripts/ssh-source
 exec feh --bg-fill ~/dotfiles/wallpaper.jpg
 exec nm-applet
 exec --no-startup-id xsettingsd
-
+exec --no-startup-id dbus-launch --exit-with-session
 # Screen locking
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
@@ -26,7 +26,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 #tiling_drag modifier titlebar
 
-bindsym $mod+Return exec gnome-terminal
+#bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec st
 
 bindsym $mod+q kill
 
