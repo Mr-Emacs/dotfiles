@@ -78,7 +78,11 @@
  '(grep-use-null-filename-separator t)
  '(haskell-process-log t)
  '(line-number-mode nil)
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(company dash-functional gruber-darker-theme haskell-mode
+             haskell-tab-indent helm ido-completing-read+ magit
+             markdown-mode move-text multiple-cursors rust-mode smex
+             vterm))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
