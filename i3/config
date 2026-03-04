@@ -132,6 +132,7 @@ bindsym $mod+Shift+s exec "/home/penger/scripts/screenshot-select"
 bindsym $mod+Shift+o exec "/home/penger/scripts/master"
 bindsym $mod+b exec chromium
 bindsym $mod+z exec boomer
+bindsym $mod+n exec exec "/home/penger/.cargo/bin/neovide"
 
 focus_follows_mouse no
 hide_edge_borders both

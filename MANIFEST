@@ -5,5 +5,5 @@
 .emacs.snippet|symlink|
 .vimrc|symlink|
 #.bashrc|symlink|
-#nvim|symlink|.config
+nvim|symlink|.config
 i3|symlink|.config
