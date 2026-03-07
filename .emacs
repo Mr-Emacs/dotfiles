@@ -1,4 +1,4 @@
- ;; -*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; -*-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (package-initialize)
 (setq custom-file"~/.emacs.custom.el")
@@ -6,6 +6,7 @@
 (setq package-install-upgrade-built-in t)
 (setq-default word-wrap t)
 (setq compilation-scroll-output t)
+(setq eglot-extend-to-xref t)
 (setq scroll-step 3)
 (load-file "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
@@ -127,8 +128,53 @@
 
 (global-set-key (kbd "C-x w w") 'astyle-buffer)
 
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
-(set-face-attribute 'default t :font "Liberation Mono-11.5")
+(when (eq system-type 'gnu/linux)
+  (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-16"))
+    (set-face-attribute 'default t :font "Terminus (TTF)-16"))
+(when (eq system-type 'windows-nt)
+  ;; LSP
+
+  (with-eval-after-load 'eglot
+    (setq eglot-send-changes-idle-time 0.1))
+  (setq company-backends '(company-capf))
+  (put 'dired-find-alternate-file 'disabled nil)
+
+  (require 'eglot)
+  (when (eq system-type 'windows-nt)
+    (let ((llvm-path
+           "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/Llvm/x64/bin"))
+      (add-to-list 'exec-path llvm-path)
+      (setenv "PATH"
+              (concat llvm-path ";" (getenv "PATH")))))
+  (when (eq system-type 'windows-nt)
+    (let ((cargo-path (expand-file-name "~/.cargo/bin")))
+      (add-to-list 'exec-path cargo-path)
+      (setenv "PATH"
+              (concat cargo-path ";" (getenv "PATH")))))
+
+
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '(simpc-mode . ("clangd")))
+    (add-to-list 'eglot-server-programs
+                 '(rust-mode  . ("rust-analyzer"))))
+
+  (add-hook 'simpc-mode-hook #'eglot-ensure)
+  (add-hook 'rust-mode-hook  #'eglot-ensure)
+
+  (setq eglot-stay-out-of '(format))
+
+  (setq eglot-autoshutdown t)
+  (setq eglot-sync-connect 1)
+  (setq eglot-events-buffer-size 0)
+
+  (global-set-key (kbd "C-c l a") #'eglot-code-actions)
+  (global-set-key (kbd "C-c l r") #'eglot-rename)
+  (global-set-key (kbd "C-c l h") #'eldoc)
+
+  (add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+  (set-face-attribute 'default t :font "Liberation Mono-11.5"))
+
 (set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
 (set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
 (set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
@@ -163,35 +209,6 @@
 (set-face-background 'hl-line "midnight blue")
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
-;; LSP
-(require 'eglot)
-(when (eq system-type 'windows-nt)
-  (let ((llvm-path
-         "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/Llvm/x64/bin"))
-    (add-to-list 'exec-path llvm-path)
-    (setenv "PATH"
-            (concat llvm-path ";" (getenv "PATH")))))
-(when (eq system-type 'windows-nt)
-  (let ((cargo-path (expand-file-name "~/.cargo/bin")))
-    (add-to-list 'exec-path cargo-path)
-    (setenv "PATH"
-            (concat cargo-path ";" (getenv "PATH")))))
 
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(simpc-mode . ("clangd")))
-  (add-to-list 'eglot-server-programs
-               '(rust-mode  . ("rust-analyzer"))))
-
-(add-hook 'simpc-mode-hook #'eglot-ensure)
-(add-hook 'rust-mode-hook  #'eglot-ensure)
-
-(setq eglot-stay-out-of '(format))
-
-(setq eglot-autoshutdown t)
-(setq eglot-sync-connect 1)
-(setq eglot-events-buffer-size 0)
-
-(global-set-key (kbd "C-c l a") #'eglot-code-actions)
-(global-set-key (kbd "C-c l r") #'eglot-rename)
-(global-set-key (kbd "C-c l h") #'eldoc)
+(rc/require 'yasnippet)
+(yas-global-mode 1)

@@ -17,4 +17,10 @@ set iminsert=0
 set imsearch=0
 set autoindent
 set autochdir
-"#colorscheme habamax
+colorscheme habamax
+se foldmethod=manual
+" Use default terminal colors
+highlight Normal cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight NonText cterm=NONE ctermbg=NONE
+highlight LineNr cterm=NONE ctermbg=NONE
+highlight StatusLine cterm=NONE ctermbg=NONE

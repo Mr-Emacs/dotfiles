@@ -82,7 +82,7 @@
    '(company dash-functional gruber-darker-theme haskell-mode
              haskell-tab-indent helm ido-completing-read+ magit
              markdown-mode move-text multiple-cursors rust-mode smex
-             vterm))
+             sml-mode vterm yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

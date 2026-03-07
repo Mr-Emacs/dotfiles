@@ -1,0 +1,87 @@
+* {
+    font-family: "Terminus (TTF)", monospace;
+    font-size: 14px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: #181818;
+    color: #c5c8c6;
+    border-top: 1px solid #181818;
+}
+
+/* Workspaces */
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    margin: 0;
+    padding: 0 2px;
+    min-width: 18px;
+    background: transparent;
+    color: #666666;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background: #285577;
+    color: #ffffff;
+    border-bottom: 2px solid #4a9ac4;
+}
+
+#workspaces button.urgent {
+    background: #900000;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: #333333;
+    color: #cccccc;
+}
+
+/* Submap indicator (e.g. resize mode) */
+#submap {
+    background: #900000;
+    color: #ffffff;
+    padding: 0 8px;
+}
+
+/* All right-side modules */
+#cpu,
+#memory,
+#disk,
+#network,
+#battery,
+#clock,
+#tray {
+    padding: 0 6px;
+    color: #c5c8c6;
+    border-left: 1px solid #333333;
+}
+
+/* Alternate shading — classic i3bar style */
+#cpu        { background: #181818; }
+#memory     { background: #0a0a0a; }
+#disk       { background: #181818; }
+#network    { background: #0a0a0a; }
+#battery    { background: #181818; }
+
+#battery.warning  { color: #e5c07b; }
+#battery.critical { color: #e06c75; }
+#battery.charging { color: #98c379; }
+
+#clock {
+    background: #285577;
+    color: #ffffff;
+}
+
+#tray {
+    background: #0a0a0a;
+    border-left: 1px solid #333333;
+}

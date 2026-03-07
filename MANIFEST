@@ -7,3 +7,6 @@
 #.bashrc|symlink|
 nvim|symlink|.config
 i3|symlink|.config
+hypr|symlink|.config
+kitty|symlink|.config
+waybar|symlink|.config
