@@ -79,10 +79,10 @@
  '(haskell-process-log t)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(company dash-functional gruber-darker-theme haskell-mode
-             haskell-tab-indent helm ido-completing-read+ magit
-             markdown-mode move-text multiple-cursors rust-mode smex
-             sml-mode vterm yasnippet))
+   '(company dash-functional exec-path-from-shell gruber-darker-theme
+             haskell-mode haskell-tab-indent helm ido-completing-read+
+             magit markdown-mode move-text multiple-cursors rust-mode
+             smex sml-mode vterm yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

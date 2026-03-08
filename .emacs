@@ -209,6 +209,11 @@
 (set-face-background 'hl-line "midnight blue")
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
+(rc/require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+(when (memq window-system '(mac ns x))
+  (require 'exec-path-from-shell)
+  (exec-path-from-shell-initialize))
 
 (rc/require 'yasnippet)
 (yas-global-mode 1)

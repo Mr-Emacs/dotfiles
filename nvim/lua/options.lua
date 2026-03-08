@@ -29,8 +29,8 @@ vim.opt.splitright = true
 vim.opt.autochdir = true
 
 if vim.g.neovide then
-    vim.o.guifont = "Terminess Nerd Font Mono:h16"
-    --vim.o.guifont = "Terminus (TTF):h16"
+    --vim.o.guifont = "Terminess Nerd Font Mono:h16"
+    vim.o.guifont = "Iosevka Nerd Font:h18"
     vim.cmd('colorscheme rose-pine-main')
 else
     vim.cmd('colorscheme tokyonight')

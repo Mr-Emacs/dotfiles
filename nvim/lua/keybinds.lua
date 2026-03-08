@@ -13,7 +13,8 @@ end
 
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>o', ':Ex<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>o', ':Yazi<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>o', ':Ex<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true, silent = true })

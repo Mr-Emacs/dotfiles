@@ -62,6 +62,7 @@ PLUGINS=(
     "NeogitOrg/neogit"
     "esmuellert/codediff.nvim"
     "rose-pine/neovim"
+    "mikavilpas/yazi.nvim"
 )
 
 if [[ $# -eq 0 ]]; then
