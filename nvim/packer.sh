@@ -58,6 +58,10 @@ PLUGINS=(
     "vague-theme/vague.nvim"
     "hrsh7th/cmp-nvim-lsp"
     "folke/tokyonight.nvim"
+    "ej-shafran/compile-mode.nvim"
+    "NeogitOrg/neogit"
+    "esmuellert/codediff.nvim"
+    "rose-pine/neovim"
 )
 
 if [[ $# -eq 0 ]]; then

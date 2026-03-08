@@ -2,8 +2,8 @@ vim.opt.number = true
 vim.opt.wrap = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 
@@ -29,6 +29,9 @@ vim.opt.splitright = true
 vim.opt.autochdir = true
 
 if vim.g.neovide then
-    vim.o.guifont = "Liberation Mono:h16"
-    -- vim.cmd [[ autocmd VimEnter * cd /home/sc/Programming ]]
+    vim.o.guifont = "JetBrains Mono:h16"
+    --vim.o.guifont = "Terminus (TTF):h16"
+    vim.cmd('colorscheme rose-pine-main')
+else
+    vim.cmd('colorscheme tokyonight')
 end
