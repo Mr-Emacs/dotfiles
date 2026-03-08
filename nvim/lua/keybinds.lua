@@ -47,6 +47,7 @@ vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tt', ':VSplitTerminal<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>t', ':HSplitTerminal<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
 vim.keymap.set("n", "<leader><leader>c", ":Run")
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix" })
 vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { desc = "Prev quickfix" })

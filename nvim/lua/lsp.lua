@@ -36,16 +36,3 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
--- show diagnostic popup after 400ms
-vim.o.updatetime = 400
-
-vim.api.nvim_create_autocmd("CursorHold", {
-    callback = function()
-        vim.diagnostic.open_float(nil, {
-            focusable = false,
-            border = "single",
-            source = "if_many",
-            scope = "cursor",
-        })
-    end
-})
