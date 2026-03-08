@@ -1,5 +1,5 @@
 * {
-    font-family: "Terminus (TTF)", monospace;
+    font-family: "Terminus (TTF)", "JetBrainsMono Nerd Font", monospace;
     font-size: 14px;
     min-height: 0;
     border: none;
@@ -84,4 +84,8 @@ window#waybar {
 #tray {
     background: #0a0a0a;
     border-left: 1px solid #333333;
+}
+#pulseaudio {
+    margin-left: 6px;
+    padding-right: 8px;
 }

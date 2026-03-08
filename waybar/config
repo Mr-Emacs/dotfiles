@@ -1,13 +1,13 @@
 {
     "layer": "bottom",
     "position": "bottom",
-    "height": 20,
+    "height": 21,
     "spacing": 0,
     "exclusive": true,
 
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-center": [],
-    "modules-right": ["cpu", "memory", "disk", "network", "battery", "clock", "tray"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["cpu", "memory", "disk", "network", "battery", "clock", "pulseaudio", "tray"],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -46,13 +46,24 @@
         "tooltip": false
     },
 
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "tooltip": false,
+        "on-click": "pavucontrol"
+    },
+
     "battery": {
         "interval": 30,
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "BAT: {capacity}% {status}",
+        "format": "BAT: {capacity}%",
         "format-charging": "BAT: {capacity}% CHR",
         "format-full": "BAT: full",
         "tooltip": false
@@ -64,6 +75,11 @@
         "tooltip": false
     },
 
+    "hyprland/window": {
+        "format": "{class}: {title}",
+        "max-length": 80,
+        "tooltip": false
+    },
     "tray": {
         "spacing": 6
     }
