@@ -1,3 +1,4 @@
+
 vim.g.mapleader = " "
 
 vim.g.neovide_scale_factor = vim.g.neovide_scale_factor or 1.0
@@ -11,10 +12,10 @@ if vim.g.neovide then
     vim.api.nvim_set_keymap('v', '<C-->', ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { noremap = true, silent = true })
 end
 
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>o', ':Yazi<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>o', ':Ex<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>w', ':w!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>q', ':q!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>o', ':Oil<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gg', ':Neogit<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true, silent = true })
@@ -27,7 +28,6 @@ vim.api.nvim_set_keymap('n', '<leader>pf', ':Telescope find_files<CR>', { norema
 vim.api.nvim_set_keymap('n', '<leader>bb', ':Telescope buffers<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>pg', ':Telescope git_files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ps', ':Telescope live_grep<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gg', ':Neogit<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
@@ -48,9 +48,16 @@ vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tt', ':VSplitTerminal<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>t', ':HSplitTerminal<CR>', { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
-vim.keymap.set("n", "<leader><leader>c", ":Run")
-vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix" })
-vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { desc = "Prev quickfix" })
-vim.keymap.set("n", "<leader>qo", "<cmd>copen<CR>")
-vim.keymap.set("n", "<leader>qc", "<cmd>cclose<CR>")
+
+vim.keymap.set('n', '<C-d>', "mz\"ayyP`zj", { noremap = true, silent = true })
+vim.keymap.set('n', '<C-S-d>', "mz\"ayyP`z", { noremap = true, silent = true })
+-- Better terminal navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+
+vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)

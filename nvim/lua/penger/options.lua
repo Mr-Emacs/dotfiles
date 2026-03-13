@@ -27,15 +27,22 @@ vim.opt.guicursor = ""
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.autochdir = true
+vim.opt.showtabline = 2
+vim.opt.swapfile = false
 
 if vim.g.neovide then
-    --vim.o.guifont = "Terminess Nerd Font Mono:h16"
-    vim.o.guifont = "Iosevka Nerd Font:h18"
-    vim.cmd('colorscheme rose-pine-main')
-else
-    vim.cmd('colorscheme tokyonight')
+    local default_font = "JetBrainsMono_Nerd_Font:h11"
+    local focus_font = "JetBrainsMono_Nerd_Font:h18"
+    local focus_mode = false
+
+    vim.o.guifont = default_font
+    vim.opt.guicursor = "n-v-c:block,i:ver25"
+    vim.cmd [[ autocmd VimEnter * cd C:/Programming ]]
+
+    vim.api.nvim_create_user_command("EnterFocusMode", function()
+        focus_mode = not focus_mode
+        vim.o.guifont = focus_mode and focus_font or default_font
+    end, {})
 end
-vim.g.compile_mode = {
-    input_word_completion = true,
-    bang_expansion = true,
-}
+
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#00008B", fg = "none", bold = false, underline = false })
