@@ -37,7 +37,6 @@ if vim.g.neovide then
 
     vim.o.guifont = default_font
     vim.opt.guicursor = "n-v-c:block,i:ver25"
-    vim.cmd [[ autocmd VimEnter * cd C:/Programming ]]
 
     vim.api.nvim_create_user_command("EnterFocusMode", function()
         focus_mode = not focus_mode
