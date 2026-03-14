@@ -156,12 +156,8 @@
 
 (global-set-key (kbd "C-x w w") 'astyle-buffer)
 
-(when (eq system-type 'gnu/linux)
-  (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-16"))
-    (set-face-attribute 'default t :font "Terminus (TTF)-16"))
-(when (eq system-type 'windows-nt)
-  (add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
-  (set-face-attribute 'default t :font "Liberation Mono-11.5"))
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+(set-face-attribute 'default t :font "Liberation Mono-11.5")
 
 (set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
 (set-face-attribute 'font-lock-comment-face nil :foreground "gray50")

@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 
 vim.g.neovide_scale_factor = vim.g.neovide_scale_factor or 1.0
@@ -46,8 +45,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>", { silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ss', ':StripTrailingWhitespace<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>tt', ':VSplitTerminal<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>t', ':HSplitTerminal<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<C-d>', "mz\"ayyP`zj", { noremap = true, silent = true })
 vim.keymap.set('n', '<C-S-d>', "mz\"ayyP`z", { noremap = true, silent = true })
@@ -57,7 +54,15 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
-vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", { noremap = true, silent = true })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", { noremap = true, silent = true })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", { noremap = true, silent = true })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<M-n>", ":cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<M-p>", ":cprev<CR>", { desc = "Previous quickfix item" })
+
+vim.keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix" })
+vim.keymap.set("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix" })
+
+vim.keymap.set("n", "<leader>pp", ":CgSearch<CR>", { desc = "Open search function" })
