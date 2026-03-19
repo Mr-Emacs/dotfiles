@@ -141,6 +141,7 @@
 (require 'fasm-mode)
 
 (require 'simpc-mode)
+(require 'bufo-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 (defun astyle-buffer ()
@@ -194,9 +195,17 @@
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
 (defun setup-msvc ()
-  (let ((msvc-path "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64"))
-    (add-to-list 'exec-path msvc-path)
-    (setenv "PATH" (concat msvc-path ";" (getenv "PATH")))))
+  (when (eq system-type 'windows-nt)
+    (let* ((vcvarsall "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/Build/vcvarsall.bat")
+           (output (shell-command-to-string
+                    (concat "cmd /c \"\"" vcvarsall "\" x64 && set\""))))
+      (dolist (line (split-string output "\n"))
+        (when (string-match "^\\([^=]+\\)=\\(.*\\)$" line)
+          (let ((var (match-string 1 line))
+                (val (match-string 2 line)))
+            (setenv var val)
+            (when (string= var "PATH")
+              (setq exec-path (split-string val ";")))))))))
 
 (setup-msvc)
 
@@ -206,6 +215,3 @@
 (when (memq window-system '(mac ns x))
   (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize)))
-
-(rc/require 'yasnippet)
-(yas-global-mode 1)

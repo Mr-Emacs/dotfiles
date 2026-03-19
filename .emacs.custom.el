@@ -13,7 +13,8 @@
  '(confirm-kill-emacs 'y-or-n-p)
  '(confirm-kill-processes t)
  '(custom-safe-themes
-   '("3d39093437469a0ae165c1813d454351b16e4534473f62bc6e3df41bb00ae558"
+   '("fd26b59243a839321c715e06e72e5dc274f8120af9d4ce3c5bbd5fbfccd17068"
+     "3d39093437469a0ae165c1813d454351b16e4534473f62bc6e3df41bb00ae558"
      "4115a475d5a37007a5eb2da427e76e5b92f4102d90a4a7fdaf5410c2ca7afa36"
      "f693c100eed9a8dc13f020997530737c67581fa524da6fb3ca7e9afc48fa485d"
      "117f7dfb273bb39b83a228018ccffeb85ba0983c5d4a63155a5a48ad7f7c7c86"
@@ -89,4 +90,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "#2a2e38" :underline nil)))))
+ '(hl-line ((t (:background "#2a2e38" :underline nil))))
+ '(whitespace-space ((t (:foreground "#444444" :background unspecified)))))
