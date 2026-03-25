@@ -25,27 +25,27 @@
   (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
-(add-hook 'tuareg-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
-(add-hook 'java-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'lua-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'scala-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'python-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'erlang-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'asm-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'fasm-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'go-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'nim-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'yaml-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'porth-mode-hook 'rc/set-up-whitespace-handling)
 (custom-set-faces
  '(whitespace-space ((t (:foreground "#444444" :background unspecified)))))
+
+(load-theme 'wheatgrass)
+(rc/require 'smex 'ido-completing-read+)
+(require 'ido-completing-read+)
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
 (setq simpc-asm-preview-intel-syntax t)
 (setq simpc-asm-preview-strip-directives t)
@@ -66,20 +66,6 @@
   (require 'vterm-mux)
   (require 'vterm-toggle)
   (global-set-key (kbd "C-c g") 'grep))
-
-(when (eq system-type 'windows-nt)
-  (rc/require 'powershell)
-  (global-set-key (kbd "C-c e") 'shell))
-
-(rc/require 'smex 'ido-completing-read+)
-(require 'ido-completing-read+)
-(ido-mode 1)
-(ido-everywhere 1)
-(ido-ubiquitous-mode 1)
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "C-x M-x") 'execute-extended-command)
-
 
 (setq fixme-modes '(simpc-mode emacs-lisp-mode))
 
@@ -109,8 +95,6 @@
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 (setq lock-file-name-transforms `((".*" "~/.emacs.d/tmp-files/" t)))
 
-(require 'aoxim-mode)
-
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->")         'mc/mark-next-like-this)
@@ -138,10 +122,11 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+(require 'aoxim-mode)
 (require 'fasm-mode)
-
 (require 'simpc-mode)
 (require 'bufo-mode)
+
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 (defun astyle-buffer ()
@@ -157,18 +142,8 @@
 
 (global-set-key (kbd "C-x w w") 'astyle-buffer)
 
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
-(set-face-attribute 'default t :font "Liberation Mono-11.5")
-
-(set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
-(set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
-(set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
-(set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
-(set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
-(set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
-(set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
-(set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
-(set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3")
+(add-to-list 'default-frame-alist '(font . "Iosevka-11.5"))
+(set-face-attribute 'default t :font "Iosevka-11.5")
 
 ;;; dired
 (require 'dired-x)
@@ -181,22 +156,20 @@
 
 (defun post-load-stuff ()
   (interactive)
-  (set-foreground-color "burlywood3")
-  (set-background-color "#161616")
   (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
-  (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
-  (set-cursor-color "#40FF40"))
+  (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1))))
+
+(post-load-stuff)
 
 (require 'simpc-asm-preview)
 (add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
 
 (global-hl-line-mode)
-(set-face-background 'hl-line "midnight blue")
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
 (defun setup-msvc ()
   (when (eq system-type 'windows-nt)
-    (let* ((vcvarsall "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/Build/vcvarsall.bat")
+    (let* ((vcvarsall "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat")
            (output (shell-command-to-string
                     (concat "cmd /c \"\"" vcvarsall "\" x64 && set\""))))
       (dolist (line (split-string output "\n"))

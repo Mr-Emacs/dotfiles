@@ -1,3 +1,9 @@
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+    return {
+        setup = function() end
+    }
+end
+
 local M = {}
 
 M._index = {}
