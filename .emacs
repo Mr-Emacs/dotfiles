@@ -37,7 +37,6 @@
 (custom-set-faces
  '(whitespace-space ((t (:foreground "#444444" :background unspecified)))))
 
-(load-theme 'wheatgrass)
 (rc/require 'smex 'ido-completing-read+)
 (require 'ido-completing-read+)
 (ido-mode 1)
@@ -51,6 +50,7 @@
 (setq simpc-asm-preview-strip-directives t)
 (setq simpc-asm-preview-flags '("-O0" "-std=c99"))
 (when (eq system-type 'windows-nt)
+  (load-theme 'wheatgrass)
   (setq simpc-asm-preview-compiler "clang.exe"))
 
 (defun my/split-window-on-startup ()
@@ -65,6 +65,7 @@
   (require 'vterm-buffer)
   (require 'vterm-mux)
   (require 'vterm-toggle)
+  (rc/require-theme 'gruber-darker)
   (global-set-key (kbd "C-c g") 'grep))
 
 (setq fixme-modes '(simpc-mode emacs-lisp-mode))
