@@ -26,6 +26,7 @@
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'storth-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
 (add-hook 'lua-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
@@ -53,11 +54,13 @@
   (load-theme 'wheatgrass)
   (setq simpc-asm-preview-compiler "clang.exe"))
 
+(when (eq system-type 'windows-nt)
 (defun my/split-window-on-startup ()
   (when (one-window-p)
     (split-window-right)))
+(add-hook 'emacs-startup-hook #'my/split-window-on-startup))
 
-(add-hook 'emacs-startup-hook #'my/split-window-on-startup)
+(require 'project-notes)
 
 (when (eq system-type 'gnu/linux)
   (require 'ssh-connect)
@@ -165,7 +168,7 @@
 (require 'simpc-asm-preview)
 (add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
 
-(global-hl-line-mode)
+(global-hl-line-mode -1)
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
 (defun setup-msvc ()
