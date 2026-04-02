@@ -2,11 +2,6 @@
 .emacs.local|symlink|
 .emacs.rc|symlink|
 .emacs.custom.el|symlink|
-.emacs.snippet|symlink|
 .vimrc|symlink|
-#.bashrc|symlink|
-nvim|symlink|.config
 i3|symlink|.config
-hypr|symlink|.config
-kitty|symlink|.config
-waybar|symlink|.config
+nvim|symlink|.config

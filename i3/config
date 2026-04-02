@@ -3,13 +3,13 @@
 
 set $mod Mod4
 
-font pango:Liberation Mono 10
+font pango:Iosevka 10
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id flameshot
 exec /home/scorlov/scripts/ssh-source
-exec feh --bg-fill ~/dotfiles/wallpaper.jpg
+exec feh --bg-fill ~/dotfiles/wallpaper.png
 exec nm-applet
 exec --no-startup-id xsettingsd
 exec --no-startup-id dbus-launch --exit-with-session
@@ -130,9 +130,8 @@ bindsym $mod+c exec emacs
 bindsym $mod+Shift+d exec focus-bin
 bindsym $mod+Shift+s exec "/home/penger/scripts/screenshot-select"
 bindsym $mod+Shift+o exec "/home/penger/scripts/master"
-bindsym $mod+b exec chromium
+bindsym $mod+b exec firefox
 bindsym $mod+z exec boomer
-bindsym $mod+n exec exec "/home/penger/.cargo/bin/neovide"
 
 focus_follows_mouse no
 hide_edge_borders both

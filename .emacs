@@ -28,12 +28,10 @@
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'storth-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
-(add-hook 'lua-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'python-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'asm-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'fasm-mode-hook 'rc/set-up-whitespace-handling)
 (custom-set-faces
  '(whitespace-space ((t (:foreground "#444444" :background unspecified)))))
@@ -47,6 +45,20 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
+(defun my/duplicate-line ()
+  "Duplicate the current line below, moving cursor to the new duplicated line."
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (let ((line (thing-at-point 'line t)))
+        (end-of-line)
+        (newline)
+        (insert (string-remove-suffix "\n" line))))
+    (forward-line 1)
+    (move-to-column col)))
+
+(global-set-key (kbd "C-,") 'my/duplicate-line)
+
 (setq simpc-asm-preview-intel-syntax t)
 (setq simpc-asm-preview-strip-directives t)
 (setq simpc-asm-preview-flags '("-O0" "-std=c99"))
@@ -54,11 +66,10 @@
   (load-theme 'wheatgrass)
   (setq simpc-asm-preview-compiler "clang.exe"))
 
-(when (eq system-type 'windows-nt)
 (defun my/split-window-on-startup ()
   (when (one-window-p)
     (split-window-right)))
-(add-hook 'emacs-startup-hook #'my/split-window-on-startup))
+(add-hook 'emacs-startup-hook #'my/split-window-on-startup)
 
 (require 'project-notes)
 
@@ -144,8 +155,6 @@
      t)
     (goto-line saved-line-number)))
 
-(global-set-key (kbd "C-x w w") 'astyle-buffer)
-
 (add-to-list 'default-frame-alist '(font . "Iosevka-11.5"))
 (set-face-attribute 'default t :font "Iosevka-11.5")
 
@@ -163,12 +172,8 @@
   (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
   (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1))))
 
-(post-load-stuff)
-
 (require 'simpc-asm-preview)
 (add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
-
-(global-hl-line-mode -1)
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
 (defun setup-msvc ()
