@@ -10,7 +10,6 @@
 (setq eglot-extend-to-xref t)
 (setq scroll-step 3)
 (load-file "~/.emacs.rc/rc.el")
-(load "~/.emacs.rc/misc-rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
 (setq default-directory
@@ -58,12 +57,12 @@
     (move-to-column col)))
 
 (global-set-key (kbd "C-,") 'my/duplicate-line)
+(load-theme 'wheatgrass)
 
 (setq simpc-asm-preview-intel-syntax t)
 (setq simpc-asm-preview-strip-directives t)
 (setq simpc-asm-preview-flags '("-O0" "-std=c99"))
 (when (eq system-type 'windows-nt)
-  (load-theme 'wheatgrass)
   (setq simpc-asm-preview-compiler "clang.exe"))
 
 (defun my/split-window-on-startup ()
@@ -79,7 +78,7 @@
   (require 'vterm-buffer)
   (require 'vterm-mux)
   (require 'vterm-toggle)
-  (rc/require-theme 'gruber-darker)
+  ;; (rc/require-theme 'gruber-darker)
   (global-set-key (kbd "C-c g") 'grep))
 
 (setq fixme-modes '(simpc-mode emacs-lisp-mode))
