@@ -4,4 +4,4 @@
 .emacs.custom.el|symlink|
 .vimrc|symlink|
 i3|symlink|.config
-nvim|symlink|.config
+i3status|symlink|.config
