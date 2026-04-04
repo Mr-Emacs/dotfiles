@@ -62,6 +62,7 @@
      "8a9fef3a6778ad6e0cae765d1ebd4805c58868712ffda1da02b5d70ac798edce"
      "5cf12a54172956d44e1e44495cea9705468489e8b569a1d1ad301c2bca8a5503"
      default))
+ '(dired-free-space nil)
  '(dired-listing-switches "-alh")
  '(display-line-numbers-current-absolute nil)
  '(display-line-numbers-type t)
@@ -81,9 +82,9 @@
  '(line-number-mode nil)
  '(package-selected-packages
    '(cmake-mode company dash-functional exec-path-from-shell
-                gruber-darker-theme helm ido-completing-read+ magit
-                markdown-mode move-text multiple-cursors rust-mode
-                smex swift-mode vterm yaml-mode))
+		gruber-darker-theme helm ido-completing-read+ magit
+		markdown-mode move-text multiple-cursors rust-mode
+		smex swift-mode vterm yaml-mode))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

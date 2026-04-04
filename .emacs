@@ -9,6 +9,8 @@
 (setq whitespace-style '(face tabs tab-mark spaces space-mark))
 (setq eglot-extend-to-xref t)
 (setq scroll-step 3)
+(setq todo-file "todo.txt")
+(setq log-file "log.txt")
 (load-file "~/.emacs.rc/rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
@@ -57,7 +59,10 @@
     (move-to-column col)))
 
 (global-set-key (kbd "C-,") 'my/duplicate-line)
-(load-theme 'wheatgrass)
+
+(defun load-todo ()
+  (interactive)
+  (find-file todo-file))
 
 (setq simpc-asm-preview-intel-syntax t)
 (setq simpc-asm-preview-strip-directives t)
@@ -74,14 +79,9 @@
 
 (when (eq system-type 'gnu/linux)
   (require 'ssh-connect)
-  (rc/require 'helm 'vterm)
-  (require 'vterm-buffer)
-  (require 'vterm-mux)
-  (require 'vterm-toggle)
-  ;; (rc/require-theme 'gruber-darker)
-  (global-set-key (kbd "C-c g") 'grep))
+  (rc/require 'helm))
 
-(setq fixme-modes '(simpc-mode emacs-lisp-mode))
+(setq fixme-modes '(simpc-mode emacs-lisp-mode rust-mode))
 
 (make-face 'font-lock-fixme-face)
 (make-face 'font-lock-note-face)
@@ -96,6 +96,7 @@
       fixme-modes)
 
 (setq global-hl-line-sticky-flag t)
+(global-hl-line-mode)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
@@ -154,8 +155,17 @@
      t)
     (goto-line saved-line-number)))
 
-(add-to-list 'default-frame-alist '(font . "Iosevka-11.5"))
-(set-face-attribute 'default t :font "Iosevka-11.5")
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+(set-face-attribute 'default t :font "Liberation Mono-11.5")
+(set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
+(set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
+(set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
+(set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
+(set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
+(set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
+(set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
+(set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
+(set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3")
 
 ;;; dired
 (require 'dired-x)
@@ -168,6 +178,10 @@
 
 (defun post-load-stuff ()
   (interactive)
+  (set-foreground-color "burlywood3")
+  (set-background-color "#161616")
+  (set-face-background 'hl-line "midnight blue")
+  (set-cursor-color "#40FF40")
   (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
   (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1))))
 
@@ -187,6 +201,12 @@
             (setenv var val)
             (when (string= var "PATH")
               (setq exec-path (split-string val ";")))))))))
+
+(defun casey-ediff-setup-windows (buffer-A buffer-B buffer-C control-buffer)
+  (ediff-setup-windows-plain buffer-A buffer-B buffer-C control-buffer))
+
+(setq ediff-window-setup-function 'casey-ediff-setup-windows)
+(setq ediff-split-window-function 'split-window-horizontally)
 
 (setup-msvc)
 

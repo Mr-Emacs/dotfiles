@@ -16,7 +16,7 @@ set modeline
 set iminsert=0
 set imsearch=0
 set autoindent
-colorscheme habamax
+colorscheme desert
 autocmd BufEnter * silent! lcd %:p:h
 set foldmethod=manual
 
