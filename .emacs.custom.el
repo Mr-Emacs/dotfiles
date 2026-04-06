@@ -80,11 +80,7 @@
  '(grep-use-null-filename-separator t)
  '(haskell-process-log t)
  '(line-number-mode nil)
- '(package-selected-packages
-   '(cmake-mode company dash-functional exec-path-from-shell
-		gruber-darker-theme helm ido-completing-read+ magit
-		markdown-mode move-text multiple-cursors rust-mode
-		smex swift-mode vterm yaml-mode))
+ '(package-selected-packages nil)
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
