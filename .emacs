@@ -216,3 +216,7 @@
   (when (memq window-system '(mac ns x))
     (require 'exec-path-from-shell)
     (exec-path-from-shell-initialize)))
+
+(require 'ansi-color)
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+(add-hook 'shell-filter-hook 'ansi-color-compilation-filter)
