@@ -3,7 +3,6 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set guifont=Iosevka\ 20
 set guioptions-=m
 set guioptions-=T
 set noesckeys
@@ -16,11 +15,6 @@ set modeline
 set iminsert=0
 set imsearch=0
 set autoindent
-colorscheme desert
 autocmd BufEnter * silent! lcd %:p:h
 set foldmethod=manual
-
-highlight Normal     cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight NonText    cterm=NONE ctermbg=NONE
-highlight LineNr     cterm=NONE ctermbg=NONE
-highlight StatusLine cterm=NONE ctermbg=NONE
+set noswapfile

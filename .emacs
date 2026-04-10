@@ -23,12 +23,14 @@
 
 (defun rc/set-up-whitespace-handling ()
   (interactive)
-  (whitespace-mode 1)
+  (whitespace-mode)
+  (visual-line-mode)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'storth-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
+(add-hook 'org-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
@@ -155,8 +157,6 @@
      t)
     (goto-line saved-line-number)))
 
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
-(set-face-attribute 'default t :font "Liberation Mono-11.5")
 (set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
 (set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
 (set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
@@ -180,8 +180,8 @@
   (interactive)
   (set-foreground-color "burlywood3")
   (set-background-color "#161616")
-  (set-face-background 'hl-line "midnight blue")
   (set-cursor-color "#40FF40")
+  (set-face-background 'hl-line "midnight blue")
   (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
   (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1))))
 
@@ -202,10 +202,10 @@
             (when (string= var "PATH")
               (setq exec-path (split-string val ";")))))))))
 
-(defun casey-ediff-setup-windows (buffer-A buffer-B buffer-C control-buffer)
+(defun ediff-setup-windows (buffer-A buffer-B buffer-C control-buffer)
   (ediff-setup-windows-plain buffer-A buffer-B buffer-C control-buffer))
 
-(setq ediff-window-setup-function 'casey-ediff-setup-windows)
+(setq ediff-window-setup-function 'ediff-setup-windows)
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (setup-msvc)
@@ -220,3 +220,16 @@
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 (add-hook 'shell-filter-hook 'ansi-color-compilation-filter)
+
+(rc/require 'org-present)
+(require 'org)
+(with-eval-after-load 'org
+  (setq org-src-lang-modes
+        (cons '("c" . simpc)
+              (assq-delete-all "c" org-src-lang-modes))))
+(setq org-edit-src-content-indentation 0)
+
+(setq org-use-fast-todo-selection t)
+(setq org-return-follows-link t)
+(setq org-mouse-1-follows-link t)
+(define-key org-mode-map [mouse-1] #'org-toggle-checkbox)
