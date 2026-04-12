@@ -1,30 +1,16 @@
 # i3 config
 
+font pango:Comic Shanns Mono 12
+
 set $mod Mod4
 
-font pango:Iosevka 10
+exec feh --bg-fill ~/dotfiles/hacker.jpg
 
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id flameshot
-exec /home/scorlov/scripts/ssh-source
-exec feh --bg-fill ~/dotfiles/wallpaper.png
-exec nm-applet
-exec --no-startup-id xsettingsd
-exec --no-startup-id dbus-launch --exit-with-session
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-for_window [class="Xephyr"] floating enable,fullscreen enable
-
-# Volume controls
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym $mod+Return exec st
 
 floating_modifier $mod
 
-bindsym $mod+Return exec st
+focus_follows_mouse yes
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run
 
@@ -108,7 +94,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec pkill Xephyr
 
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -127,19 +113,13 @@ bindsym $mod+r mode "resize"
 
 bar {
     status_command i3status
-    position bottom
+    position top
 }
-
-bindsym $mod+c exec emacs
-bindsym $mod+Shift+d exec focus-bin
-bindsym $mod+Shift+s exec "/home/penger/scripts/screenshot-select"
-bindsym $mod+Shift+o exec "/home/penger/scripts/master"
-bindsym $mod+b exec firefox
-bindsym $mod+z exec boomer
 
 focus_follows_mouse no
 hide_edge_borders both
 bindsym $mod+Tab workspace back_and_forth
 
-# Fake monitor controls
-bindsym $mod+Shift+F12 exec --no-startup-id ~/script/monitor
+bindsym $mod+c exec emacs
+bindsym $mod+b exec chromium
+bindsym $mod+z exec boomer

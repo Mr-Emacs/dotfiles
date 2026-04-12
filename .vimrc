@@ -11,7 +11,6 @@ set ignorecase
 set smartcase
 set incsearch
 set cinoptions=l1
-set modeline
 set iminsert=0
 set imsearch=0
 set autoindent
