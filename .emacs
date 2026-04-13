@@ -192,8 +192,9 @@
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
 (defun setup-msvc ()
+  (interactive)
   (when (eq system-type 'windows-nt)
-    (let* ((vcvarsall "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat")
+    (let* ((vcvarsall "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/Build/vcvarsall.bat")
            (output (shell-command-to-string
                     (concat "cmd /c \"\"" vcvarsall "\" x64 && set\""))))
       (dolist (line (split-string output "\n"))
