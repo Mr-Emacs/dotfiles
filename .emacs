@@ -93,7 +93,7 @@
 (mapc (lambda (mode)
         (font-lock-add-keywords
          mode
-         '(("\\<\\(TODO\\)" 1 'font-lock-fixme-face t)
+         '(("\\<\\(FIXME\\|TODO\\)" 1 'font-lock-fixme-face t)
            ("\\<\\(NOTE\\)" 1 'font-lock-note-face t))))
       fixme-modes)
 
@@ -219,6 +219,10 @@
   (when (memq window-system '(mac ns x))
     (require 'exec-path-from-shell)
     (exec-path-from-shell-initialize)))
+
+(when (eq system-type 'windows-nt)
+  (setq shell-file-name "powershell")
+  (setq shell-command-switch "-Command"))
 
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
