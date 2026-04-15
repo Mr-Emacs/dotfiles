@@ -81,7 +81,10 @@
  '(haskell-process-log t)
  '(inhibit-startup-screen t)
  '(line-number-mode nil)
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(company dash-functional helm ido-completing-read+ magit
+             markdown-mode move-text multiple-cursors org-present
+             rust-mode smex))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

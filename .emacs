@@ -5,12 +5,12 @@
 (load custom-file)
 (setq package-install-upgrade-built-in t)
 (setq-default word-wrap t)
-(setq compilation-scroll-output t)
 (setq whitespace-style '(face tabs tab-mark spaces space-mark))
 (setq-default indent-tabs-mode nil)
 (setq scroll-step 3)
 (setq todo-file "todo.txt")
 (setq log-file "log.txt")
+(setq note-file "note.txt")
 (load-file "~/.emacs.rc/rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
@@ -66,6 +66,10 @@
   (interactive)
   (find-file todo-file))
 
+(defun load-note ()
+  (interactive)
+  (find-file note-file))
+
 (setq simpc-asm-preview-intel-syntax t)
 (setq simpc-asm-preview-strip-directives t)
 (setq simpc-asm-preview-flags '("-O0" "-std=c99"))
@@ -79,10 +83,8 @@
 
 (require 'project-notes)
 
-(when (eq system-type 'gnu/linux)
-  (require 'ssh-connect)
-  (rc/require 'helm))
-
+(require 'ssh-connect)
+(rc/require 'helm)
 (setq fixme-modes '(simpc-mode emacs-lisp-mode rust-mode))
 
 (make-face 'font-lock-fixme-face)
@@ -240,3 +242,43 @@
 (setq org-return-follows-link t)
 (setq org-mouse-1-follows-link t)
 (define-key org-mode-map [mouse-1] #'org-toggle-checkbox)
+
+(defun insert-current-time ()
+  "Insert the current time at point."
+  (interactive)
+  (insert (format-time-string "%H:%M:%S")))
+
+(global-set-key (kbd "C-c t") 'insert-current-time)
+
+(defun generate-tags-windows ()
+  (interactive)
+  (shell-command
+   "cmd /c \"for /r . %f in (*.c *.h) do etags --append %f\""))
+(defun generate-tags-linux ()
+  (interactive)
+  (shell-command
+   "find . -name '*.c' -o -name '*.h' | etags -"))
+
+(defun generate-tags ()
+  (interactive)
+  (if (eq system-type 'windows-nt)
+      (generate-tags-windows)
+    (generate-tags-linux))
+  (message "TAGS generated in %s" default-directory))
+
+(require 'my-buffer)
+
+(defun refresh-path ()
+  (interactive)
+  (cond
+   ((eq system-type 'windows-nt)
+    (let ((path (getenv "PATH")))
+      (setq exec-path (split-string path ";"))
+      (message "exec-path refreshed from Windows PATH")))
+   (t
+    (let ((path (replace-regexp-in-string
+                 "\n" ""
+                 (shell-command-to-string "$SHELL --login -c 'echo $PATH'"))))
+      (setenv "PATH" path)
+      (setq exec-path (split-string path ":"))
+      (message "exec-path refreshed from shell PATH")))))
