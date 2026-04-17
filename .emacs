@@ -282,3 +282,7 @@
       (setenv "PATH" path)
       (setq exec-path (split-string path ":"))
       (message "exec-path refreshed from shell PATH")))))
+
+(defun insert-simpc-mode()
+  (interactive)
+  (insert "/* -*- mode: simpc -*- */"))

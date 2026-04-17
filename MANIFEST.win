@@ -4,3 +4,4 @@
 .emacs.custom.el|symlink|APPDATA
 .emacs.snippet|symlink|APPDATA
 .vimrc|symlink|
+nvim|symlink|APPDATA\Local
