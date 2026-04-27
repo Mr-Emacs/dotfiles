@@ -27,6 +27,11 @@
   (visual-line-mode)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
+(defun my/split-window-on-startup ()
+  (when (one-window-p)
+    (split-window-right)))
+(add-hook 'emacs-startup-hook #'my/split-window-on-startup)
+
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'storth-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
@@ -75,13 +80,6 @@
 (setq simpc-asm-preview-flags '("-O0" "-std=c99"))
 (when (eq system-type 'windows-nt)
   (setq simpc-asm-preview-compiler "clang.exe"))
-
-(defun my/split-window-on-startup ()
-  (when (one-window-p)
-    (split-window-right)))
-(add-hook 'emacs-startup-hook #'my/split-window-on-startup)
-
-(require 'project-notes)
 
 (require 'ssh-connect)
 (rc/require 'helm)
@@ -266,7 +264,15 @@
     (generate-tags-linux))
   (message "TAGS generated in %s" default-directory))
 
-(require 'my-buffer)
+(add-to-list 'display-buffer-alist
+             '("\\*compilation\\*"
+               (display-buffer-at-bottom)
+               (inhibit-same-window . t)))
+
+(add-to-list 'display-buffer-alist
+             '("\\*Async Shell Command\\*"
+               (display-buffer-at-bottom)
+               (inhibit-same-window . t)))
 
 (defun refresh-path ()
   (interactive)

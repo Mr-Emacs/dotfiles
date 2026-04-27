@@ -17,3 +17,6 @@ set autoindent
 autocmd BufEnter * silent! lcd %:p:h
 set foldmethod=manual
 set noswapfile
+set cursorline
+
+colorscheme koehler
