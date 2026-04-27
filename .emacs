@@ -11,6 +11,7 @@
 (setq todo-file "todo.txt")
 (setq log-file "log.txt")
 (setq note-file "note.txt")
+(setq split-width-threshold 0)
 (load-file "~/.emacs.rc/rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
@@ -103,8 +104,7 @@
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (which-key-mode 0)
-(global-display-line-numbers-mode -1)
-
+(global-display-line-numbers-mode 0)
 (column-number-mode)
 (electric-pair-mode)
 

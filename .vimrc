@@ -19,4 +19,6 @@ set foldmethod=manual
 set noswapfile
 set cursorline
 
-colorscheme koehler
+colorscheme hmh
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE

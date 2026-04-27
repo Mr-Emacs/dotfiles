@@ -13,3 +13,15 @@ if vim.fn.isdirectory(programming_dir) == 1 then
 else
   vim.notify("Directory not found: " .. programming_dir, vim.log.levels.WARN)
 end
+
+local config_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h")
+vim.cmd("source " .. config_dir .. "/hmh.vim")
+
+vim.api.nvim_set_hl(0, "@variable",          { fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@variable.builtin",  { fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@variable.member",   { fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@variable.parameter",{ fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@property",          { fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@field",             { fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@lsp.type.operator",   { fg = "#DAB98F" })
+vim.api.nvim_set_hl(0, "@lsp.type.operator.c", { fg = "#DAB98F" })
