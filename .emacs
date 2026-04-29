@@ -11,16 +11,19 @@
 (setq todo-file "todo.txt")
 (setq log-file "log.txt")
 (setq note-file "note.txt")
-(setq split-width-threshold 0)
+(setq split-width-threshold nil)
 (load-file "~/.emacs.rc/rc.el")
 (add-to-list 'load-path "~/.emacs.local/")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.local/"))
-(setq default-directory
-      (cond
-       ((eq system-type 'gnu/linux) "~/Programming/")
-       ((eq system-type 'windows-nt)
-        "C:/Programming/")
-       (t "~/")))
+(setq display-buffer-base-action
+      '((display-buffer-reuse-window display-buffer-use-some-window)
+        (inhibit-same-window . t)))
+(setq magit-bury-buffer-function #'magit-restore-window-configuration)
+
+(add-to-list 'display-buffer-alist
+             '("\\*compilation\\*"
+               (display-buffer-reuse-window display-buffer-use-some-window)
+               (inhibit-same-window . nil)))
 
 (defun rc/set-up-whitespace-handling ()
   (interactive)
@@ -34,6 +37,8 @@
 (add-hook 'emacs-startup-hook #'my/split-window-on-startup)
 
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'storth-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
 (add-hook 'org-mode-hook 'rc/set-up-whitespace-handling)
@@ -55,7 +60,6 @@
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
 (defun my/duplicate-line ()
-  "Duplicate the current line below, moving cursor to the new duplicated line."
   (interactive)
   (let ((col (current-column)))
     (save-excursion
@@ -84,7 +88,7 @@
 
 (require 'ssh-connect)
 (rc/require 'helm)
-(setq fixme-modes '(simpc-mode emacs-lisp-mode rust-mode))
+(setq fixme-modes '(simpc-mode emacs-lisp-mode rust-mode c-mode c++-mode))
 
 (make-face 'font-lock-fixme-face)
 (make-face 'font-lock-note-face)
@@ -95,7 +99,7 @@
         (font-lock-add-keywords
          mode
          '(("\\<\\(FIXME\\|TODO\\)" 1 'font-lock-fixme-face t)
-           ("\\<\\(NOTE\\)" 1 'font-lock-note-face t))))
+           ("\\<\\(NOTE\\|TASK\\)" 1 'font-lock-note-face t))))
       fixme-modes)
 
 (setq global-hl-line-sticky-flag t)
@@ -143,8 +147,33 @@
 (require 'fasm-mode)
 (require 'simpc-mode)
 (require 'bufo-mode)
+(require 'issex)
 
-(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+(defun my/c-cpp-style ()
+  (setq-local c-basic-offset 4)
+  (setq-local tab-width 4)
+  (setq-local indent-tabs-mode nil)
+
+  (c-set-offset 'case-label '+)
+  (c-set-offset 'statement-case-intro '+)
+  (setq-local comment-start "// ")
+  (setq-local comment-end "")
+  (setq-local comment-multi-line t))
+
+(add-hook 'c-mode-hook #'my/c-cpp-style)
+(add-hook 'c++-mode-hook #'my/c-cpp-style)
+
+(defun my/cpp-company-setup ()
+  (setq-local company-backends
+              '((company-capf :with company-keywords)
+                (company-dabbrev-code :with company-files)
+                company-dabbrev))
+  (setq-local company-idle-delay 0.15)
+  (setq-local company-minimum-prefix-length 2))
+
+(add-hook 'c-mode-hook #'my/cpp-company-setup)
+(add-hook 'c++-mode-hook #'my/cpp-company-setup)
+;;(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 (defun astyle-buffer ()
   (interactive)
@@ -183,9 +212,7 @@
   (set-foreground-color "burlywood3")
   (set-background-color "#161616")
   (set-cursor-color "#40FF40")
-  (set-face-background 'hl-line "midnight blue")
-  (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
-  (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1))))
+  (set-face-background 'hl-line "midnight blue"))
 
 (require 'simpc-asm-preview)
 (add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
@@ -228,25 +255,10 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 (add-hook 'shell-filter-hook 'ansi-color-compilation-filter)
 
-(rc/require 'org-present)
-(require 'org)
-(with-eval-after-load 'org
-  (setq org-src-lang-modes
-        (cons '("c" . simpc)
-              (assq-delete-all "c" org-src-lang-modes))))
-(setq org-edit-src-content-indentation 0)
-
-(setq org-use-fast-todo-selection t)
-(setq org-return-follows-link t)
-(setq org-mouse-1-follows-link t)
-(define-key org-mode-map [mouse-1] #'org-toggle-checkbox)
-
 (defun insert-current-time ()
   "Insert the current time at point."
   (interactive)
   (insert (format-time-string "%H:%M:%S")))
-
-(global-set-key (kbd "C-c t") 'insert-current-time)
 
 (defun generate-tags-windows ()
   (interactive)
@@ -264,31 +276,12 @@
     (generate-tags-linux))
   (message "TAGS generated in %s" default-directory))
 
-(add-to-list 'display-buffer-alist
-             '("\\*compilation\\*"
-               (display-buffer-at-bottom)
-               (inhibit-same-window . t)))
+(defun my/ensure-two-windows ()
+  (when (and (one-window-p)
+             (not (derived-mode-p 'magit-mode)))
+    (let ((buf (current-buffer)))
+      (split-window-right)
+      (set-window-buffer (next-window) buf))))
 
-(add-to-list 'display-buffer-alist
-             '("\\*Async Shell Command\\*"
-               (display-buffer-at-bottom)
-               (inhibit-same-window . t)))
-
-(defun refresh-path ()
-  (interactive)
-  (cond
-   ((eq system-type 'windows-nt)
-    (let ((path (getenv "PATH")))
-      (setq exec-path (split-string path ";"))
-      (message "exec-path refreshed from Windows PATH")))
-   (t
-    (let ((path (replace-regexp-in-string
-                 "\n" ""
-                 (shell-command-to-string "$SHELL --login -c 'echo $PATH'"))))
-      (setenv "PATH" path)
-      (setq exec-path (split-string path ":"))
-      (message "exec-path refreshed from shell PATH")))))
-
-(defun insert-simpc-mode()
-  (interactive)
-  (insert "/* -*- mode: simpc -*- */"))
+(add-hook 'buffer-list-update-hook #'my/ensure-two-windows)
+(add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
