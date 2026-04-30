@@ -81,7 +81,7 @@
  '(haskell-process-log t)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(company dash-functional exec-path-from-shell helm
+   '(company dash-functional elcord exec-path-from-shell helm
              ido-completing-read+ magit markdown-mode move-text
              multiple-cursors org-present rust-mode smex))
  '(send-mail-function 'mailclient-send-it))

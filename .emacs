@@ -218,10 +218,17 @@
 (add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
 (add-hook 'window-setup-hook 'post-load-stuff t)
 
+(defvar my/msvc-vcvarsall-path
+  "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/Build/vcvarsall.bat"
+  "Path to vcvarsall.bat for MSVC.")
+
+(setq my/msvc-vcvarsall-path
+      "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat")
+
 (defun setup-msvc ()
   (interactive)
   (when (eq system-type 'windows-nt)
-    (let* ((vcvarsall "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/Build/vcvarsall.bat")
+    (let* ((vcvarsall my/msvc-vcvarsall-path)
            (output (shell-command-to-string
                     (concat "cmd /c \"\"" vcvarsall "\" x64 && set\""))))
       (dolist (line (split-string output "\n"))
