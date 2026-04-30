@@ -6,7 +6,7 @@ set expandtab
 set guioptions-=m
 set guioptions-=T
 set noesckeys
-set number
+"set number
 set ignorecase
 set smartcase
 set incsearch
@@ -17,8 +17,8 @@ set autoindent
 autocmd BufEnter * silent! lcd %:p:h
 set foldmethod=manual
 set noswapfile
-set cursorline
+"set cursorline
 
-colorscheme hmh
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText guibg=NONE ctermbg=NONE
+"colorscheme hmh
+"hi Normal guibg=NONE ctermbg=NONE
+"hi NonText guibg=NONE ctermbg=NONE
