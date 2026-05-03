@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: TODO comment
+# key: todo
+# --
+`(cond
+  ((derived-mode-p 'c-mode 'c++-mode 'simpc-mode) "// ")
+  ((derived-mode-p 'python-mode) "# ")
+  (t ""))`TODO(segfault): $0

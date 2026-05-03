@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: FIXME comment
+# key: fixme
+# --
+`(cond
+  ((derived-mode-p 'c-mode 'c++-mode 'simpc-mode) "// ")
+  ((derived-mode-p 'python-mode) "# ")
+  (t ""))`FIXME(segfault): $0

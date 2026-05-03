@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: class tag
+# key: tagc
+# --
+
+<${1:div} class="${2:}" id="${3:}">$4</$1>

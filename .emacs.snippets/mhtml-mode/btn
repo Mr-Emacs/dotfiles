@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Button
+# key: btn
+# --
+<button type="${1:button}">$2</button>$0

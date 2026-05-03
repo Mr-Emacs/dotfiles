@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: HTML Tag Block (multiline, mirrored)
+# key: tagb
+# expand-env: ((yas-indent-line 'fixed))
+# --
+<${1:div}>
+  $2
+</$1>

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: HTML Tag with class/id (mirrored)
+# key: tagc
+# --
+<${1:div} class="${2:}" id="${3:}">$4</$1>

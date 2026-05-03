@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Starting Soon in N Minutes
+# key: soon
+# expand-env: ((yas-indent-line 'fixed))
+# --
+(Starting SOON
+    IN ${1:5} MINUTES)$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: HTML Tag (mirrored)
+# key: tag
+# --
+<${1:div}>$2</$1>

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: tag block
+# key: tagb
+# --
+
+<${1:div}>
+  $2
+</$1>

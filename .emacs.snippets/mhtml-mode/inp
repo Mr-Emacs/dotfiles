@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Input field
+# key: inp
+# --
+<input type="${1:text}" name="${2:}" placeholder="${3:}" id="${4:}">$0

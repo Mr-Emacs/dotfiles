@@ -83,7 +83,7 @@
  '(package-selected-packages
    '(company dash-functional elcord exec-path-from-shell helm
              ido-completing-read+ magit markdown-mode move-text
-             multiple-cursors org-present rust-mode smex))
+             multiple-cursors org-present rust-mode smex yasnippet))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

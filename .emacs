@@ -32,7 +32,8 @@
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
 (defun my/split-window-on-startup ()
-  (when (one-window-p)
+  (when (and (display-graphic-p)
+             (one-window-p))
     (split-window-right)))
 (add-hook 'emacs-startup-hook #'my/split-window-on-startup)
 
@@ -154,8 +155,35 @@
   (setq-local tab-width 4)
   (setq-local indent-tabs-mode nil)
 
+  ;; Indentation behavior
   (c-set-offset 'case-label '+)
   (c-set-offset 'statement-case-intro '+)
+  (c-set-offset 'substatement-open 0)
+
+  ;; Fix enums + initializer lists
+  (c-set-offset 'brace-list-open 0)
+  (c-set-offset 'brace-list-intro 4)
+  (c-set-offset 'brace-list-entry 4)
+  (c-set-offset 'brace-list-close 0)
+
+  (setq-local c-hanging-braces-alist
+              '((defun-open before after)
+                (defun-close before after)
+                (class-open before after)
+                (class-close before after)
+                (block-open before after)
+                (block-close before after)
+                (substatement-open before after)
+                (brace-list-open before after)
+                (brace-list-close before after)
+                (statement-case-open before after)
+                (extern-lang-open before after)
+                (namespace-open before after)))
+
+  (setq-local c-auto-newline t)
+  (setq-local c-electric-flag t)
+  (electric-indent-local-mode 1)
+
   (setq-local comment-start "// ")
   (setq-local comment-end "")
   (setq-local comment-multi-line t))
@@ -239,6 +267,8 @@
             (when (string= var "PATH")
               (setq exec-path (split-string val ";")))))))))
 
+(global-unset-key [mouse-2])
+
 (defun ediff-setup-windows (buffer-A buffer-B buffer-C control-buffer)
   (ediff-setup-windows-plain buffer-A buffer-B buffer-C control-buffer))
 
@@ -284,11 +314,71 @@
   (message "TAGS generated in %s" default-directory))
 
 (defun my/ensure-two-windows ()
-  (when (and (one-window-p)
+  (when (and (display-graphic-p)
+             (one-window-p)
              (not (derived-mode-p 'magit-mode)))
     (let ((buf (current-buffer)))
       (split-window-right)
       (set-window-buffer (next-window) buf))))
-
 (add-hook 'buffer-list-update-hook #'my/ensure-two-windows)
 (add-hook 'dired-mode-hook (lambda () (setq-local global-hl-line-mode nil) (hl-line-mode -1)))
+
+(defun my/header-guard-name ()
+  "Derive an include-guard symbol from the current buffer's file name.
+   e.g. foo_bar.hpp  ->  FOO_BAR_HPP"
+  (let* ((name (file-name-nondirectory (buffer-file-name)))
+         (sanitized (replace-regexp-in-string "[^A-Za-z0-9]" "_" name)))
+    (upcase sanitized)))
+
+(defun my/insert-header-guard ()
+  (when (and (buffer-file-name)
+             (string-match-p "\\.h\\(pp\\)?\\'" (buffer-file-name))
+             (= (buffer-size) 0))
+    (let ((guard (my/header-guard-name)))
+      (insert (format "#ifndef %s\n#define %s\n\n\n\n#endif // %s\n"
+                      guard guard guard))
+      (goto-char (point-min))
+      (forward-line 3))))
+
+(add-hook 'find-file-hook #'my/insert-header-guard)
+
+(rc/require 'yasnippet)
+(require 'yasnippet)
+
+(setq yas-snippet-dirs '("~/.emacs.snippets/"))
+
+(yas-global-mode 1)
+(with-eval-after-load 'company
+  (defun my/yas-or-company (orig-fun &rest args)
+    (if (yas-expand)
+        t
+      (apply orig-fun args)))
+  (define-key company-active-map [tab]
+    (lambda () (interactive)
+      (or (yas-expand)
+          (company-complete-common))))
+  (define-key company-active-map (kbd "TAB")
+    (lambda () (interactive)
+      (or (yas-expand)
+          (company-complete-common)))))
+
+(add-hook 'simpc-mode-hook (lambda () (yas-activate-extra-mode 'c-mode)))
+
+(recentf-mode 1)
+(setq recentf-max-saved-items 10)
+(defun my/recentf-open ()
+  (interactive)
+  (find-file
+   (ido-completing-read "Recent: " recentf-list)))
+(global-set-key (kbd "C-x C-r") #'my/recentf-open)
+
+(defun my/apply-theme-based-on-display (&optional frame)
+  (with-selected-frame (or frame (selected-frame))
+    (if (display-graphic-p)
+        (my/apply-gui-colors)
+      (progn
+        (mapc #'disable-theme custom-enabled-themes)
+        (load-theme 'wheatgrass t)))))
+
+(add-hook 'window-setup-hook #'my/apply-theme-based-on-display)
+(add-hook 'after-make-frame-functions #'my/apply-theme-based-on-display)

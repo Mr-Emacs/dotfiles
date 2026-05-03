@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Table skeleton
+# key: tbl
+# expand-env: ((yas-indent-line 'fixed))
+# --
+<table>
+    <thead>
+        <tr>
+            <th>${1:Header}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$0</td>
+        </tr>
+    </tbody>
+</table>

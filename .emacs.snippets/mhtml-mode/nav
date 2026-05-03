@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Nav block
+# key: nav
+# expand-env: ((yas-indent-line 'fixed))
+# --
+<nav>
+    $0
+</nav>
