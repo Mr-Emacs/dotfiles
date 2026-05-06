@@ -2,7 +2,9 @@
 # name: NOTE comment
 # key: note
 # --
-`(cond
-  ((derived-mode-p 'c-mode 'c++-mode 'simpc-mode) "// ")
-  ((derived-mode-p 'python-mode) "# ")
-  (t ""))`NOTE(segfault): $0
+`(let* ((prefix
+         (cond
+          ((derived-mode-p 'c-mode 'c++-mode 'simpc-mode) "// ")
+          ((derived-mode-p 'python-mode) "# ")
+          (t ""))))
+   (replace-regexp-in-string "\n\\'" "" (concat prefix "NOTE(@Mr-segfault): ")))`$0

@@ -150,58 +150,7 @@
 (require 'bufo-mode)
 (require 'issex)
 
-(defun my/c-cpp-style ()
-  (setq-local c-basic-offset 4)
-  (setq-local tab-width 4)
-  (setq-local indent-tabs-mode nil)
-
-  ;; Indentation behavior
-  (c-set-offset 'case-label '+)
-  (c-set-offset 'statement-case-intro '+)
-  (c-set-offset 'substatement-open 0)
-
-  ;; Fix enums + initializer lists
-  (c-set-offset 'brace-list-open 0)
-  (c-set-offset 'brace-list-intro 4)
-  (c-set-offset 'brace-list-entry 4)
-  (c-set-offset 'brace-list-close 0)
-
-  (setq-local c-hanging-braces-alist
-              '((defun-open before after)
-                (defun-close before after)
-                (class-open before after)
-                (class-close before after)
-                (block-open before after)
-                (block-close before after)
-                (substatement-open before after)
-                (brace-list-open before after)
-                (brace-list-close before after)
-                (statement-case-open before after)
-                (extern-lang-open before after)
-                (namespace-open before after)))
-
-  (setq-local c-auto-newline t)
-  (setq-local c-electric-flag t)
-  (electric-indent-local-mode 1)
-
-  (setq-local comment-start "// ")
-  (setq-local comment-end "")
-  (setq-local comment-multi-line t))
-
-(add-hook 'c-mode-hook #'my/c-cpp-style)
-(add-hook 'c++-mode-hook #'my/c-cpp-style)
-
-(defun my/cpp-company-setup ()
-  (setq-local company-backends
-              '((company-capf :with company-keywords)
-                (company-dabbrev-code :with company-files)
-                company-dabbrev))
-  (setq-local company-idle-delay 0.15)
-  (setq-local company-minimum-prefix-length 2))
-
-(add-hook 'c-mode-hook #'my/cpp-company-setup)
-(add-hook 'c++-mode-hook #'my/cpp-company-setup)
-;;(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 (defun astyle-buffer ()
   (interactive)
@@ -371,14 +320,3 @@
   (find-file
    (ido-completing-read "Recent: " recentf-list)))
 (global-set-key (kbd "C-x C-r") #'my/recentf-open)
-
-(defun my/apply-theme-based-on-display (&optional frame)
-  (with-selected-frame (or frame (selected-frame))
-    (if (display-graphic-p)
-        (my/apply-gui-colors)
-      (progn
-        (mapc #'disable-theme custom-enabled-themes)
-        (load-theme 'wheatgrass t)))))
-
-(add-hook 'window-setup-hook #'my/apply-theme-based-on-display)
-(add-hook 'after-make-frame-functions #'my/apply-theme-based-on-display)
