@@ -29,7 +29,7 @@ local options = {
   tabstop = 4,
   cursorline = true,
   number = true,
-  relativenumber = false,
+  relativenumber = true,
   numberwidth = 4,
   signcolumn = "yes",
   wrap = true,
@@ -56,3 +56,8 @@ vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
 vim.opt.shortmess:append "c"
+
+vim.api.nvim_create_autocmd("VimResized", {
+  pattern = "*",
+  command = "wincmd =",
+})

@@ -104,7 +104,8 @@
       fixme-modes)
 
 (setq global-hl-line-sticky-flag t)
-(global-hl-line-mode)
+(when (eq system-type 'windows-nt)
+  (global-hl-line-mode))
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
@@ -163,17 +164,32 @@
      t)
     (goto-line saved-line-number)))
 
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-12"))
-(set-face-attribute 'default t :font "Liberation Mono-12")
-(set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
-(set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
-(set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
-(set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
-(set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
-(set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
-(set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
-(set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
-(set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3")
+(add-to-list 'default-frame-alist '(font . "Iosevka-14"))
+(set-face-attribute 'default t :font "Iosevka-14")
+
+(when (eq system-type 'gnu/linux)
+  (rc/require-theme 'gruber-darker))
+
+(when (eq system-type 'windows-nt)
+  (set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
+  (set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
+  (set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
+  (set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
+  (set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
+  (set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
+  (set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
+  (set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
+  (set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3"))
+
+(when (eq system-type 'windows-nt)
+  (defun post-load-stuff ()
+    (interactive)
+    (set-foreground-color "burlywood3")
+    (set-background-color "#161616")
+    (set-cursor-color "#40FF40")
+    (set-face-background 'hl-line "midnight blue")))
+(when (eq system-type 'windows-nt)
+  (add-hook 'window-setup-hook 'post-load-stuff t))
 
 ;;; dired
 (require 'dired-x)
@@ -184,16 +200,8 @@
 (setq dired-mouse-drag-files t)
 (setq dired-recursive-deletes 'always)
 
-(defun post-load-stuff ()
-  (interactive)
-  (set-foreground-color "burlywood3")
-  (set-background-color "#161616")
-  (set-cursor-color "#40FF40")
-  (set-face-background 'hl-line "midnight blue"))
-
 (require 'simpc-asm-preview)
 (add-hook 'simpc-mode-hook #'simpc-asm-preview-mode)
-(add-hook 'window-setup-hook 'post-load-stuff t)
 
 (defvar my/msvc-vcvarsall-path
   "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/Build/vcvarsall.bat"
@@ -320,3 +328,4 @@
   (find-file
    (ido-completing-read "Recent: " recentf-list)))
 (global-set-key (kbd "C-x C-r") #'my/recentf-open)
+(global-set-key (kbd "C-c C-p") 'find-file-at-point)

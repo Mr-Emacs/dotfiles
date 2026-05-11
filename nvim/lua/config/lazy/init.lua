@@ -1,5 +1,5 @@
 return {
-  { import = "config.lazy.oil" },
   { import = "config.lazy.telescope" },
-  { import = "config.lazy.lsp" },
+  { import = "config.lazy.completion" },
+  { import = "config.lazy.color" },
 }

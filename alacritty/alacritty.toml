@@ -1,6 +1,0 @@
-[font]
-normal = { family = "Liberation Mono", style = "Regular" }
-size = 18.0
-
-[window]
-startup_mode = "Maximized"
