@@ -19,6 +19,8 @@
       '((display-buffer-reuse-window display-buffer-use-some-window)
         (inhibit-same-window . t)))
 (setq magit-bury-buffer-function #'magit-restore-window-configuration)
+(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-current-absolute t)
 
 (add-to-list 'display-buffer-alist
              '("\\*compilation\\*"
@@ -51,12 +53,11 @@
 (custom-set-faces
  '(whitespace-space ((t (:foreground "#444444" :background unspecified)))))
 
-(rc/require 'smex 'ido-completing-read+)
+(rc/require 'smex 'ido-completing-read+ 'nasm-mode)
 (require 'ido-completing-read+)
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
-
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
@@ -104,9 +105,8 @@
       fixme-modes)
 
 (setq global-hl-line-sticky-flag t)
-(when (eq system-type 'windows-nt)
-  (global-hl-line-mode))
 (tool-bar-mode 0)
+(global-hl-line-mode)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (which-key-mode 0)
@@ -147,6 +147,7 @@
 
 (require 'aoxim-mode)
 (require 'fasm-mode)
+(require 'storth-mode)
 (require 'simpc-mode)
 (require 'bufo-mode)
 (require 'issex)
@@ -164,32 +165,26 @@
      t)
     (goto-line saved-line-number)))
 
-(add-to-list 'default-frame-alist '(font . "Iosevka-14"))
-(set-face-attribute 'default t :font "Iosevka-14")
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-14"))
+(set-face-attribute 'default t :font "Liberation Mono-14")
 
-(when (eq system-type 'gnu/linux)
-  (rc/require-theme 'gruber-darker))
+(set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
+(set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
+(set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
+(set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
+(set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
+(set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
+(set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
+(set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
+(set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3")
 
-(when (eq system-type 'windows-nt)
-  (set-face-attribute 'font-lock-builtin-face nil :foreground "#DAB98F")
-  (set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
-  (set-face-attribute 'font-lock-constant-face nil :foreground "olive drab")
-  (set-face-attribute 'font-lock-doc-face nil :foreground "gray50")
-  (set-face-attribute 'font-lock-function-name-face nil :foreground "burlywood3")
-  (set-face-attribute 'font-lock-keyword-face nil :foreground "DarkGoldenrod3")
-  (set-face-attribute 'font-lock-string-face nil :foreground "olive drab")
-  (set-face-attribute 'font-lock-type-face nil :foreground "burlywood3")
-  (set-face-attribute 'font-lock-variable-name-face nil :foreground "burlywood3"))
-
-(when (eq system-type 'windows-nt)
-  (defun post-load-stuff ()
-    (interactive)
-    (set-foreground-color "burlywood3")
-    (set-background-color "#161616")
-    (set-cursor-color "#40FF40")
-    (set-face-background 'hl-line "midnight blue")))
-(when (eq system-type 'windows-nt)
-  (add-hook 'window-setup-hook 'post-load-stuff t))
+(defun post-load-stuff ()
+  (interactive)
+  (set-foreground-color "burlywood3")
+  (set-background-color "#161616")
+  (set-cursor-color "#40FF40")
+  (set-face-background 'hl-line "midnight blue"))
+(add-hook 'window-setup-hook 'post-load-stuff t)
 
 ;;; dired
 (require 'dired-x)
@@ -329,3 +324,113 @@
    (ido-completing-read "Recent: " recentf-list)))
 (global-set-key (kbd "C-x C-r") #'my/recentf-open)
 (global-set-key (kbd "C-c C-p") 'find-file-at-point)
+
+(rc/require 'org-present)
+(setq org-src-fontify-natively t)
+(setq org-hide-emphasis-markers t)
+(with-eval-after-load 'ox-latex
+  (setq org-latex-pdf-process
+        '("pdflatex -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -interaction nonstopmode -output-directory %o %f")))
+
+(setq org-file-apps
+      '(("\\.pdf\\'" . "okular %s")
+        (auto-mode   . emacs)))
+
+(add-to-list 'auto-mode-alist
+             '("\\.pdf\\'" . (lambda ()
+                               (let ((file buffer-file-name))
+                                 (kill-buffer)
+                                 (start-process "okular" nil "okular" file)))))
+
+(with-eval-after-load 'ox-latex
+  (setq org-latex-listings 'listings)
+
+  (setq org-latex-default-packages-alist
+        '(("T1"           "fontenc"      t)
+          (""             "libertine"    t)
+          ("scaled=0.85"  "sourcecodepro" t)
+          ("margin=1in"   "geometry"     t)
+          (""             "listings"     t)
+          (""             "xcolor"       t)
+          (""             "graphicx"     t)
+          (""             "hyperref"     nil)))
+
+  (setq org-latex-listings-langs
+        '((emacs-lisp "Lisp")
+          (lisp       "Lisp")
+          (c          "C")
+          (cc         "C++")
+          (cpp        "C++")
+          (python     "Python")
+          (sh         "bash")
+          (shell      "bash")
+          (rust       "C")
+          (asm        "[x86masm]Assembler")))
+
+  (setq org-latex-listings-options
+        '(("basicstyle"       "\\small\\ttfamily")
+          ("keywordstyle"     "\\bfseries\\color[HTML]{0000FF}")
+          ("stringstyle"      "\\color[HTML]{A31515}")
+          ("commentstyle"     "\\color[HTML]{008000}")
+          ("showstringspaces" "false")
+          ("breaklines"       "false")
+          ("columns"          "flexible")
+          ("keepspaces"       "true"))))
+
+(defun my/insert-vod-template ()
+  (when (and (buffer-file-name)
+             (string= (file-name-nondirectory (buffer-file-name)) "VOD.org")
+             (= (buffer-size) 0))
+    (insert "\
+#+TITLE: 
+#+OPTIONS: toc:nil
+#+LATEX_COMPILER: pdflatex
+#+LATEX_HEADER: \\usepackage[T1]{fontenc}
+#+LATEX_HEADER: \\usepackage{sourcecodepro}
+#+LATEX_HEADER: \\usepackage{libertine}
+#+LATEX_HEADER: \\usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \\usepackage{listings}
+#+LATEX_HEADER: \\usepackage{xcolor}
+#+LATEX_HEADER: \\lstdefinestyle{cppreference}{
+#+LATEX_HEADER:   basicstyle=\\small\\ttfamily,
+#+LATEX_HEADER:   keywordstyle=\\bfseries\\color[HTML]{0000FF},
+#+LATEX_HEADER:   keywordstyle=[2]\\color[HTML]{008080},
+#+LATEX_HEADER:   stringstyle=\\color[HTML]{A31515},
+#+LATEX_HEADER:   commentstyle=\\color[HTML]{008000},
+#+LATEX_HEADER:   showstringspaces=false,
+#+LATEX_HEADER:   breaklines=false,
+#+LATEX_HEADER:   columns=flexible,
+#+LATEX_HEADER:   keepspaces=true,
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \\lstset{style=cppreference}
+
+* Introduction
+
+* Section
+
+#+BEGIN_EXPORT latex
+\\noindent
+\\begin{minipage}[t]{0.48\\textwidth}
+\\textbf{C}
+\\vspace{0.5em}
+\\begin{lstlisting}[language=C]
+
+\\end{lstlisting}
+\\end{minipage}
+\\hfill
+\\begin{minipage}[t]{0.48\\textwidth}
+\\textbf{C++}
+\\vspace{0.5em}
+\\begin{lstlisting}[language=C++]
+
+\\end{lstlisting}
+\\end{minipage}
+#+END_EXPORT
+
+* Conclusion
+")
+    (goto-char (point-min))
+    (end-of-line)))
+
+(add-hook 'find-file-hook #'my/insert-vod-template)

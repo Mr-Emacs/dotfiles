@@ -2,8 +2,10 @@
 .emacs.local|symlink|
 .emacs.rc|symlink|
 .emacs.custom.el|symlink|
+.emacs.snippets|symlink|
 .vimrc|symlink|
+.falk.lisp|symlink|
 .tmux.conf|symlink|
-#i3|symlink|.config
-#i3status|symlink|.config
+i3|symlink|.config
+i3status|symlink|.config
 #gf2_config.ini|symlink|.config
